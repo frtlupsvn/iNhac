@@ -6,8 +6,14 @@
 //  Copyright (c) 2015 ZoomStudio. All rights reserved.
 //
 
+//Trang home sẽ load bảng xếp hạng nhạc của: VIỆTNAM, ÂU MỸ, HÀNQUỐC
+
 import UIKit
+
 let parseURL = "https://api.parse.com/1/classes/homepage"
+
+let zingURL = "http://api.mp3.zing.vn/api/list-chart"
+
 let parseAppID = "Wd0mLuzvmUh8NJDnbHk5bAHsDsy21htt2jAOBGQP"
 let parseRestKey = "S1Ut3LQSwzUvHbXIo06aY7PF0tN7tz81OsbEV2GH"
 
@@ -15,17 +21,18 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
 
     @IBOutlet weak var tableView: UITableView!
     
-    var myObjectArray = NSMutableArray()
+    var imageSource = NSMutableArray()
+    var dataSource = NSMutableArray()
     
-    class HomeObject: NSObject {
-        var text:NSString = ""
-        var image:NSString = ""
-        var order:Int = -1
+    class ListChartObject: NSObject {
+        var ID:NSString = ""
+        var Name:NSString = ""
+        var Type:NSString = ""
         
-        init(myText:NSString,myImage:NSString,myOrder:Int){
-            self.text = myText
-            self.image = myImage
-            self.order = myOrder
+        init(myID:NSString,myName:NSString,myType:NSString){
+            self.ID = myID
+            self.Name = myName
+            self.Type = myType
         }
     }
     
@@ -36,35 +43,59 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         // Do any additional setup after loading the view, typically from a nib.
         // Set background color is white
         self.view.backgroundColor = UIColor.whiteColor()
-        // Call API
-        callParseAPI()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func callParseAPI(){
-        let manager = AFHTTPRequestOperationManager()
-        manager.requestSerializer.setValue(parseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
-        manager.requestSerializer.setValue(parseRestKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
-        manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        imageSource.addObject("1.jpg")
+        imageSource.addObject("3.jpg")
+        imageSource.addObject("2.jpg")
         
-        manager.GET( parseURL,
-            parameters: nil,
+        
+        //Connect to Zing API
+        callZingAPI()
+    }
+    
+    func callZingAPI(){
+        var publicKey:NSString = "4c3d549977f7943bd9cc6d33f656bb5c1c87d2c0"
+        var privateKey:NSString = "c9c2a7f66b677012b763512da77040b3"
+        
+        //jsondata
+        
+        var jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")
+//        println("json: "+jsonarray.JSONString() as NSString)
+        var jsondata:NSString = (jsonarray.JSONString() as NSString).base64EncodedString()
+        jsondata = jsondata.stringByAddingPercentEscapesUsingEncoding(NSASCIIStringEncoding)!
+
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        
+//        println("signature: "+signature)
+//        println("jsonData: "+jsondata)
+        
+//        var urlAPI = zingURL+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
+//        
+//        println(urlAPI)
+        
+        var params = [
+            "publicKey" : publicKey,
+            "signature" : signature,
+            "jsondata"  : jsondata,
+        ]
+        
+        
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+
+        manager.GET( zingURL,
+            parameters: params,
             success: {
                 (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+                var resultArray:NSArray = responseObject as NSArray
                 
-                var myTempArray:NSMutableArray = NSMutableArray()
-                myTempArray = responseObject["results"] as NSMutableArray
-                for index in 0...myTempArray.count-1 {
-                    var tempObj:NSDictionary = myTempArray[index] as NSDictionary
-                    var homeObject:HomeObject = HomeObject(myText: tempObj["text"] as NSString, myImage: tempObj["image"] as NSString, myOrder: tempObj["order"] as Int)
-                    self.myObjectArray.addObject(homeObject)
+                for index in 0...resultArray.count-1{
+                    var temp: NSDictionary = resultArray.objectAtIndex(index) as NSDictionary
+                    var chartObject:ListChartObject = ListChartObject(myID: (temp.objectForKey("ID"))as NSString, myName: (temp.objectForKey("Name"))as NSString, myType: (temp.objectForKey("Type"))as NSString)
+                    self.dataSource.addObject(chartObject)
                     
                 }
-                self.tableView.reloadData()
+                    self.tableView.reloadData()
+                    println("Succes")
             },
             failure: {
                 (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
@@ -72,11 +103,19 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         )
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : homepageCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as homepageCell
-        var tempHomeObj:HomeObject = myObjectArray[indexPath.row] as HomeObject
-        cell.labelHome.text = "AAA"
-        println(tempHomeObj.text)
+        var chartObject:ListChartObject = dataSource.objectAtIndex(indexPath.row) as ListChartObject
+        
+        cell.labelHome.text = chartObject.Name
+        cell.imageHome.image = UIImage(named: imageSource.objectAtIndex(indexPath.row) as NSString)
+        cell.layer.borderColor = UIColor.whiteColor().CGColor
+        cell.layer.borderWidth = 1
         return cell
     }
     
@@ -84,7 +123,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myObjectArray.count
+        return dataSource.count
     }
     
     

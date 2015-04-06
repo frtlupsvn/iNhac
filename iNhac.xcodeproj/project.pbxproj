@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0003ED31ACE4215009ADBF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0003ED21ACE4215009ADBF2 /* Foundation.framework */; };
+		D00810C71ACD2E1F0071083E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810C61ACD2E1F0071083E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D00810CB1ACD31F40071083E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810CA1ACD31F40071083E /* Base64.m */; };
+		D00810CF1ACD36A30071083E /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810CE1ACD36A30071083E /* NSString+MD5.m */; };
+		D03D69E91AD2886300E85A4D /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E61AD2886300E85A4D /* 3.jpg */; };
+		D03D69EA1AD2886300E85A4D /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E71AD2886300E85A4D /* 2.jpg */; };
+		D03D69EB1AD2886300E85A4D /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E81AD2886300E85A4D /* 1.jpg */; };
 		D094FEF81ACA8EC0006C7163 /* homepageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094FEF71ACA8EC0006C7163 /* homepageCell.swift */; };
 		D0A5EF7B1ACA59DE00354B7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7A1ACA59DE00354B7F /* AppDelegate.swift */; };
 		D0A5EF7E1ACA59DE00354B7F /* iNhac.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7C1ACA59DE00354B7F /* iNhac.xcdatamodeld */; };
@@ -45,6 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D0003ED21ACE4215009ADBF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D00810C51ACD2E1F0071083E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		D00810C61ACD2E1F0071083E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		D00810C91ACD31F40071083E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		D00810CA1ACD31F40071083E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		D00810CD1ACD36A30071083E /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		D00810CE1ACD36A30071083E /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		D03D69E61AD2886300E85A4D /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		D03D69E71AD2886300E85A4D /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		D03D69E81AD2886300E85A4D /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		D094FEF51ACA7B7C006C7163 /* iNhac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iNhac-Bridging-Header.h"; sourceTree = "<group>"; };
 		D094FEF71ACA8EC0006C7163 /* homepageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homepageCell.swift; sourceTree = "<group>"; };
 		D0A5EF751ACA59DE00354B7F /* iNhac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNhac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0003ED31ACE4215009ADBF2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +132,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D00810C41ACD2E120071083E /* Json Kit */ = {
+			isa = PBXGroup;
+			children = (
+				D00810C51ACD2E1F0071083E /* JSONKit.h */,
+				D00810C61ACD2E1F0071083E /* JSONKit.m */,
+			);
+			name = "Json Kit";
+			sourceTree = "<group>";
+		};
+		D00810C81ACD31E70071083E /* Base 64 */ = {
+			isa = PBXGroup;
+			children = (
+				D00810C91ACD31F40071083E /* Base64.h */,
+				D00810CA1ACD31F40071083E /* Base64.m */,
+			);
+			name = "Base 64";
+			sourceTree = "<group>";
+		};
+		D00810CC1ACD360A0071083E /* MD5 Categorie */ = {
+			isa = PBXGroup;
+			children = (
+				D00810CD1ACD36A30071083E /* NSString+MD5.h */,
+				D00810CE1ACD36A30071083E /* NSString+MD5.m */,
+			);
+			name = "MD5 Categorie";
+			sourceTree = "<group>";
+		};
+		D03D69E41AD2884F00E85A4D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D03D69E51AD2885600E85A4D /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D03D69E51AD2885600E85A4D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D03D69E61AD2886300E85A4D /* 3.jpg */,
+				D03D69E71AD2886300E85A4D /* 2.jpg */,
+				D03D69E81AD2886300E85A4D /* 1.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		D094FEF41ACA7B4D006C7163 /* Bridging Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,17 +185,18 @@
 			name = "Bridging Header";
 			sourceTree = "<group>";
 		};
-		D094FEF61ACA8C92006C7163 /* ViewCustome */ = {
+		D094FEF61ACA8C92006C7163 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				D094FEF71ACA8EC0006C7163 /* homepageCell.swift */,
 			);
-			name = ViewCustome;
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		D0A5EF6C1ACA59DE00354B7F = {
 			isa = PBXGroup;
 			children = (
+				D0003ED21ACE4215009ADBF2 /* Foundation.framework */,
 				D0A5EF771ACA59DE00354B7F /* iNhac */,
 				D0A5EF901ACA59DE00354B7F /* iNhacTests */,
 				D0A5EF761ACA59DE00354B7F /* Products */,
@@ -151,7 +215,8 @@
 		D0A5EF771ACA59DE00354B7F /* iNhac */ = {
 			isa = PBXGroup;
 			children = (
-				D094FEF61ACA8C92006C7163 /* ViewCustome */,
+				D03D69E41AD2884F00E85A4D /* Resources */,
+				D094FEF61ACA8C92006C7163 /* Cell */,
 				D094FEF41ACA7B4D006C7163 /* Bridging Header */,
 				D0A5EFA11ACA5A9800354B7F /* Library */,
 				D0A5EFA01ACA5A6F00354B7F /* StoryBoard */,
@@ -225,6 +290,9 @@
 		D0A5EFA11ACA5A9800354B7F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D00810CC1ACD360A0071083E /* MD5 Categorie */,
+				D00810C81ACD31E70071083E /* Base 64 */,
+				D00810C41ACD2E120071083E /* Json Kit */,
 				D0A5EFBF1ACA5F6C00354B7F /* UIKit+AFNetworking */,
 				D0A5EFA21ACA5F3F00354B7F /* AFNetworking */,
 			);
@@ -369,7 +437,10 @@
 			files = (
 				D0A5EF831ACA59DE00354B7F /* Main.storyboard in Resources */,
 				D0A5EF881ACA59DE00354B7F /* LaunchScreen.xib in Resources */,
+				D03D69EA1AD2886300E85A4D /* 2.jpg in Resources */,
+				D03D69EB1AD2886300E85A4D /* 1.jpg in Resources */,
 				D0A5EF851ACA59DE00354B7F /* Images.xcassets in Resources */,
+				D03D69E91AD2886300E85A4D /* 3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,14 +466,17 @@
 				D0A5EFB91ACA5F3F00354B7F /* AFNetworkReachabilityManager.m in Sources */,
 				D0A5EFBD1ACA5F3F00354B7F /* AFURLResponseSerialization.m in Sources */,
 				D0A5EFBB1ACA5F3F00354B7F /* AFURLConnectionOperation.m in Sources */,
+				D00810CB1ACD31F40071083E /* Base64.m in Sources */,
 				D0A5EFD41ACA5F6C00354B7F /* UIButton+AFNetworking.m in Sources */,
 				D094FEF81ACA8EC0006C7163 /* homepageCell.swift in Sources */,
+				D00810C71ACD2E1F0071083E /* JSONKit.m in Sources */,
 				D0A5EFD21ACA5F6C00354B7F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D0A5EFBA1ACA5F3F00354B7F /* AFSecurityPolicy.m in Sources */,
 				D0A5EFD71ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m in Sources */,
 				D0A5EFD81ACA5F6C00354B7F /* UIWebView+AFNetworking.m in Sources */,
 				D0A5EFB81ACA5F3F00354B7F /* AFHTTPSessionManager.m in Sources */,
 				D0A5EFD31ACA5F6C00354B7F /* UIAlertView+AFNetworking.m in Sources */,
+				D00810CF1ACD36A30071083E /* NSString+MD5.m in Sources */,
 				D0A5EFBC1ACA5F3F00354B7F /* AFURLRequestSerialization.m in Sources */,
 				D0A5EFD11ACA5F6C00354B7F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D0A5EFBE1ACA5F3F00354B7F /* AFURLSessionManager.m in Sources */,

@@ -10,4 +10,8 @@
 #define iNhac_iNhac_Bridging_Header_h_h
 
 #import "AFNetworking.h"
+#import "JSONKit.h"
+#import "Base64.h"
+#import "NSString+MD5.h"
+
 #endif
