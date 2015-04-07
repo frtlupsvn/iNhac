@@ -39,6 +39,14 @@
 		D0A5EFD61ACA5F6C00354B7F /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFCC1ACA5F6C00354B7F /* UIProgressView+AFNetworking.m */; };
 		D0A5EFD71ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFCE1ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m */; };
 		D0A5EFD81ACA5F6C00354B7F /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFD01ACA5F6C00354B7F /* UIWebView+AFNetworking.m */; };
+		D0C084921AD37C3B00B68903 /* UIColor+flat.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084911AD37C3B00B68903 /* UIColor+flat.m */; };
+		D0C084971AD37C7500B68903 /* FeSpinnerTenDot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084941AD37C7500B68903 /* FeSpinnerTenDot.m */; };
+		D0C084981AD37C7500B68903 /* FeTenDot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084961AD37C7500B68903 /* FeTenDot.m */; };
+		D0C0849B1AD37EEE00B68903 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C0849A1AD37EEE00B68903 /* FXBlurView.m */; };
+		D0C0849D1AD3B1B200B68903 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C0849C1AD3B1B200B68903 /* QuartzCore.framework */; };
+		D0C0849F1AD3B1FE00B68903 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C0849E1AD3B1FE00B68903 /* CoreGraphics.framework */; };
+		D0C084A11AD3B20500B68903 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C084A01AD3B20500B68903 /* UIKit.framework */; };
+		D0C084A71AD3EB5000B68903 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C084A61AD3EB5000B68903 /* PlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +119,18 @@
 		D0A5EFCE1ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		D0A5EFCF1ACA5F6C00354B7F /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		D0A5EFD01ACA5F6C00354B7F /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		D0C084901AD37C3B00B68903 /* UIColor+flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+flat.h"; sourceTree = "<group>"; };
+		D0C084911AD37C3B00B68903 /* UIColor+flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+flat.m"; sourceTree = "<group>"; };
+		D0C084931AD37C7500B68903 /* FeSpinnerTenDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeSpinnerTenDot.h; sourceTree = "<group>"; };
+		D0C084941AD37C7500B68903 /* FeSpinnerTenDot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeSpinnerTenDot.m; sourceTree = "<group>"; };
+		D0C084951AD37C7500B68903 /* FeTenDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeTenDot.h; sourceTree = "<group>"; };
+		D0C084961AD37C7500B68903 /* FeTenDot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeTenDot.m; sourceTree = "<group>"; };
+		D0C084991AD37EEE00B68903 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		D0C0849A1AD37EEE00B68903 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
+		D0C0849C1AD3B1B200B68903 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D0C0849E1AD3B1FE00B68903 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D0C084A01AD3B20500B68903 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D0C084A61AD3EB5000B68903 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +138,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C084A11AD3B20500B68903 /* UIKit.framework in Frameworks */,
+				D0C0849F1AD3B1FE00B68903 /* CoreGraphics.framework in Frameworks */,
+				D0C0849D1AD3B1B200B68903 /* QuartzCore.framework in Frameworks */,
 				D0003ED31ACE4215009ADBF2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,17 +208,21 @@
 			name = "Bridging Header";
 			sourceTree = "<group>";
 		};
-		D094FEF61ACA8C92006C7163 /* Cell */ = {
+		D094FEF61ACA8C92006C7163 /* Customize View */ = {
 			isa = PBXGroup;
 			children = (
 				D094FEF71ACA8EC0006C7163 /* homepageCell.swift */,
+				D0C084A61AD3EB5000B68903 /* PlayerView.swift */,
 			);
-			name = Cell;
+			name = "Customize View";
 			sourceTree = "<group>";
 		};
 		D0A5EF6C1ACA59DE00354B7F = {
 			isa = PBXGroup;
 			children = (
+				D0C084A01AD3B20500B68903 /* UIKit.framework */,
+				D0C0849E1AD3B1FE00B68903 /* CoreGraphics.framework */,
+				D0C0849C1AD3B1B200B68903 /* QuartzCore.framework */,
 				D0003ED21ACE4215009ADBF2 /* Foundation.framework */,
 				D0A5EF771ACA59DE00354B7F /* iNhac */,
 				D0A5EF901ACA59DE00354B7F /* iNhacTests */,
@@ -216,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				D03D69E41AD2884F00E85A4D /* Resources */,
-				D094FEF61ACA8C92006C7163 /* Cell */,
+				D094FEF61ACA8C92006C7163 /* Customize View */,
 				D094FEF41ACA7B4D006C7163 /* Bridging Header */,
 				D0A5EFA11ACA5A9800354B7F /* Library */,
 				D0A5EFA01ACA5A6F00354B7F /* StoryBoard */,
@@ -290,6 +317,7 @@
 		D0A5EFA11ACA5A9800354B7F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D0C0848F1AD37C1E00B68903 /* Ten Dot Spinner */,
 				D00810CC1ACD360A0071083E /* MD5 Categorie */,
 				D00810C81ACD31E70071083E /* Base 64 */,
 				D00810C41ACD2E120071083E /* Json Kit */,
@@ -347,6 +375,21 @@
 				D0A5EFD01ACA5F6C00354B7F /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		D0C0848F1AD37C1E00B68903 /* Ten Dot Spinner */ = {
+			isa = PBXGroup;
+			children = (
+				D0C084991AD37EEE00B68903 /* FXBlurView.h */,
+				D0C0849A1AD37EEE00B68903 /* FXBlurView.m */,
+				D0C084931AD37C7500B68903 /* FeSpinnerTenDot.h */,
+				D0C084941AD37C7500B68903 /* FeSpinnerTenDot.m */,
+				D0C084951AD37C7500B68903 /* FeTenDot.h */,
+				D0C084961AD37C7500B68903 /* FeTenDot.m */,
+				D0C084901AD37C3B00B68903 /* UIColor+flat.h */,
+				D0C084911AD37C3B00B68903 /* UIColor+flat.m */,
+			);
+			name = "Ten Dot Spinner";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,9 +505,14 @@
 				D0A5EFD51ACA5F6C00354B7F /* UIImageView+AFNetworking.m in Sources */,
 				D0A5EF801ACA59DE00354B7F /* HomeController.swift in Sources */,
 				D0A5EFB71ACA5F3F00354B7F /* AFHTTPRequestOperationManager.m in Sources */,
+				D0C084921AD37C3B00B68903 /* UIColor+flat.m in Sources */,
 				D0A5EFD61ACA5F6C00354B7F /* UIProgressView+AFNetworking.m in Sources */,
 				D0A5EFB91ACA5F3F00354B7F /* AFNetworkReachabilityManager.m in Sources */,
 				D0A5EFBD1ACA5F3F00354B7F /* AFURLResponseSerialization.m in Sources */,
+				D0C084971AD37C7500B68903 /* FeSpinnerTenDot.m in Sources */,
+				D0C084A71AD3EB5000B68903 /* PlayerView.swift in Sources */,
+				D0C0849B1AD37EEE00B68903 /* FXBlurView.m in Sources */,
+				D0C084981AD37C7500B68903 /* FeTenDot.m in Sources */,
 				D0A5EFBB1ACA5F3F00354B7F /* AFURLConnectionOperation.m in Sources */,
 				D00810CB1ACD31F40071083E /* Base64.m in Sources */,
 				D0A5EFD41ACA5F6C00354B7F /* UIButton+AFNetworking.m in Sources */,

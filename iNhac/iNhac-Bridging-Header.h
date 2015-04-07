@@ -13,5 +13,7 @@
 #import "JSONKit.h"
 #import "Base64.h"
 #import "NSString+MD5.h"
+#import "FeSpinnerTenDot.h"
+#import "UIColor+flat.h"
 
 #endif
