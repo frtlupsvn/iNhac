@@ -14,6 +14,12 @@
 		D03D69E91AD2886300E85A4D /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E61AD2886300E85A4D /* 3.jpg */; };
 		D03D69EA1AD2886300E85A4D /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E71AD2886300E85A4D /* 2.jpg */; };
 		D03D69EB1AD2886300E85A4D /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E81AD2886300E85A4D /* 1.jpg */; };
+		D05ABF161AD4E1BB00DCC1C3 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF151AD4E1BB00DCC1C3 /* PlayerView.xib */; };
+		D05ABF1A1AD4E9BD00DCC1C3 /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF171AD4E9BD00DCC1C3 /* skip.png */; };
+		D05ABF1B1AD4E9BD00DCC1C3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF181AD4E9BD00DCC1C3 /* play.png */; };
+		D05ABF1C1AD4E9BD00DCC1C3 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF191AD4E9BD00DCC1C3 /* back.png */; };
+		D05ABF1E1AD4EBBC00DCC1C3 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF1D1AD4EBBC00DCC1C3 /* music.png */; };
+		D05ABF201AD66CA400DCC1C3 /* VideoHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */; };
 		D094FEF81ACA8EC0006C7163 /* homepageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094FEF71ACA8EC0006C7163 /* homepageCell.swift */; };
 		D0A5EF7B1ACA59DE00354B7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7A1ACA59DE00354B7F /* AppDelegate.swift */; };
 		D0A5EF7E1ACA59DE00354B7F /* iNhac.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7C1ACA59DE00354B7F /* iNhac.xcdatamodeld */; };
@@ -47,6 +53,10 @@
 		D0C0849F1AD3B1FE00B68903 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C0849E1AD3B1FE00B68903 /* CoreGraphics.framework */; };
 		D0C084A11AD3B20500B68903 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C084A01AD3B20500B68903 /* UIKit.framework */; };
 		D0C084A71AD3EB5000B68903 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C084A61AD3EB5000B68903 /* PlayerView.swift */; };
+		D0C39CCC1AD6722F00B4D097 /* SongHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */; };
+		D0C39CCE1AD6723C00B4D097 /* AlbumHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */; };
+		D0DF808A1AD690380059E7E0 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF80891AD690380059E7E0 /* VideoTableViewCell.swift */; };
+		D0DF808C1AD692440059E7E0 /* defaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DF808B1AD692440059E7E0 /* defaultImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +80,12 @@
 		D03D69E61AD2886300E85A4D /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		D03D69E71AD2886300E85A4D /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		D03D69E81AD2886300E85A4D /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		D05ABF151AD4E1BB00DCC1C3 /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		D05ABF171AD4E9BD00DCC1C3 /* skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip.png; sourceTree = "<group>"; };
+		D05ABF181AD4E9BD00DCC1C3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		D05ABF191AD4E9BD00DCC1C3 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		D05ABF1D1AD4EBBC00DCC1C3 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music.png; sourceTree = "<group>"; };
+		D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHotViewController.swift; sourceTree = "<group>"; };
 		D094FEF51ACA7B7C006C7163 /* iNhac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iNhac-Bridging-Header.h"; sourceTree = "<group>"; };
 		D094FEF71ACA8EC0006C7163 /* homepageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homepageCell.swift; sourceTree = "<group>"; };
 		D0A5EF751ACA59DE00354B7F /* iNhac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNhac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +147,10 @@
 		D0C0849E1AD3B1FE00B68903 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D0C084A01AD3B20500B68903 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D0C084A61AD3EB5000B68903 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongHotViewController.swift; sourceTree = "<group>"; };
+		D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumHotViewController.swift; sourceTree = "<group>"; };
+		D0DF80891AD690380059E7E0 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		D0DF808B1AD692440059E7E0 /* defaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +213,11 @@
 		D03D69E51AD2885600E85A4D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0DF808B1AD692440059E7E0 /* defaultImage.png */,
+				D05ABF1D1AD4EBBC00DCC1C3 /* music.png */,
+				D05ABF171AD4E9BD00DCC1C3 /* skip.png */,
+				D05ABF181AD4E9BD00DCC1C3 /* play.png */,
+				D05ABF191AD4E9BD00DCC1C3 /* back.png */,
 				D03D69E61AD2886300E85A4D /* 3.jpg */,
 				D03D69E71AD2886300E85A4D /* 2.jpg */,
 				D03D69E81AD2886300E85A4D /* 1.jpg */,
@@ -213,6 +238,8 @@
 			children = (
 				D094FEF71ACA8EC0006C7163 /* homepageCell.swift */,
 				D0C084A61AD3EB5000B68903 /* PlayerView.swift */,
+				D05ABF151AD4E1BB00DCC1C3 /* PlayerView.xib */,
+				D0DF80891AD690380059E7E0 /* VideoTableViewCell.swift */,
 			);
 			name = "Customize View";
 			sourceTree = "<group>";
@@ -301,6 +328,9 @@
 			isa = PBXGroup;
 			children = (
 				D0A5EF7F1ACA59DE00354B7F /* HomeController.swift */,
+				D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */,
+				D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */,
+				D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -478,9 +508,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05ABF161AD4E1BB00DCC1C3 /* PlayerView.xib in Resources */,
 				D0A5EF831ACA59DE00354B7F /* Main.storyboard in Resources */,
+				D05ABF1B1AD4E9BD00DCC1C3 /* play.png in Resources */,
+				D05ABF1A1AD4E9BD00DCC1C3 /* skip.png in Resources */,
 				D0A5EF881ACA59DE00354B7F /* LaunchScreen.xib in Resources */,
+				D05ABF1E1AD4EBBC00DCC1C3 /* music.png in Resources */,
 				D03D69EA1AD2886300E85A4D /* 2.jpg in Resources */,
+				D0DF808C1AD692440059E7E0 /* defaultImage.png in Resources */,
+				D05ABF1C1AD4E9BD00DCC1C3 /* back.png in Resources */,
 				D03D69EB1AD2886300E85A4D /* 1.jpg in Resources */,
 				D0A5EF851ACA59DE00354B7F /* Images.xcassets in Resources */,
 				D03D69E91AD2886300E85A4D /* 3.jpg in Resources */,
@@ -502,9 +538,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A5EFB61ACA5F3F00354B7F /* AFHTTPRequestOperation.m in Sources */,
+				D0C39CCC1AD6722F00B4D097 /* SongHotViewController.swift in Sources */,
 				D0A5EFD51ACA5F6C00354B7F /* UIImageView+AFNetworking.m in Sources */,
 				D0A5EF801ACA59DE00354B7F /* HomeController.swift in Sources */,
 				D0A5EFB71ACA5F3F00354B7F /* AFHTTPRequestOperationManager.m in Sources */,
+				D05ABF201AD66CA400DCC1C3 /* VideoHotViewController.swift in Sources */,
 				D0C084921AD37C3B00B68903 /* UIColor+flat.m in Sources */,
 				D0A5EFD61ACA5F6C00354B7F /* UIProgressView+AFNetworking.m in Sources */,
 				D0A5EFB91ACA5F3F00354B7F /* AFNetworkReachabilityManager.m in Sources */,
@@ -513,10 +551,12 @@
 				D0C084A71AD3EB5000B68903 /* PlayerView.swift in Sources */,
 				D0C0849B1AD37EEE00B68903 /* FXBlurView.m in Sources */,
 				D0C084981AD37C7500B68903 /* FeTenDot.m in Sources */,
+				D0DF808A1AD690380059E7E0 /* VideoTableViewCell.swift in Sources */,
 				D0A5EFBB1ACA5F3F00354B7F /* AFURLConnectionOperation.m in Sources */,
 				D00810CB1ACD31F40071083E /* Base64.m in Sources */,
 				D0A5EFD41ACA5F6C00354B7F /* UIButton+AFNetworking.m in Sources */,
 				D094FEF81ACA8EC0006C7163 /* homepageCell.swift in Sources */,
+				D0C39CCE1AD6723C00B4D097 /* AlbumHotViewController.swift in Sources */,
 				D00810C71ACD2E1F0071083E /* JSONKit.m in Sources */,
 				D0A5EFD21ACA5F6C00354B7F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D0A5EFBA1ACA5F3F00354B7F /* AFSecurityPolicy.m in Sources */,

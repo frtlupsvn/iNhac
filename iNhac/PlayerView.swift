@@ -10,16 +10,16 @@ import UIKit
 
 class PlayerView: UIView {
     
-    override init(frame: CGRect) {
+     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.blackColor()
-
+        let bundle = NSBundle(forClass: self.dynamicType)
+        var view = bundle.loadNibNamed("PlayerView", owner: nil, options: nil)[0] as PlayerView
+        view.frame = self.bounds
+        view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        self.addSubview(view)
     }
+
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-
     }
-
-
 }

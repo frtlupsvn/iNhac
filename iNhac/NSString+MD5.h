@@ -11,4 +11,5 @@
 
 @interface NSString (MD5)
 -(NSString*)HMAC_MD5_WithSecretString:(NSString*)secret;
+-(NSString *) URLEncodedString_ch;
 @end

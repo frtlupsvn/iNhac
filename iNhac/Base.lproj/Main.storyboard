@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDc-ow-O05" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="251" y="-363"/>
+            <point key="canvasLocation" x="-39" y="-349"/>
         </scene>
         <!--Home Controller-->
         <scene sceneID="G2V-4N-l0p">
@@ -111,11 +111,147 @@
                     <navigationItem key="navigationItem" id="VhH-nC-gCf"/>
                     <connections>
                         <outlet property="tableView" destination="AeK-J7-HuB" id="HFT-E9-0yH"/>
+                        <segue destination="WWo-S1-ksz" kind="show" identifier="pushVideoView" id="hQO-mg-isB"/>
+                        <segue destination="JQJ-YX-g43" kind="show" identifier="pushSongView" id="G3a-wy-dg3"/>
+                        <segue destination="G7f-7T-T4y" kind="show" identifier="pushAlbumView" id="vZn-rz-v1h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AS-dJ-AbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="976" y="-371"/>
+            <point key="canvasLocation" x="786" y="-349"/>
+        </scene>
+        <!--Album Hot-->
+        <scene sceneID="gaB-Gk-oyk">
+            <objects>
+                <viewController title="Album Hot" id="G7f-7T-T4y" customClass="AlbumHotViewController" customModule="iNhac" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NRh-iO-DFL"/>
+                        <viewControllerLayoutGuide type="bottom" id="lIB-Jy-lcf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rrr-9w-fhT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Album Hot" id="Mak-M0-AbN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCs-P6-oQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="719"/>
+        </scene>
+        <!--Video Hot-->
+        <scene sceneID="H3g-YB-CVi">
+            <objects>
+                <viewController title="Video Hot" id="WWo-S1-ksz" customClass="VideoHotViewController" customModule="iNhac" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jmW-Nz-fRU"/>
+                        <viewControllerLayoutGuide type="bottom" id="e0z-LC-sfw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DVr-1Y-hCg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gnc-uR-D8T">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VideoCell" rowHeight="100" id="M1C-Cq-xY9" customClass="VideoTableViewCell" customModule="iNhac" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M1C-Cq-xY9" id="dXu-uU-pbh">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Video Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWn-Aa-PJv">
+                                                    <rect key="frame" x="181" y="15" width="411" height="37"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Video Artise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75Z-AB-8tz">
+                                                    <rect key="frame" x="181" y="55" width="411" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="M6M-tS-eJD">
+                                                    <rect key="frame" x="16" y="7" width="150" height="85"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="85" id="IbY-JR-p2U"/>
+                                                        <constraint firstAttribute="width" constant="150" id="Imw-Kn-F6k"/>
+                                                        <constraint firstAttribute="width" constant="165" id="ctB-wv-uGJ"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="ctB-wv-uGJ"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cWn-Aa-PJv" firstAttribute="trailing" secondItem="dXu-uU-pbh" secondAttribute="trailingMargin" id="BpK-1M-xc9"/>
+                                                <constraint firstItem="75Z-AB-8tz" firstAttribute="trailing" secondItem="dXu-uU-pbh" secondAttribute="trailingMargin" id="Cx2-B3-O8S"/>
+                                                <constraint firstItem="M6M-tS-eJD" firstAttribute="top" secondItem="dXu-uU-pbh" secondAttribute="topMargin" constant="-1" id="FPw-OU-vVR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="75Z-AB-8tz" secondAttribute="bottom" constant="15" id="IRO-cn-LTG"/>
+                                                <constraint firstItem="M6M-tS-eJD" firstAttribute="leading" secondItem="dXu-uU-pbh" secondAttribute="leadingMargin" constant="8" id="OGB-Z6-Zhj"/>
+                                                <constraint firstItem="75Z-AB-8tz" firstAttribute="top" secondItem="cWn-Aa-PJv" secondAttribute="bottom" constant="3" id="Wid-SE-FAc"/>
+                                                <constraint firstItem="cWn-Aa-PJv" firstAttribute="leading" secondItem="M6M-tS-eJD" secondAttribute="trailing" constant="15" id="irg-02-eOL"/>
+                                                <constraint firstItem="75Z-AB-8tz" firstAttribute="leading" secondItem="M6M-tS-eJD" secondAttribute="trailing" constant="15" id="n9L-Vu-w2r"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="M6M-tS-eJD" secondAttribute="bottom" constant="-1" id="okq-MX-IwB"/>
+                                                <constraint firstItem="cWn-Aa-PJv" firstAttribute="top" secondItem="dXu-uU-pbh" secondAttribute="topMargin" constant="7" id="opm-1X-CQc"/>
+                                                <constraint firstItem="75Z-AB-8tz" firstAttribute="top" secondItem="cWn-Aa-PJv" secondAttribute="bottom" constant="3" id="w31-y8-QhV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="artiseTitle" destination="75Z-AB-8tz" id="qO0-cw-Fop"/>
+                                            <outlet property="videoImage" destination="M6M-tS-eJD" id="mwg-zd-fJ0"/>
+                                            <outlet property="videoTitle" destination="cWn-Aa-PJv" id="31k-ic-AOI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="WWo-S1-ksz" id="UBb-Qy-yhF"/>
+                                    <outlet property="delegate" destination="WWo-S1-ksz" id="hON-vP-PMI"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gnc-uR-D8T" firstAttribute="leading" secondItem="DVr-1Y-hCg" secondAttribute="leadingMargin" constant="-16" id="E1E-cK-Icv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gnc-uR-D8T" secondAttribute="trailing" constant="-16" id="eKO-wd-Ddm"/>
+                            <constraint firstItem="gnc-uR-D8T" firstAttribute="top" secondItem="DVr-1Y-hCg" secondAttribute="topMargin" id="i43-89-weS"/>
+                            <constraint firstItem="e0z-LC-sfw" firstAttribute="top" secondItem="gnc-uR-D8T" secondAttribute="bottom" constant="120" id="uig-3l-VSw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Video Hot" id="4Dn-Be-tru"/>
+                    <connections>
+                        <outlet property="tableView" destination="gnc-uR-D8T" id="SYk-3E-IOh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4PR-e1-KEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="-655"/>
+        </scene>
+        <!--Song Hot-->
+        <scene sceneID="9QJ-jn-nTX">
+            <objects>
+                <viewController id="JQJ-YX-g43" customClass="SongHotViewController" customModule="iNhac" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RMh-NG-mNx"/>
+                        <viewControllerLayoutGuide type="bottom" id="oE3-Kz-1r1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yiv-5e-mtQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Song Hot" id="w48-oU-1H2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gA0-gZ-0Vj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1517" y="17"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultImage.png" width="200" height="150"/>
+    </resources>
 </document>
