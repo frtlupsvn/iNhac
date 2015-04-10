@@ -16,7 +16,7 @@ let publicKey:NSString = "4c3d549977f7943bd9cc6d33f656bb5c1c87d2c0"
 let privateKey:NSString = "c9c2a7f66b677012b763512da77040b3"
 
 class HomeController: UIViewController , UITableViewDataSource, UITableViewDelegate, FeSpinnerTenDotDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var imageSource = NSMutableArray()
@@ -57,13 +57,13 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         self.spinner.titleLabelText = self.arrTitleLoading[self.index] as NSString
         self.spinner.fontTitleLabel = UIFont(name: "Neou-Thin", size: 36)
         self.view.addSubview(spinner)
-
+        
         self.spinner.delegate = self
         self.spinner.show()
         
         //**************************************
         
-
+        
         //Connect to Zing API
         getVideoHotContent()
     }
@@ -80,9 +80,9 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         
         var jsondata:NSString = (jsonarray.JSONString() as NSString)
-                                                        .base64EncodedStringWithWrapWidth(0)
-                                                        .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-                                                        .URLEncodedString_ch()
+            .base64EncodedStringWithWrapWidth(0)
+            .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            .URLEncodedString_ch()
         
         var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
         
@@ -100,10 +100,30 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
             parameters: nil,
             success: {
                 (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                    //Success
-                    println("Video Successful")
-                    var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("getSongHotContent"), userInfo: nil, repeats: false)
-
+                //Success
+                println("Video Successful")
+                
+                //                ********************************
+                //                ** parse data to Object ********
+                //                ********************************
+                var responseArray:NSArray = responseObject as NSArray
+                
+                for index in 0...responseArray.count-1{
+                    var tempsObject:NSDictionary = responseArray[index] as NSDictionary
+                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"]as NSString, myArtist: tempsObject["Artist"]as NSString, myTotalView: tempsObject["TotalView"]as Int, myGenre: tempsObject["Genre"]as NSString, myPictureURL: tempsObject["PictureURL"]as NSString, myLinkDownload: tempsObject["LinkDownload"]as NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as NSString, myLink: tempsObject["Link"]as NSString)
+                    
+                    self.videoData.addObject(videoObject)
+                    
+                }
+                //                ********************************
+                //                ** END *************************
+                //                ********************************
+                
+                
+                
+                
+                var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("getSongHotContent"), userInfo: nil, repeats: false)
+                
             },
             failure: {
                 (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
@@ -132,8 +152,8 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
             .URLEncodedString_ch()
         var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
         
-//        println(jsondata)
-//        println(signature)
+        //        println(jsondata)
+        //        println(signature)
         
         
         //**************************************
@@ -207,7 +227,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         )
         
         //**************************************
-
+        
     }
     
     func backToView(){
@@ -216,9 +236,9 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         //**************************************
         // Media Player
-        addMediaPlayer()
+//        addMediaPlayer()
         //**************************************
-
+        
     }
     
     func addMediaPlayer(){
@@ -248,16 +268,16 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         switch indexPath.row {
         case  0:
-                self.performSegueWithIdentifier("pushVideoView", sender: nil)
-                break
+            self.performSegueWithIdentifier("pushVideoView", sender: nil)
+            break
         case  1:
-                self.performSegueWithIdentifier("pushSongView", sender: nil)
-                break
+            self.performSegueWithIdentifier("pushSongView", sender: nil)
+            break
         case  2:
-                self.performSegueWithIdentifier("pushAlbumView", sender: nil)
+            self.performSegueWithIdentifier("pushAlbumView", sender: nil)
             break
         default:
-                break
+            break
         }
     }
     
@@ -270,16 +290,19 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "pushVideoView") {
-            let secondViewController = segue.destinationViewController as VideoHotViewController
+            let videoViewControl = segue.destinationViewController as VideoHotViewController
+            videoViewControl.dataSource = videoData
         }
         if (segue.identifier == "pushSongView") {
-            let secondViewController = segue.destinationViewController as VideoHotViewController
+            let songViewControl = segue.destinationViewController as SongHotViewController
+            songViewControl.dataSource = songData
         }
         if (segue.identifier == "pushAlbumView") {
-            let secondViewController = segue.destinationViewController as VideoHotViewController
+            let albumViewControl = segue.destinationViewController as AlbumHotViewController
+            albumViewControl.dataSource = albumData
         }
     }
     
-        
+    
 }
 

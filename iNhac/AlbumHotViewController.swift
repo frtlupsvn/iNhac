@@ -10,6 +10,8 @@ import UIKit
 
 class AlbumHotViewController: UIViewController {
 
+    var dataSource:NSMutableArray = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
