@@ -43,9 +43,9 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         imageSource.addObject("2.jpg")
         imageSource.addObject("3.jpg")
         
-        titleSource.addObject("VIDEO HOT")
-        titleSource.addObject("SONG HOT")
-        titleSource.addObject("ALBUM HOT")
+        titleSource.addObject("HOT VIDEOS")
+        titleSource.addObject("HOT SONGS")
+        titleSource.addObject("HOT ALBUMS")
         
         //**************************************
         index = 0
@@ -110,7 +110,10 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
                 
                 for index in 0...responseArray.count-1{
                     var tempsObject:NSDictionary = responseArray[index] as NSDictionary
-                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"]as NSString, myArtist: tempsObject["Artist"]as NSString, myTotalView: tempsObject["TotalView"]as Int, myGenre: tempsObject["Genre"]as NSString, myPictureURL: tempsObject["PictureURL"]as NSString, myLinkDownload: tempsObject["LinkDownload"]as NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as NSString, myLink: tempsObject["Link"]as NSString)
+                    var artistDetail : NSArray = tempsObject["ArtistDetail"] as NSArray
+                    var artistID : NSString = (artistDetail[0] as NSDictionary).objectForKey("ArtistID") as NSString
+                    
+                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"]as NSString, myArtist: tempsObject["Artist"]as NSString,myArtistID:artistID, myTotalView: tempsObject["TotalView"]as Int, myGenre: tempsObject["Genre"]as NSString, myPictureURL: tempsObject["PictureURL"]as NSString, myLinkDownload: tempsObject["LinkDownload"]as NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as NSString, myLink: tempsObject["Link"]as NSString)
                     
                     self.videoData.addObject(videoObject)
                     

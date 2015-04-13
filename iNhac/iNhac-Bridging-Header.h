@@ -15,5 +15,5 @@
 #import "NSString+MD5.h"
 #import "FeSpinnerTenDot.h"
 #import "UIColor+flat.h"
-
+#import "UIImageView+WebCache.h"
 #endif

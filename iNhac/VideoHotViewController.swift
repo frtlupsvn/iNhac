@@ -30,8 +30,15 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
         cell.videoTitle.text = videoObject.Title
         cell.artiseTitle.text = videoObject.Artist
         
-        var dataImage = NSData(contentsOfURL: NSURL(string: videoObject.PictureURL)!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        cell.videoImage.image = UIImage(data: dataImage!)
+//        var dataImage = NSData(contentsOfURL: NSURL(string: videoObject.PictureURL)!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+//        cell.videoImage.image = UIImage(data: dataImage!)
+        
+        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
+        }
+        let url = NSURL(string:videoObject.PictureURL)!
+        
+        cell.videoImage.sd_setImageWithURL(url, completed: block)
+        
         
         return cell
     }
