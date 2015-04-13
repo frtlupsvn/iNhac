@@ -30,9 +30,6 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
         cell.videoTitle.text = videoObject.Title
         cell.artiseTitle.text = videoObject.Artist
         
-//        var dataImage = NSData(contentsOfURL: NSURL(string: videoObject.PictureURL)!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-//        cell.videoImage.image = UIImage(data: dataImage!)
-        
         let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
         }
         let url = NSURL(string:videoObject.PictureURL)!
@@ -48,7 +45,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return dataSource.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
