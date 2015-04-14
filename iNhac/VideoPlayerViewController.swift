@@ -28,6 +28,15 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     @IBOutlet weak var artistRelate: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var minimizeButton: UIButton!
+    @IBAction func minimize(sender: AnyObject) {
+        UIView.animateWithDuration(0.9, animations: {
+            self.view.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, self.view.frame.size.width, self.view.frame.size.height)
+//            self.moviePlayer.view.frame = CGRectMake(0, 0, self.view.frame.size.width/2, 100)
+        })
+    }
+    
+    
     
     var videoSource:VideoModel = VideoModel()
     
@@ -49,12 +58,12 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         //        ************************************
         
         
-        var url:NSURL = NSURL(string:videoSource.LinkDownload)!
-        moviePlayer = MPMoviePlayerController(contentURL: url)
-        moviePlayer.view.frame = CGRect(x: 0, y: 64, width: self.view.frame.size.width, height: 197)
-        self.view.addSubview(moviePlayer.view)
-        moviePlayer.fullscreen = true
-        moviePlayer.controlStyle = MPMovieControlStyle.Embedded
+//        var url:NSURL = NSURL(string:videoSource.LinkDownload)!
+//        moviePlayer = MPMoviePlayerController(contentURL: url)
+//        moviePlayer.view.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 197)
+//        self.view.addSubview(moviePlayer.view)
+//        moviePlayer.fullscreen = true
+//        moviePlayer.controlStyle = MPMovieControlStyle.Embedded
         
         //        ************************************
         //        ** // Video Player *****************
@@ -66,7 +75,8 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         Use a Dictionary here to set its properties.
         Each property has its own default value, so you only need to specify for those you are interested.
         */
-        self.segmentView = SMSegmentView(frame: CGRect(x:1, y:(64+197+1), width: self.view.frame.size.width-2, height: 40.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: 10.0])
+        
+        self.segmentView = SMSegmentView(frame: CGRect(x:1, y:(20+197+1), width: self.view.frame.size.width-2, height: 40.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: 10.0])
         
         self.segmentView.delegate = self
         
@@ -314,6 +324,8 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         }
         let url = NSURL(string:videoObject.PictureURL)!
         
+        
+        
         cell.videoImage.sd_setImageWithURL(url, completed: block)
         return cell
     }
@@ -333,7 +345,10 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         segmentView.selectSegmentAtIndex(0)
         
     }
-
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.clearColor()
+        cell.contentView.clipsToBounds = false
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

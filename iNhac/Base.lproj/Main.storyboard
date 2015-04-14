@@ -162,12 +162,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M1C-Cq-xY9" id="dXu-uU-pbh">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWn-Aa-PJv">
-                                                    <rect key="frame" x="181" y="15" width="411" height="44"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Artise" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75Z-AB-8tz">
                                                     <rect key="frame" x="181" y="62" width="411" height="14"/>
                                                     <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="10"/>
@@ -187,6 +181,12 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Video Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWn-Aa-PJv">
+                                                    <rect key="frame" x="181" y="15" width="411" height="44"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="cWn-Aa-PJv" firstAttribute="trailing" secondItem="dXu-uU-pbh" secondAttribute="trailingMargin" id="BpK-1M-xc9"/>
@@ -206,7 +206,6 @@
                                             <outlet property="artiseTitle" destination="75Z-AB-8tz" id="qO0-cw-Fop"/>
                                             <outlet property="videoImage" destination="M6M-tS-eJD" id="mwg-zd-fJ0"/>
                                             <outlet property="videoTitle" destination="cWn-Aa-PJv" id="31k-ic-AOI"/>
-                                            <segue destination="noP-OG-rsV" kind="show" identifier="pushVideoPlayer" trigger="accessoryAction" id="lm9-SR-Zb9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -236,7 +235,7 @@
         <!--Video Player View Controller-->
         <scene sceneID="Ufx-gI-Tzf">
             <objects>
-                <viewController id="noP-OG-rsV" customClass="VideoPlayerViewController" customModule="iNhac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoPlayer" id="noP-OG-rsV" customClass="VideoPlayerViewController" customModule="iNhac" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Db5-Hg-DzI"/>
                         <viewControllerLayoutGuide type="bottom" id="pjr-aO-lRh"/>
@@ -246,7 +245,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLE-eM-dyW" userLabel="lyrics View">
-                                <rect key="frame" x="0.0" y="301" width="600" height="299"/>
+                                <rect key="frame" x="0.0" y="257" width="600" height="343"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="TQz-cf-n32">
                                         <rect key="frame" x="8" y="8" width="150" height="85"/>
@@ -290,7 +289,7 @@
                                         </variation>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="loading lyrics . . ." translatesAutoresizingMaskIntoConstraints="NO" id="993-ac-KiV">
-                                        <rect key="frame" x="8" y="101" width="584" height="198"/>
+                                        <rect key="frame" x="8" y="101" width="584" height="242"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.59607843140000005" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="14"/>
@@ -331,7 +330,7 @@
                                 </variation>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBF-Hg-gaL" userLabel="Singer View" customClass="SingerInfoView" customModule="iNhac" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="301" width="600" height="299"/>
+                                <rect key="frame" x="0.0" y="257" width="600" height="343"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="XNa-ML-FHJ">
                                         <rect key="frame" x="8" y="8" width="100" height="100"/>
@@ -350,7 +349,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Data is loading" translatesAutoresizingMaskIntoConstraints="NO" id="M5x-Sk-rgC">
-                                        <rect key="frame" x="8" y="116" width="584" height="183"/>
+                                        <rect key="frame" x="8" y="116" width="584" height="227"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -369,10 +368,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIq-5g-v9y" userLabel="artist relate">
-                                <rect key="frame" x="0.0" y="301" width="600" height="299"/>
+                                <rect key="frame" x="0.0" y="257" width="600" height="343"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-w7-if8">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="299"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="343"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VideoCell" rowHeight="100" id="8oo-J2-kjm" customClass="VideoTableViewCell" customModule="iNhac" customModuleProvider="target">
@@ -443,6 +442,19 @@
                                     <constraint firstItem="WYR-w7-if8" firstAttribute="leading" secondItem="eIq-5g-v9y" secondAttribute="leading" id="kHa-pL-01N"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgW-fy-7QW">
+                                <rect key="frame" x="16" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1js-dk-ock"/>
+                                    <constraint firstAttribute="width" constant="30" id="PC0-mq-1dZ"/>
+                                </constraints>
+                                <state key="normal" image="minsize.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="minimize:" destination="noP-OG-rsV" eventType="touchUpInside" id="ZSj-1r-wgm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -452,12 +464,14 @@
                             <constraint firstItem="pBF-Hg-gaL" firstAttribute="leading" secondItem="6ho-nY-XVD" secondAttribute="leadingMargin" constant="-16" id="GLk-5q-mLZ"/>
                             <constraint firstItem="eIq-5g-v9y" firstAttribute="leading" secondItem="6ho-nY-XVD" secondAttribute="leadingMargin" constant="-16" id="JBv-aU-N6v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kLE-eM-dyW" secondAttribute="trailing" constant="-16" id="JHo-G0-CbP"/>
+                            <constraint firstItem="GgW-fy-7QW" firstAttribute="leading" secondItem="6ho-nY-XVD" secondAttribute="leadingMargin" id="JT3-0P-K2V"/>
                             <constraint firstItem="eIq-5g-v9y" firstAttribute="width" secondItem="kLE-eM-dyW" secondAttribute="width" id="OFr-d3-WA8"/>
                             <constraint firstItem="pjr-aO-lRh" firstAttribute="top" secondItem="pBF-Hg-gaL" secondAttribute="bottom" id="Sl7-qs-cFa"/>
                             <constraint firstItem="pBF-Hg-gaL" firstAttribute="width" secondItem="kLE-eM-dyW" secondAttribute="width" id="ajQ-3H-mbP"/>
                             <constraint firstItem="eIq-5g-v9y" firstAttribute="leading" secondItem="6ho-nY-XVD" secondAttribute="leadingMargin" constant="-16" id="bFE-3r-so9"/>
                             <constraint firstItem="eIq-5g-v9y" firstAttribute="height" secondItem="kLE-eM-dyW" secondAttribute="height" id="bUA-x7-arB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pBF-Hg-gaL" secondAttribute="trailing" constant="-16" id="iIV-7f-sts"/>
+                            <constraint firstItem="GgW-fy-7QW" firstAttribute="top" secondItem="Db5-Hg-DzI" secondAttribute="bottom" id="iel-OE-GKY"/>
                             <constraint firstItem="pjr-aO-lRh" firstAttribute="top" secondItem="eIq-5g-v9y" secondAttribute="bottom" id="kcf-VU-dza"/>
                             <constraint firstItem="eIq-5g-v9y" firstAttribute="width" secondItem="6ho-nY-XVD" secondAttribute="width" id="pEi-W5-ICz"/>
                             <constraint firstItem="pjr-aO-lRh" firstAttribute="top" secondItem="eIq-5g-v9y" secondAttribute="bottom" id="szA-0d-q3t"/>
@@ -480,6 +494,7 @@
                         <outlet property="bioArtist" destination="M5x-Sk-rgC" id="1dG-H0-v21"/>
                         <outlet property="imageArtist" destination="XNa-ML-FHJ" id="DIZ-73-uZS"/>
                         <outlet property="lyricsView" destination="kLE-eM-dyW" id="H4r-qu-Ag3"/>
+                        <outlet property="minimizeButton" destination="GgW-fy-7QW" id="lSm-pJ-yOW"/>
                         <outlet property="nameArtist" destination="J1E-O3-eM9" id="ixY-lh-mgz"/>
                         <outlet property="singerInfo" destination="pBF-Hg-gaL" id="4Mp-5h-mur"/>
                         <outlet property="tableView" destination="WYR-w7-if8" id="ZGu-85-bSC"/>
@@ -492,7 +507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iX1-IH-2os" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2288" y="-905"/>
+            <point key="canvasLocation" x="2270" y="-905"/>
         </scene>
         <!--Hot Songs-->
         <scene sceneID="9QJ-jn-nTX">
@@ -516,5 +531,6 @@
     </scenes>
     <resources>
         <image name="defaultImage.png" width="200" height="150"/>
+        <image name="minsize.png" width="100" height="100"/>
     </resources>
 </document>

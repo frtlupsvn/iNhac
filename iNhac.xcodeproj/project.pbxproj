@@ -42,6 +42,7 @@
 		D074B4CA1ADBC5B700463D3B /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4B81ADBC5B700463D3B /* UIImageView+HighlightedWebCache.m */; };
 		D074B4CB1ADBC5B700463D3B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4BA1ADBC5B700463D3B /* UIImageView+WebCache.m */; };
 		D074B4CC1ADBC5B700463D3B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4BC1ADBC5B700463D3B /* UIView+WebCacheOperation.m */; };
+		D074B4CE1ADD05B900463D3B /* minsize.png in Resources */ = {isa = PBXBuildFile; fileRef = D074B4CD1ADD05B900463D3B /* minsize.png */; };
 		D094FEF81ACA8EC0006C7163 /* homepageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094FEF71ACA8EC0006C7163 /* homepageCell.swift */; };
 		D0A5EF7B1ACA59DE00354B7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7A1ACA59DE00354B7F /* AppDelegate.swift */; };
 		D0A5EF7E1ACA59DE00354B7F /* iNhac.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7C1ACA59DE00354B7F /* iNhac.xcdatamodeld */; };
@@ -147,6 +148,7 @@
 		D074B4BA1ADBC5B700463D3B /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		D074B4BB1ADBC5B700463D3B /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		D074B4BC1ADBC5B700463D3B /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		D074B4CD1ADD05B900463D3B /* minsize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minsize.png; sourceTree = "<group>"; };
 		D094FEF51ACA7B7C006C7163 /* iNhac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iNhac-Bridging-Header.h"; sourceTree = "<group>"; };
 		D094FEF71ACA8EC0006C7163 /* homepageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homepageCell.swift; sourceTree = "<group>"; };
 		D0A5EF751ACA59DE00354B7F /* iNhac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNhac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,6 +276,7 @@
 		D03D69E51AD2885600E85A4D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D074B4CD1ADD05B900463D3B /* minsize.png */,
 				D0DF808B1AD692440059E7E0 /* defaultImage.png */,
 				D05ABF1D1AD4EBBC00DCC1C3 /* music.png */,
 				D05ABF171AD4E9BD00DCC1C3 /* skip.png */,
@@ -472,9 +475,9 @@
 			isa = PBXGroup;
 			children = (
 				D0A5EF7F1ACA59DE00354B7F /* HomeController.swift */,
-				D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */,
 				D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */,
 				D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */,
+				D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */,
 				D074B48A1AD7C41400463D3B /* VideoPlayerViewController.swift */,
 			);
 			name = ViewControllers;
@@ -659,6 +662,7 @@
 				D05ABF161AD4E1BB00DCC1C3 /* PlayerView.xib in Resources */,
 				D0A5EF831ACA59DE00354B7F /* Main.storyboard in Resources */,
 				D05ABF1B1AD4E9BD00DCC1C3 /* play.png in Resources */,
+				D074B4CE1ADD05B900463D3B /* minsize.png in Resources */,
 				D05ABF1A1AD4E9BD00DCC1C3 /* skip.png in Resources */,
 				D0A5EF881ACA59DE00354B7F /* LaunchScreen.xib in Resources */,
 				D05ABF1E1AD4EBBC00DCC1C3 /* music.png in Resources */,
