@@ -32,6 +32,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     var videoSource:VideoModel = VideoModel()
     
     var moviePlayer:MPMoviePlayerController!
+    
     var dataSource:NSMutableArray = NSMutableArray()
     
     
@@ -42,25 +43,17 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         
         // Do any additional setup after loading the view.
         
-        var dataImage = NSData(contentsOfURL: NSURL(string: videoSource.PictureURL)!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        videoImage.image = UIImage(data: dataImage!)
-        self.videoTitle.text = videoSource.Title
-        self.videoArtist.text = videoSource.Artist
-        self.videoView.text = String(videoSource.TotalView)
-        
         
         //        ************************************
         //        ** Video Player ********************
         //        ************************************
         
-        var url:NSURL = NSURL(string:videoSource.LinkDownload)!
         
+        var url:NSURL = NSURL(string:videoSource.LinkDownload)!
         moviePlayer = MPMoviePlayerController(contentURL: url)
         moviePlayer.view.frame = CGRect(x: 0, y: 64, width: self.view.frame.size.width, height: 197)
-        
         self.view.addSubview(moviePlayer.view)
         moviePlayer.fullscreen = true
-        
         moviePlayer.controlStyle = MPMovieControlStyle.Embedded
         
         //        ************************************
@@ -100,6 +93,11 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         })
         
     }
+    func playVideo(withURL:NSString){
+        var url:NSURL = NSURL(string:withURL)!
+        moviePlayer.contentURL = url
+        moviePlayer.play()
+            }
     func loadOtherVideos(){
         //jsondata
         
@@ -136,10 +134,10 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 
                 for index in 0...responseArray.count-1{
                     var tempsObject:NSDictionary = responseArray[index] as NSDictionary
-//                    
-//                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"]as NSString, myArtist: tempsObject["Artist"]as NSString,myArtistID:artistID, myTotalView: tempsObject["TotalView"]as Int, myGenre: tempsObject["Genre"]as NSString, myPictureURL: tempsObject["PictureURL"]as NSString, myLinkDownload: tempsObject["LinkDownload"]as NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as NSString, myLink: tempsObject["Link"]as NSString)
-//                    
-//                    self.dataSource.addObject(videoObject)
+                    
+                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"]as NSString, myArtist: tempsObject["Artist"]as NSString,myArtistID:"", myTotalView: tempsObject["TotalView"]as Int, myGenre: tempsObject["Genre"]as NSString, myPictureURL: tempsObject["PictureURL"]as NSString, myLinkDownload: tempsObject["LinkDownload"]as NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as NSString, myLink:"")
+                    
+                    self.dataSource.addObject(videoObject)
                     
                 }
                 
@@ -206,9 +204,20 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             },
             failure: {
                 (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
+                self.videoLyric.text = "Lời bài hát đang được cập nhật... \nCảm ơn"
             }
         )
         //**************************************
+        var block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
+        }
+        var urlImage = NSURL(string:videoSource.PictureURL)!
+        videoImage.sd_setImageWithURL(urlImage, completed: block)
+        
+        self.videoTitle.text = videoSource.Title
+        self.videoArtist.text = videoSource.Artist
+        self.videoView.text = String(videoSource.TotalView)
+        
+        self.lyricsView.setNeedsDisplay()
 
     }
     func loadSingerInfo(){
@@ -249,9 +258,11 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 self.nameArtist.text = results["ArtistName"] as NSString
                 var tempString:String = results["Biography"] as String
                 self.bioArtist.text = tempString.html2String
-                
-                var dataImage = NSData(contentsOfURL: NSURL(string: results["ArtistAvatar"] as NSString )!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-                self.imageArtist.image = UIImage(data: dataImage!)
+            
+                var block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
+                }
+                var urlImage = NSURL(string:results["ArtistAvatar"] as NSString)!
+                self.imageArtist.sd_setImageWithURL(urlImage, completed: block)
                 
                 //                ********************************
                 //                ** END *************************
@@ -295,15 +306,15 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : VideoTableViewCell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as VideoTableViewCell
-//        var videoObject:VideoModel = dataSource[indexPath.row] as VideoModel
-//        cell.videoTitle.text = videoObject.Title
-//        cell.artiseTitle.text = videoObject.Artist
-//        
-//        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
-//        }
-//        let url = NSURL(string:videoObject.PictureURL)!
-//        
-//        cell.videoImage.sd_setImageWithURL(url, completed: block)
+        var videoObject:VideoModel = dataSource[indexPath.row] as VideoModel
+        cell.videoTitle.text = videoObject.Title
+        cell.artiseTitle.text = videoObject.Artist
+        
+        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
+        }
+        let url = NSURL(string:videoObject.PictureURL)!
+        
+        cell.videoImage.sd_setImageWithURL(url, completed: block)
         return cell
     }
     
@@ -313,6 +324,14 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.videoSource = dataSource[indexPath.row] as VideoModel
+        playVideo(videoSource.LinkDownload)
+        loadLyric()
+        segmentView.selectSegmentAtIndex(0)
+        
     }
 
     

@@ -15,8 +15,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
     }
     
     override func didReceiveMemoryWarning() {
