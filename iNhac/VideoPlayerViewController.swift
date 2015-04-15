@@ -33,16 +33,20 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     @IBAction func minimize(sender: AnyObject) {
         // True is Min size , false is Max Size
         if(self.isMinimize == true) {
-            self.minimizeButton.transform = CGAffineTransformRotate(self.minimizeButton.transform, CGFloat(M_PI))
+            self.minimizeButton.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            self.minimizeButton.transform = CGAffineTransformRotate(self.minimizeButton.transform, CGFloat(M_PI)*90)
             UIView.animateWithDuration(0.9, animations: {
                 self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
-                //            self.videoPlayer.view.frame = CGRectMake(0, 0, self.view.frame.size.width/2, 100)
+                
+                self.videoPlayer.view.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 197)
             })
         } else {
+            self.minimizeButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
             self.minimizeButton.transform = CGAffineTransformRotate(self.minimizeButton.transform, CGFloat(M_PI))
             UIView.animateWithDuration(0.9, animations: {
-                self.view.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, self.view.frame.size.width, self.view.frame.size.height)
-                //            self.videoPlayer.view.frame = CGRectMake(0, 0, self.view.frame.size.width/2, 100)
+                self.view.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height-105, self.view.frame.size.width, self.view.frame.size.height)
+                
+              self.videoPlayer.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width/2, height: 100)
             })
         }
         isMinimize = !isMinimize
@@ -71,12 +75,12 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         //        ** Video Player ********************
         //        ************************************
         
-//        var url:NSURL = NSURL(string:videoSource.LinkDownload)!
-//        videoPlayer = MPMoviePlayerController(contentURL: url)
-//        videoPlayer.view.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 197)
-//        self.view.addSubview(videoPlayer.view)
-//        videoPlayer.fullscreen = true
-//        videoPlayer.controlStyle = MPMovieControlStyle.Embedded
+        var url:NSURL = NSURL(string:videoSource.LinkDownload)!
+        videoPlayer = MPMoviePlayerController(contentURL: url)
+        videoPlayer.view.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 197)
+        self.view.addSubview(videoPlayer.view)
+        videoPlayer.fullscreen = true
+        videoPlayer.controlStyle = MPMovieControlStyle.Embedded
         
         //        ************************************
         //        ** // Video Player *****************
@@ -109,9 +113,9 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         
         
         // Minimize button Animation
-        minimizeButton.layer.zPosition = 1
+        videoPlayer.view.addSubview(minimizeButton)
         isMinimize = false
-        UIView.animateWithDuration(1.0, delay:0, options: .Repeat | .Autoreverse , animations: {
+        UIView.animateWithDuration(1.0, delay:0, options: .Repeat | .Autoreverse | .AllowUserInteraction , animations: {
             self.minimizeButton.frame = CGRect(x: self.minimizeButton.frame.origin.x, y: self.minimizeButton.frame.origin.y - 10, width: self.minimizeButton.frame.size.width, height: self.minimizeButton.frame.size.height)
             
             }, completion: nil)
