@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D0003ED31ACE4215009ADBF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0003ED21ACE4215009ADBF2 /* Foundation.framework */; };
+		D0015BBF1ADE530600B52741 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0015BBE1ADE530600B52741 /* MusicPlayerViewController.swift */; };
+		D0015BC11ADE54A500B52741 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0015BC01ADE54A500B52741 /* SongModel.swift */; };
 		D00810C71ACD2E1F0071083E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810C61ACD2E1F0071083E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D00810CB1ACD31F40071083E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810CA1ACD31F40071083E /* Base64.m */; };
 		D00810CF1ACD36A30071083E /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810CE1ACD36A30071083E /* NSString+MD5.m */; };
@@ -20,6 +22,7 @@
 		D05ABF1C1AD4E9BD00DCC1C3 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF191AD4E9BD00DCC1C3 /* back.png */; };
 		D05ABF1E1AD4EBBC00DCC1C3 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF1D1AD4EBBC00DCC1C3 /* music.png */; };
 		D05ABF201AD66CA400DCC1C3 /* VideoHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */; };
+		D066870D1ADE6DEB006F6E67 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066870C1ADE6DEB006F6E67 /* SongTableViewCell.swift */; };
 		D074B4891AD7895500463D3B /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B4881AD7895500463D3B /* VideoModel.swift */; };
 		D074B48B1AD7C41400463D3B /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B48A1AD7C41400463D3B /* VideoPlayerViewController.swift */; };
 		D074B48F1ADB7AD500463D3B /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B48D1ADB7AD500463D3B /* SMSegment.swift */; };
@@ -94,6 +97,8 @@
 
 /* Begin PBXFileReference section */
 		D0003ED21ACE4215009ADBF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D0015BBE1ADE530600B52741 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
+		D0015BC01ADE54A500B52741 /* SongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		D00810C51ACD2E1F0071083E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		D00810C61ACD2E1F0071083E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		D00810C91ACD31F40071083E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
@@ -109,6 +114,7 @@
 		D05ABF191AD4E9BD00DCC1C3 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		D05ABF1D1AD4EBBC00DCC1C3 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music.png; sourceTree = "<group>"; };
 		D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHotViewController.swift; sourceTree = "<group>"; };
+		D066870C1ADE6DEB006F6E67 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		D074B4881AD7895500463D3B /* VideoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		D074B48A1AD7C41400463D3B /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		D074B48D1ADB7AD500463D3B /* SMSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSegment.swift; sourceTree = "<group>"; };
@@ -238,6 +244,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0015BBA1ADE51EE00B52741 /* Video Player */ = {
+			isa = PBXGroup;
+			children = (
+				D074B48A1AD7C41400463D3B /* VideoPlayerViewController.swift */,
+			);
+			name = "Video Player";
+			sourceTree = "<group>";
+		};
+		D0015BBB1ADE51F800B52741 /* Music Player */ = {
+			isa = PBXGroup;
+			children = (
+				D0015BBE1ADE530600B52741 /* MusicPlayerViewController.swift */,
+			);
+			name = "Music Player";
+			sourceTree = "<group>";
+		};
 		D00810C41ACD2E120071083E /* Json Kit */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				D074B4881AD7895500463D3B /* VideoModel.swift */,
+				D0015BC01ADE54A500B52741 /* SongModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -328,6 +351,7 @@
 			children = (
 				D094FEF71ACA8EC0006C7163 /* homepageCell.swift */,
 				D0DF80891AD690380059E7E0 /* VideoTableViewCell.swift */,
+				D066870C1ADE6DEB006F6E67 /* SongTableViewCell.swift */,
 			);
 			name = "Cell Table";
 			sourceTree = "<group>";
@@ -474,11 +498,12 @@
 		D0A5EF9F1ACA5A6700354B7F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0015BBB1ADE51F800B52741 /* Music Player */,
+				D0015BBA1ADE51EE00B52741 /* Video Player */,
 				D0A5EF7F1ACA59DE00354B7F /* HomeController.swift */,
 				D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */,
 				D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */,
 				D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */,
-				D074B48A1AD7C41400463D3B /* VideoPlayerViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -703,10 +728,12 @@
 				D0C084921AD37C3B00B68903 /* UIColor+flat.m in Sources */,
 				D074B4941ADB801500463D3B /* SingerInfoView.swift in Sources */,
 				D0A5EFD61ACA5F6C00354B7F /* UIProgressView+AFNetworking.m in Sources */,
+				D066870D1ADE6DEB006F6E67 /* SongTableViewCell.swift in Sources */,
 				D074B4C01ADBC5B700463D3B /* SDWebImageCompat.m in Sources */,
 				D074B4C41ADBC5B700463D3B /* SDWebImageManager.m in Sources */,
 				D0A5EFB91ACA5F3F00354B7F /* AFNetworkReachabilityManager.m in Sources */,
 				D074B4BF1ADBC5B700463D3B /* SDImageCache.m in Sources */,
+				D0015BC11ADE54A500B52741 /* SongModel.swift in Sources */,
 				D0A5EFBD1ACA5F3F00354B7F /* AFURLResponseSerialization.m in Sources */,
 				D074B4C11ADBC5B700463D3B /* SDWebImageDecoder.m in Sources */,
 				D0C084971AD37C7500B68903 /* FeSpinnerTenDot.m in Sources */,
@@ -720,6 +747,7 @@
 				D074B4C91ADBC5B700463D3B /* UIImage+WebP.m in Sources */,
 				D0A5EFBB1ACA5F3F00354B7F /* AFURLConnectionOperation.m in Sources */,
 				D00810CB1ACD31F40071083E /* Base64.m in Sources */,
+				D0015BBF1ADE530600B52741 /* MusicPlayerViewController.swift in Sources */,
 				D074B48B1AD7C41400463D3B /* VideoPlayerViewController.swift in Sources */,
 				D0A5EFD41ACA5F6C00354B7F /* UIButton+AFNetworking.m in Sources */,
 				D094FEF81ACA8EC0006C7163 /* homepageCell.swift in Sources */,

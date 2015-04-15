@@ -64,6 +64,9 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
         
 
     }
+    
+    
+    
     func showVideoPlayer(videoSource:VideoModel){
         
 // Create video player view with animation from right-bot with alpha 0 and expand to full screen
