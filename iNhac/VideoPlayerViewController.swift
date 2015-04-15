@@ -29,23 +29,37 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var minimizeButton: UIButton!
+    
     @IBAction func minimize(sender: AnyObject) {
-        UIView.animateWithDuration(0.9, animations: {
-            self.view.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, self.view.frame.size.width, self.view.frame.size.height)
-//            self.moviePlayer.view.frame = CGRectMake(0, 0, self.view.frame.size.width/2, 100)
-        })
+        // True is Min size , false is Max Size
+        if(self.isMinimize == true) {
+            self.minimizeButton.transform = CGAffineTransformRotate(self.minimizeButton.transform, CGFloat(M_PI))
+            UIView.animateWithDuration(0.9, animations: {
+                self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+                //            self.videoPlayer.view.frame = CGRectMake(0, 0, self.view.frame.size.width/2, 100)
+            })
+        } else {
+            self.minimizeButton.transform = CGAffineTransformRotate(self.minimizeButton.transform, CGFloat(M_PI))
+            UIView.animateWithDuration(0.9, animations: {
+                self.view.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, self.view.frame.size.width, self.view.frame.size.height)
+                //            self.videoPlayer.view.frame = CGRectMake(0, 0, self.view.frame.size.width/2, 100)
+            })
+        }
+        isMinimize = !isMinimize
     }
     
     
     
     var videoSource:VideoModel = VideoModel()
     
-    var moviePlayer:MPMoviePlayerController!
+    var videoPlayer:MPMoviePlayerController!
     
     var dataSource:NSMutableArray = NSMutableArray()
     
     
     var segmentView: SMSegmentView!
+    
+    var isMinimize: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,13 +71,12 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         //        ** Video Player ********************
         //        ************************************
         
-        
 //        var url:NSURL = NSURL(string:videoSource.LinkDownload)!
-//        moviePlayer = MPMoviePlayerController(contentURL: url)
-//        moviePlayer.view.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 197)
-//        self.view.addSubview(moviePlayer.view)
-//        moviePlayer.fullscreen = true
-//        moviePlayer.controlStyle = MPMovieControlStyle.Embedded
+//        videoPlayer = MPMoviePlayerController(contentURL: url)
+//        videoPlayer.view.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 197)
+//        self.view.addSubview(videoPlayer.view)
+//        videoPlayer.fullscreen = true
+//        videoPlayer.controlStyle = MPMovieControlStyle.Embedded
         
         //        ************************************
         //        ** // Video Player *****************
@@ -93,8 +106,16 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         segmentView.selectSegmentAtIndex(0)
         self.view.addSubview(self.segmentView)
 
-
         
+        
+        // Minimize button Animation
+        minimizeButton.layer.zPosition = 1
+        isMinimize = false
+        UIView.animateWithDuration(1.0, delay:0, options: .Repeat | .Autoreverse , animations: {
+            self.minimizeButton.frame = CGRect(x: self.minimizeButton.frame.origin.x, y: self.minimizeButton.frame.origin.y - 10, width: self.minimizeButton.frame.size.width, height: self.minimizeButton.frame.size.height)
+            
+            }, completion: nil)
+        //****************************************************************************************
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             self.loadLyric()
@@ -105,8 +126,8 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     }
     func playVideo(withURL:NSString){
         var url:NSURL = NSURL(string:withURL)!
-        moviePlayer.contentURL = url
-        moviePlayer.play()
+        videoPlayer.contentURL = url
+        videoPlayer.play()
             }
     func loadOtherVideos(){
         //jsondata
