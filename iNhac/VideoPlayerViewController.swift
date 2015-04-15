@@ -32,7 +32,11 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     
     @IBAction func minimize(sender: AnyObject) {
         // True is Min size , false is Max Size
+        
+        
+        
         if(self.isMinimize == true) {
+            // Min -> MAX
             self.minimizeButton.transform = CGAffineTransformMakeScale(1.0, 1.0)
             self.minimizeButton.transform = CGAffineTransformRotate(self.minimizeButton.transform, CGFloat(M_PI)*90)
             UIView.animateWithDuration(0.9, animations: {
@@ -41,18 +45,19 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 self.videoPlayer.view.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 197)
             })
         } else {
+            // MAX -> Min
             self.minimizeButton.transform = CGAffineTransformMakeScale(0.5, 0.5)
             self.minimizeButton.transform = CGAffineTransformRotate(self.minimizeButton.transform, CGFloat(M_PI))
             UIView.animateWithDuration(0.9, animations: {
-                self.view.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height-105, self.view.frame.size.width, self.view.frame.size.height)
+                self.view.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height-102, self.view.frame.size.width, self.view.frame.size.height)
                 
-              self.videoPlayer.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width/2, height: 100)
+              self.videoPlayer.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width/2 - 2, height: 100)
             })
         }
         isMinimize = !isMinimize
     }
     
-    
+    var lastLocation:CGPoint = CGPointMake(0,0)
     
     var videoSource:VideoModel = VideoModel()
     
@@ -64,6 +69,8 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     var segmentView: SMSegmentView!
     
     var isMinimize: Bool!
+    
+    var swipeRight : UISwipeGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,7 +134,51 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             self.loadOtherVideos()
         })
         
+        //Set listeners for video maximize
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoFull"), name: "UIMoviePlayerControllerDidEnterFullscreenNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoMinimize"), name: "UIMoviePlayerControllerWillExitFullscreenNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoFull"), name: "MPMoviePlayerWillEnterFullscreenNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("videoMinimize"), name: "MPMoviePlayerWillExitFullscreenNotification", object: nil)
+        
+        // Gesture
+        swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
     }
+    
+    func videoFull(){
+        println("Full")
+        self.view.hidden = true
+    }
+    
+    func videoMinimize(){
+        println("Min")
+        self.view.hidden = false
+    }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.Right:
+                if(self.isMinimize == true){
+                    UIView.animateWithDuration(0.9, animations: {
+                        self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.size.height-102, self.view.frame.size.width, self.view.frame.size.height)
+                        self.view.alpha = 0
+                        }, completion: {
+                            (value: Bool) in
+                            NSNotificationCenter.defaultCenter().postNotificationName("RemoveVideoPlayer", object: nil)
+                            self.videoPlayer.stop()
+                    })
+                
+                }
+            default:
+                break
+            }
+        }
+    }
+    
     func playVideo(withURL:NSString){
         var url:NSURL = NSURL(string:withURL)!
         videoPlayer.contentURL = url
@@ -380,15 +431,5 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

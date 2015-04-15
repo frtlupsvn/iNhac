@@ -17,7 +17,9 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeVideoPlayer", name:"RemoveVideoPlayer", object: nil)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,6 +52,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         if (self.videoPlayer == nil){
             showVideoPlayer(dataSource[indexPath.row] as VideoModel)
         } else {
@@ -83,5 +86,10 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
         
 //      ************************************************************************************************
 //      ************************************************************************************************
+    }
+    func removeVideoPlayer(){
+        println("Vide destroyed")
+        self.videoPlayer.view.removeFromSuperview()
+        self.videoPlayer = nil
     }
 }
