@@ -71,6 +71,9 @@
 		D0A5EFD61ACA5F6C00354B7F /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFCC1ACA5F6C00354B7F /* UIProgressView+AFNetworking.m */; };
 		D0A5EFD71ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFCE1ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m */; };
 		D0A5EFD81ACA5F6C00354B7F /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFD01ACA5F6C00354B7F /* UIWebView+AFNetworking.m */; };
+		D0AA54AA1ADF5930000FCB28 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA54A91ADF5930000FCB28 /* point.png */; };
+		D0AA54AC1ADF5D8D000FCB28 /* pochette.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA54AB1ADF5D8D000FCB28 /* pochette.png */; };
+		D0AA54B01ADF7406000FCB28 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA54AF1ADF7406000FCB28 /* pause.png */; };
 		D0C084921AD37C3B00B68903 /* UIColor+flat.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084911AD37C3B00B68903 /* UIColor+flat.m */; };
 		D0C084971AD37C7500B68903 /* FeSpinnerTenDot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084941AD37C7500B68903 /* FeSpinnerTenDot.m */; };
 		D0C084981AD37C7500B68903 /* FeTenDot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084961AD37C7500B68903 /* FeTenDot.m */; };
@@ -83,6 +86,9 @@
 		D0C39CCE1AD6723C00B4D097 /* AlbumHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */; };
 		D0DF808A1AD690380059E7E0 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF80891AD690380059E7E0 /* VideoTableViewCell.swift */; };
 		D0DF808C1AD692440059E7E0 /* defaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DF808B1AD692440059E7E0 /* defaultImage.png */; };
+		D0E8896C1ADF4A9100CA0B90 /* vinyl.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E8896B1ADF4A9100CA0B90 /* vinyl.png */; };
+		D0E8896E1ADF4C5D00CA0B90 /* hold.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E8896D1ADF4C5D00CA0B90 /* hold.png */; };
+		D0E889721ADF558100CA0B90 /* kim.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E889711ADF558100CA0B90 /* kim.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +210,9 @@
 		D0A5EFCE1ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		D0A5EFCF1ACA5F6C00354B7F /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		D0A5EFD01ACA5F6C00354B7F /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		D0AA54A91ADF5930000FCB28 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
+		D0AA54AB1ADF5D8D000FCB28 /* pochette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pochette.png; sourceTree = "<group>"; };
+		D0AA54AF1ADF7406000FCB28 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		D0C084901AD37C3B00B68903 /* UIColor+flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+flat.h"; sourceTree = "<group>"; };
 		D0C084911AD37C3B00B68903 /* UIColor+flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+flat.m"; sourceTree = "<group>"; };
 		D0C084931AD37C7500B68903 /* FeSpinnerTenDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeSpinnerTenDot.h; sourceTree = "<group>"; };
@@ -220,6 +229,9 @@
 		D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumHotViewController.swift; sourceTree = "<group>"; };
 		D0DF80891AD690380059E7E0 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		D0DF808B1AD692440059E7E0 /* defaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImage.png; sourceTree = "<group>"; };
+		D0E8896B1ADF4A9100CA0B90 /* vinyl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vinyl.png; sourceTree = "<group>"; };
+		D0E8896D1ADF4C5D00CA0B90 /* hold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hold.png; sourceTree = "<group>"; };
+		D0E889711ADF558100CA0B90 /* kim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kim.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +310,7 @@
 		D03D69E51AD2885600E85A4D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D0E8896F1ADF52B700CA0B90 /* Vinyl */,
 				D074B4CD1ADD05B900463D3B /* minsize.png */,
 				D0DF808B1AD692440059E7E0 /* defaultImage.png */,
 				D05ABF1D1AD4EBBC00DCC1C3 /* music.png */,
@@ -598,6 +611,19 @@
 			name = "Ten Dot Spinner";
 			sourceTree = "<group>";
 		};
+		D0E8896F1ADF52B700CA0B90 /* Vinyl */ = {
+			isa = PBXGroup;
+			children = (
+				D0AA54AF1ADF7406000FCB28 /* pause.png */,
+				D0AA54AB1ADF5D8D000FCB28 /* pochette.png */,
+				D0AA54A91ADF5930000FCB28 /* point.png */,
+				D0E889711ADF558100CA0B90 /* kim.png */,
+				D0E8896D1ADF4C5D00CA0B90 /* hold.png */,
+				D0E8896B1ADF4A9100CA0B90 /* vinyl.png */,
+			);
+			name = Vinyl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -684,9 +710,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E8896C1ADF4A9100CA0B90 /* vinyl.png in Resources */,
 				D05ABF161AD4E1BB00DCC1C3 /* PlayerView.xib in Resources */,
+				D0AA54AA1ADF5930000FCB28 /* point.png in Resources */,
 				D0A5EF831ACA59DE00354B7F /* Main.storyboard in Resources */,
 				D05ABF1B1AD4E9BD00DCC1C3 /* play.png in Resources */,
+				D0AA54AC1ADF5D8D000FCB28 /* pochette.png in Resources */,
 				D074B4CE1ADD05B900463D3B /* minsize.png in Resources */,
 				D05ABF1A1AD4E9BD00DCC1C3 /* skip.png in Resources */,
 				D0A5EF881ACA59DE00354B7F /* LaunchScreen.xib in Resources */,
@@ -694,6 +723,9 @@
 				D03D69EA1AD2886300E85A4D /* 2.jpg in Resources */,
 				D0DF808C1AD692440059E7E0 /* defaultImage.png in Resources */,
 				D05ABF1C1AD4E9BD00DCC1C3 /* back.png in Resources */,
+				D0AA54B01ADF7406000FCB28 /* pause.png in Resources */,
+				D0E889721ADF558100CA0B90 /* kim.png in Resources */,
+				D0E8896E1ADF4C5D00CA0B90 /* hold.png in Resources */,
 				D03D69EB1AD2886300E85A4D /* 1.jpg in Resources */,
 				D0A5EF851ACA59DE00354B7F /* Images.xcassets in Resources */,
 				D03D69E91AD2886300E85A4D /* 3.jpg in Resources */,
