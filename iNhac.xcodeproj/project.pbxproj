@@ -514,8 +514,8 @@
 				D0015BBB1ADE51F800B52741 /* Music Player */,
 				D0015BBA1ADE51EE00B52741 /* Video Player */,
 				D0A5EF7F1ACA59DE00354B7F /* HomeController.swift */,
-				D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */,
 				D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */,
+				D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */,
 				D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */,
 			);
 			name = ViewControllers;

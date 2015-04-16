@@ -56,9 +56,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
         if (self.videoPlayer == nil){
             showVideoPlayer(dataSource[indexPath.row] as VideoModel)
         } else {
-            self.videoPlayer.view.removeFromSuperview()
-            self.videoPlayer = nil
-            
+            removeVideoPlayer()
             showVideoPlayer(dataSource[indexPath.row] as VideoModel)
         }
         
@@ -69,11 +67,14 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     
     func showVideoPlayer(videoSource:VideoModel){
         
+        NSNotificationCenter.defaultCenter().postNotificationName("RemoveSongPlayer", object: nil)
+        
 // Create video player view with animation from right-bot with alpha 0 and expand to full screen
 // Amazing code -))
         
         self.videoPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer")
             as VideoPlayerViewController
+        self.videoPlayer.view.tag = 100
         self.videoPlayer.videoSource = videoSource
         self.videoPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)
         self.videoPlayer.view.alpha = 0
@@ -91,7 +92,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
 //      ************************************************************************************************
     }
     func removeVideoPlayer(){
-        println("Vide destroyed")
+        println("Video destroyed")
         self.videoPlayer.view.removeFromSuperview()
         self.videoPlayer = nil
     }

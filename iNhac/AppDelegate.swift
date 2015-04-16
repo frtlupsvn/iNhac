@@ -25,7 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
         UINavigationBar.appearance().titleTextAttributes = attributes
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeSongPlayer", name:"RemoveSongPlayer", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeVideoPlayer", name:"RemoveVideoPlayer", object: nil)
         return true
+    }
+    func removeSongPlayer(){
+        println("kakakaka Song")
+        self.window?.viewWithTag(200)?.removeFromSuperview()
+        
+    }
+    func removeVideoPlayer(){
+        println("kakakaka Video")
+        self.window?.viewWithTag(100)?.removeFromSuperview()
+
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {

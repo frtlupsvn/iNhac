@@ -17,6 +17,7 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeSongPlayer", name:"RemoveSongPlayer", object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,6 +25,12 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    func removeSongPlayer(){
+        println("Song destroyed")
+        self.songPlayer.view.removeFromSuperview()
+        self.songPlayer = nil
+    }
+
     
     // MARK: - TableView
     
@@ -46,24 +53,26 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         if (self.songPlayer == nil){
             showSongPlayer(dataSource[indexPath.row] as SongModel)
         } else {
-            self.songPlayer.view.removeFromSuperview()
-            self.songPlayer = nil
-            
-            showSongPlayer(dataSource[indexPath.row] as SongModel)
+          removeSongPlayer()
+          showSongPlayer(dataSource[indexPath.row] as SongModel)
         }
         
     }
     
     func showSongPlayer(songSource:SongModel){
         
+        NSNotificationCenter.defaultCenter().postNotificationName("RemoveVideoPlayer", object: nil)
+        
         // Create video player view with animation from right-bot with alpha 0 and expand to full screen
         // Amazing code -))
         
         self.songPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("SongPlayer")
             as MusicPlayerViewController
+        self.songPlayer.view.tag = 200
         self.songPlayer.songSource = songSource
         self.songPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)
         self.songPlayer.view.alpha = 0
@@ -79,8 +88,6 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
         
         //      ************************************************************************************************
         //      ************************************************************************************************
-        
-        
         
     }
 }

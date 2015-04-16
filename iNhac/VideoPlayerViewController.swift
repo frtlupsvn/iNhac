@@ -32,9 +32,6 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     
     @IBAction func minimize(sender: AnyObject) {
         // True is Min size , false is Max Size
-        
-        
-        
         if(self.isMinimize == true) {
             // Min -> MAX
             self.minimizeButton.transform = CGAffineTransformMakeScale(1.0, 1.0)

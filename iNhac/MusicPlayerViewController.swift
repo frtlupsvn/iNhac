@@ -19,9 +19,40 @@ class MusicPlayerViewController: UIViewController {
     @IBOutlet weak var kimVinyl: UIImageView!
     @IBOutlet weak var pochette: UIImageView!
     @IBOutlet weak var diskView: UIView!
+    @IBOutlet weak var minimizeButton: UIButton!
+    @IBAction func minimizeAction(sender: AnyObject) {
+        
+        // True is Min size , false is Max Size
+        if(self.isMinimize == true) {
+            // Min -> MAX
+            self.minimizeButton.hidden = false
+            UIView.animateWithDuration(0.9, animations: {
+                self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+                self.playView.hidden = false
+                self.miniView.hidden = true
+                            })
+        } else {
+            // MAX -> Min
+            self.minimizeButton.hidden = true
+            UIView.animateWithDuration(0.9, animations: {
+                self.view.frame = CGRectMake(0, self.view.frame.size.height-30, self.view.frame.size.width, self.view.frame.size.height)
+                self.playView.hidden = true
+                self.miniView.hidden = false
+            })
+        }
+        isMinimize = !isMinimize
+
+    }
+    @IBOutlet weak var playView: UIView!
+    @IBOutlet weak var miniView: UIView!
+    
+    @IBOutlet weak var songTitleMini: UILabel!
+    
+    var isMinimize: Bool!
+    var swipeRight : UISwipeGestureRecognizer!
     
     var songSource:SongModel = SongModel()
-//        var player = AVPlayer()
+        var player = AVPlayer()
     var isPlay : Bool!
     
     override func viewDidLoad() {
@@ -29,6 +60,7 @@ class MusicPlayerViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.songTitle.text = songSource.Title+" - "+songSource.Artist
+        self.songTitleMini.text = self.songTitle.text
         self.avaArtist.layer.cornerRadius = self.avaArtist.frame.size.width/2
         self.avaArtist.clipsToBounds = true
         
@@ -41,12 +73,31 @@ class MusicPlayerViewController: UIViewController {
         var tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapOnDisk"))
         self.diskView.addGestureRecognizer(tapGesture)
         
+        self.miniView.userInteractionEnabled = true
+        var miniViewTap = UITapGestureRecognizer(target: self, action: Selector("minimizeAction:"))
+        self.miniView.addGestureRecognizer(miniViewTap)
+        
         let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
         }
         let url = NSURL(string:songSource.ArtistAvatar)!
         self.avaArtist.sd_setImageWithURL(url, completed: block)
         self.bufferSong(self.songSource.Link320)
         moveDisktoVinyl()
+        
+        // Minimize button Animation
+        isMinimize = false
+        miniView.hidden = true
+        UIView.animateWithDuration(1.0, delay:0, options: .Repeat | .Autoreverse | .AllowUserInteraction , animations: {
+            self.minimizeButton.frame = CGRect(x: self.minimizeButton.frame.origin.x, y: self.minimizeButton.frame.origin.y - 10, width: self.minimizeButton.frame.size.width, height: self.minimizeButton.frame.size.height)
+            }, completion: nil)
+        //****************************************************************************************
+        
+        // Gesture
+        swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.miniView.addGestureRecognizer(swipeRight)
+
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,21 +172,21 @@ class MusicPlayerViewController: UIViewController {
     
     // MARK: - Song Player
     func bufferSong(url:NSString) {
-//            let url = url
-//            let playerItem = AVPlayerItem( URL:NSURL( string:url ) )
-//            player = AVPlayer(playerItem:playerItem)
-//            player.rate = 1.0;
+            let url = url
+            let playerItem = AVPlayerItem( URL:NSURL( string:url ) )
+            player = AVPlayer(playerItem:playerItem)
+            player.rate = 1.0;
     }
     
     func playSong(){
         isPlay = true
         diskView.layer.speed = 1
-//            player.play()
+            player.play()
     }
     func pauseSong(){
         isPlay = false
         diskView.layer.speed = 0
-//            player.pause()
+            player.pause()
     }
     func tapOnDisk(){
         if (self.isPlay == true){
@@ -144,5 +195,29 @@ class MusicPlayerViewController: UIViewController {
             self.rotateKim()
         }
     }
+    
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.Right:
+                if(self.isMinimize == true){
+                    UIView.animateWithDuration(0.9, animations: {
+                        self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.size.height-30, self.view.frame.size.width, self.view.frame.size.height)
+                        self.view.alpha = 0
+                        }, completion: {
+                            (value: Bool) in
+                            NSNotificationCenter.defaultCenter().postNotificationName("RemoveSongPlayer", object: nil)
+                            self.player.pause()
+                    })
+                    
+                }
+            default:
+                break
+            }
+        }
+    }
+
     
 }
