@@ -59,6 +59,7 @@ class MusicPlayerViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.view.tag = 200
         self.songTitle.text = songSource.Title+" - "+songSource.Artist
         self.songTitleMini.text = self.songTitle.text
         self.avaArtist.layer.cornerRadius = self.avaArtist.frame.size.width/2

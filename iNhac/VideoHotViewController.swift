@@ -74,7 +74,6 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
         
         self.videoPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer")
             as VideoPlayerViewController
-        self.videoPlayer.view.tag = 100
         self.videoPlayer.videoSource = videoSource
         self.videoPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)
         self.videoPlayer.view.alpha = 0

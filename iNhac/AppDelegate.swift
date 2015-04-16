@@ -32,12 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func removeSongPlayer(){
         println("kakakaka Song")
         self.window?.viewWithTag(200)?.removeFromSuperview()
+//        (self.window?.viewWithTag(200)? as MusicPlayerViewController).pauseSong()
         
     }
     func removeVideoPlayer(){
         println("kakakaka Video")
         self.window?.viewWithTag(100)?.removeFromSuperview()
-
+//        (self.window?.viewWithTag(100)? as VideoPlayerViewController).stopVideo()
         
     }
 

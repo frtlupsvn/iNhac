@@ -74,7 +74,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         
         // Do any additional setup after loading the view.
         
-        
+        self.view.tag = 100
         //        ************************************
         //        ** Video Player ********************
         //        ************************************
@@ -175,7 +175,9 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             }
         }
     }
-    
+    func stopVideo(){
+        videoPlayer.stop()
+    }
     func playVideo(withURL:NSString){
         var url:NSURL = NSURL(string:withURL)!
         videoPlayer.contentURL = url

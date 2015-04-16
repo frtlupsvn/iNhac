@@ -72,7 +72,6 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
         
         self.songPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("SongPlayer")
             as MusicPlayerViewController
-        self.songPlayer.view.tag = 200
         self.songPlayer.songSource = songSource
         self.songPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)
         self.songPlayer.view.alpha = 0
