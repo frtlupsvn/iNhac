@@ -25,22 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
         UINavigationBar.appearance().titleTextAttributes = attributes
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeSongPlayer", name:"RemoveSongPlayer", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeVideoPlayer", name:"RemoveVideoPlayer", object: nil)
         return true
     }
-    func removeSongPlayer(){
-        println("kakakaka Song")
-        self.window?.viewWithTag(200)?.removeFromSuperview()
-//        (self.window?.viewWithTag(200)? as MusicPlayerViewController).pauseSong()
-        
-    }
-    func removeVideoPlayer(){
-        println("kakakaka Video")
-        self.window?.viewWithTag(100)?.removeFromSuperview()
-//        (self.window?.viewWithTag(100)? as VideoPlayerViewController).stopVideo()
-        
-    }
+
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

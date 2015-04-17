@@ -54,9 +54,12 @@ class MusicPlayerViewController: UIViewController {
     var songSource:SongModel = SongModel()
         var player = AVPlayer()
     var isPlay : Bool!
+    var MyOwnerView : SongHotViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeView:", name:"NotificationRemoveSongPlayer", object: nil)
         
         // Do any additional setup after loading the view.
         self.view.tag = 200
@@ -197,6 +200,26 @@ class MusicPlayerViewController: UIViewController {
         }
     }
     
+    func removeView(notification: NSNotification){
+        //do stuff
+        if (notification.name == "NotificationRemoveSongPlayer"){
+            println("Notification Remove Song")
+            if(self.isMinimize == true){
+                UIView.animateWithDuration(0.9, animations: {
+                    self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.size.height-30, self.view.frame.size.width, self.view.frame.size.height)
+                    self.view.alpha = 0
+                    }, completion: {
+                        (value: Bool) in
+                        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveSongPlayer", object: nil)
+                        self.MyOwnerView.removeSongPlayer()
+                        self.player.pause()
+                })
+                
+            }
+        }
+        
+    }
+    
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
@@ -209,8 +232,9 @@ class MusicPlayerViewController: UIViewController {
                         self.view.alpha = 0
                         }, completion: {
                             (value: Bool) in
-                            NSNotificationCenter.defaultCenter().postNotificationName("RemoveSongPlayer", object: nil)
-                            self.player.pause()
+                                NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveSongPlayer", object: nil)
+                                self.MyOwnerView.removeSongPlayer()
+                                self.player.pause()
                     })
                     
                 }

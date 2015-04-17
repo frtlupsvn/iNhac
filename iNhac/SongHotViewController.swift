@@ -17,7 +17,6 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeSongPlayer", name:"RemoveSongPlayer", object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,6 +27,7 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
     func removeSongPlayer(){
         println("Song destroyed")
         self.songPlayer.view.removeFromSuperview()
+        self.songPlayer.pauseSong()
         self.songPlayer = nil
     }
 
@@ -65,7 +65,7 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
     
     func showSongPlayer(songSource:SongModel){
         
-        NSNotificationCenter.defaultCenter().postNotificationName("RemoveVideoPlayer", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("NotificationRemoveVideoPlayer", object: nil)
         
         // Create video player view with animation from right-bot with alpha 0 and expand to full screen
         // Amazing code -))
@@ -73,6 +73,7 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
         self.songPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("SongPlayer")
             as MusicPlayerViewController
         self.songPlayer.songSource = songSource
+        self.songPlayer.MyOwnerView = self
         self.songPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)
         self.songPlayer.view.alpha = 0
         self.songPlayer.view.transform = CGAffineTransformMakeScale(0.2, 0.2)

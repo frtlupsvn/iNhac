@@ -13,6 +13,7 @@
 		D00810C71ACD2E1F0071083E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810C61ACD2E1F0071083E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D00810CB1ACD31F40071083E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810CA1ACD31F40071083E /* Base64.m */; };
 		D00810CF1ACD36A30071083E /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810CE1ACD36A30071083E /* NSString+MD5.m */; };
+		D03130EB1AE0BB2F00B8382D /* SwiftTryCatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D03130EA1AE0BB2F00B8382D /* SwiftTryCatch.m */; };
 		D03D69E91AD2886300E85A4D /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E61AD2886300E85A4D /* 3.jpg */; };
 		D03D69EA1AD2886300E85A4D /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E71AD2886300E85A4D /* 2.jpg */; };
 		D03D69EB1AD2886300E85A4D /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E81AD2886300E85A4D /* 1.jpg */; };
@@ -111,6 +112,8 @@
 		D00810CA1ACD31F40071083E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		D00810CD1ACD36A30071083E /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		D00810CE1ACD36A30071083E /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		D03130E91AE0BB2F00B8382D /* SwiftTryCatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftTryCatch.h; sourceTree = "<group>"; };
+		D03130EA1AE0BB2F00B8382D /* SwiftTryCatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwiftTryCatch.m; sourceTree = "<group>"; };
 		D03D69E61AD2886300E85A4D /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		D03D69E71AD2886300E85A4D /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		D03D69E81AD2886300E85A4D /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -297,6 +300,15 @@
 				D00810CE1ACD36A30071083E /* NSString+MD5.m */,
 			);
 			name = "MD5 Categorie";
+			sourceTree = "<group>";
+		};
+		D03130E81AE0BAEC00B8382D /* Try Catch */ = {
+			isa = PBXGroup;
+			children = (
+				D03130E91AE0BB2F00B8382D /* SwiftTryCatch.h */,
+				D03130EA1AE0BB2F00B8382D /* SwiftTryCatch.m */,
+			);
+			name = "Try Catch";
 			sourceTree = "<group>";
 		};
 		D03D69E41AD2884F00E85A4D /* Resources */ = {
@@ -533,6 +545,7 @@
 		D0A5EFA11ACA5A9800354B7F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D03130E81AE0BAEC00B8382D /* Try Catch */,
 				D074B49B1ADBC5B700463D3B /* SDWebImage */,
 				D074B48C1ADB7AD500463D3B /* SMSegmentView */,
 				D0C0848F1AD37C1E00B68903 /* Ten Dot Spinner */,
@@ -747,6 +760,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D074B4C61ADBC5B700463D3B /* UIButton+WebCache.m in Sources */,
+				D03130EB1AE0BB2F00B8382D /* SwiftTryCatch.m in Sources */,
 				D0A5EFB61ACA5F3F00354B7F /* AFHTTPRequestOperation.m in Sources */,
 				D0C39CCC1AD6722F00B4D097 /* SongHotViewController.swift in Sources */,
 				D0A5EFD51ACA5F6C00354B7F /* UIImageView+AFNetworking.m in Sources */,
