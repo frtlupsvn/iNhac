@@ -72,7 +72,6 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
         
         self.videoPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer")
             as VideoPlayerViewController
-        
         self.videoPlayer.MyOwnerView = self
         self.videoPlayer.videoSource = videoSource
         self.videoPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)
@@ -92,6 +91,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     }
     func removeVideoPlayer(){
         println("Video destroyed")
+        self.videoPlayer.removeMyObserver()
         self.videoPlayer.view.removeFromSuperview()
         self.videoPlayer = nil
     }

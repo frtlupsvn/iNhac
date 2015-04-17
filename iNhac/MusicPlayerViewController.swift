@@ -28,16 +28,21 @@ class MusicPlayerViewController: UIViewController {
             self.minimizeButton.hidden = false
             UIView.animateWithDuration(0.9, animations: {
                 self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+                self.playView.alpha = 1
                 self.playView.hidden = false
                 self.miniView.hidden = true
                             })
         } else {
             // MAX -> Min
-            self.minimizeButton.hidden = true
             UIView.animateWithDuration(0.9, animations: {
                 self.view.frame = CGRectMake(0, self.view.frame.size.height-30, self.view.frame.size.width, self.view.frame.size.height)
-                self.playView.hidden = true
                 self.miniView.hidden = false
+                self.playView.alpha = 0
+                }, completion: {
+                (value:Bool) in
+                    self.minimizeButton.hidden = true
+                    self.playView.hidden = true
+                    
             })
         }
         isMinimize = !isMinimize
@@ -45,6 +50,7 @@ class MusicPlayerViewController: UIViewController {
     }
     @IBOutlet weak var playView: UIView!
     @IBOutlet weak var miniView: UIView!
+    @IBOutlet weak var albumMiniImage: UIImageView!
     
     @IBOutlet weak var songTitleMini: UILabel!
     
@@ -85,6 +91,7 @@ class MusicPlayerViewController: UIViewController {
         }
         let url = NSURL(string:songSource.ArtistAvatar)!
         self.avaArtist.sd_setImageWithURL(url, completed: block)
+        self.albumMiniImage.sd_setImageWithURL(url, completed: block)
         self.bufferSong(self.songSource.Link320)
         moveDisktoVinyl()
         
@@ -218,6 +225,9 @@ class MusicPlayerViewController: UIViewController {
             }
         }
         
+    }
+    func removeMyObserver(){
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveSongPlayer", object: nil)
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {

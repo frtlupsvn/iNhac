@@ -47,6 +47,7 @@
 		D074B4CB1ADBC5B700463D3B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4BA1ADBC5B700463D3B /* UIImageView+WebCache.m */; };
 		D074B4CC1ADBC5B700463D3B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4BC1ADBC5B700463D3B /* UIView+WebCacheOperation.m */; };
 		D074B4CE1ADD05B900463D3B /* minsize.png in Resources */ = {isa = PBXBuildFile; fileRef = D074B4CD1ADD05B900463D3B /* minsize.png */; };
+		D08D59761AE0F813002BA907 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D08D59751AE0F813002BA907 /* icon.png */; };
 		D094FEF81ACA8EC0006C7163 /* homepageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094FEF71ACA8EC0006C7163 /* homepageCell.swift */; };
 		D0A5EF7B1ACA59DE00354B7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7A1ACA59DE00354B7F /* AppDelegate.swift */; };
 		D0A5EF7E1ACA59DE00354B7F /* iNhac.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7C1ACA59DE00354B7F /* iNhac.xcdatamodeld */; };
@@ -164,6 +165,7 @@
 		D074B4BB1ADBC5B700463D3B /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		D074B4BC1ADBC5B700463D3B /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		D074B4CD1ADD05B900463D3B /* minsize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minsize.png; sourceTree = "<group>"; };
+		D08D59751AE0F813002BA907 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D094FEF51ACA7B7C006C7163 /* iNhac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iNhac-Bridging-Header.h"; sourceTree = "<group>"; };
 		D094FEF71ACA8EC0006C7163 /* homepageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homepageCell.swift; sourceTree = "<group>"; };
 		D0A5EF751ACA59DE00354B7F /* iNhac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNhac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,6 +327,7 @@
 				D0E8896F1ADF52B700CA0B90 /* Vinyl */,
 				D074B4CD1ADD05B900463D3B /* minsize.png */,
 				D0DF808B1AD692440059E7E0 /* defaultImage.png */,
+				D08D59751AE0F813002BA907 /* icon.png */,
 				D05ABF1D1AD4EBBC00DCC1C3 /* music.png */,
 				D05ABF171AD4E9BD00DCC1C3 /* skip.png */,
 				D05ABF181AD4E9BD00DCC1C3 /* play.png */,
@@ -739,6 +742,7 @@
 				D0AA54B01ADF7406000FCB28 /* pause.png in Resources */,
 				D0E889721ADF558100CA0B90 /* kim.png in Resources */,
 				D0E8896E1ADF4C5D00CA0B90 /* hold.png in Resources */,
+				D08D59761AE0F813002BA907 /* icon.png in Resources */,
 				D03D69EB1AD2886300E85A4D /* 1.jpg in Resources */,
 				D0A5EF851ACA59DE00354B7F /* Images.xcassets in Resources */,
 				D03D69E91AD2886300E85A4D /* 3.jpg in Resources */,

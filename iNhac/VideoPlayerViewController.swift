@@ -174,6 +174,9 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         }
         
     }
+    func removeMyObserver(){
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveVideoPlayer", object: nil)
+    }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 

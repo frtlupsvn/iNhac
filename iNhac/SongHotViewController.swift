@@ -28,6 +28,7 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
         println("Song destroyed")
         self.songPlayer.view.removeFromSuperview()
         self.songPlayer.pauseSong()
+        self.songPlayer.removeMyObserver()
         self.songPlayer = nil
     }
 
@@ -66,7 +67,7 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
     func showSongPlayer(songSource:SongModel){
         
         NSNotificationCenter.defaultCenter().postNotificationName("NotificationRemoveVideoPlayer", object: nil)
-        
+
         // Create video player view with animation from right-bot with alpha 0 and expand to full screen
         // Amazing code -))
         
