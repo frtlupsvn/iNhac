@@ -98,7 +98,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         Each property has its own default value, so you only need to specify for those you are interested.
         */
         
-        self.segmentView = SMSegmentView(frame: CGRect(x:1, y:(20+197+1), width: self.view.frame.size.width-2, height: 40.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: 10.0])
+        self.segmentView = SMSegmentView(frame: CGRect(x:0, y:(20+197+1), width: self.view.frame.size.width, height: 40.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: 10.0])
         
         self.segmentView.delegate = self
         
@@ -270,6 +270,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
 
     }
     func loadLyric(){
+        
         //jsondata
         
         var jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")

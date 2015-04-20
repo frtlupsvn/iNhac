@@ -261,20 +261,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D0015BBA1ADE51EE00B52741 /* Video Player */ = {
+		D0015BBB1ADE51F800B52741 /* Player */ = {
 			isa = PBXGroup;
 			children = (
 				D074B48A1AD7C41400463D3B /* VideoPlayerViewController.swift */,
-			);
-			name = "Video Player";
-			sourceTree = "<group>";
-		};
-		D0015BBB1ADE51F800B52741 /* Music Player */ = {
-			isa = PBXGroup;
-			children = (
 				D0015BBE1ADE530600B52741 /* MusicPlayerViewController.swift */,
 			);
-			name = "Music Player";
+			name = Player;
 			sourceTree = "<group>";
 		};
 		D00810C41ACD2E120071083E /* Json Kit */ = {
@@ -526,8 +519,7 @@
 		D0A5EF9F1ACA5A6700354B7F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D0015BBB1ADE51F800B52741 /* Music Player */,
-				D0015BBA1ADE51EE00B52741 /* Video Player */,
+				D0015BBB1ADE51F800B52741 /* Player */,
 				D0A5EF7F1ACA59DE00354B7F /* HomeController.swift */,
 				D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */,
 				D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */,

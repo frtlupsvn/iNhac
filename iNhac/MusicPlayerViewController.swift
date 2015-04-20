@@ -8,12 +8,17 @@
 
 import UIKit
 import AVFoundation
+import CoreMedia
 
-class MusicPlayerViewController: UIViewController {
+class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate {
     
     @IBOutlet weak var timer: UISlider!
+    
     @IBOutlet weak var songTitle: UILabel!
     @IBOutlet weak var endTime: UILabel!
+    @IBOutlet weak var startTime: UILabel!
+    @IBOutlet weak var songLyrics: UITextView!
+    
     @IBOutlet weak var avaArtist: UIImageView!
     @IBOutlet weak var vinylImage: UIImageView!
     @IBOutlet weak var kimVinyl: UIImageView!
@@ -58,9 +63,11 @@ class MusicPlayerViewController: UIViewController {
     var swipeRight : UISwipeGestureRecognizer!
     
     var songSource:SongModel = SongModel()
-        var player = AVPlayer()
+    var player = AVPlayer()
     var isPlay : Bool!
     var MyOwnerView : SongHotViewController!
+    
+    var segmentView: SMSegmentView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,9 +114,119 @@ class MusicPlayerViewController: UIViewController {
         swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.miniView.addGestureRecognizer(swipeRight)
+        
+        /*
+        Init SMsegmentView
+        Use a Dictionary here to set its properties.
+        Each property has its own default value, so you only need to specify for those you are interested.
+        */
+        
+        self.segmentView = SMSegmentView(frame: CGRect(x:0, y:280, width: self.view.frame.size.width, height: 40.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: 10.0])
+        
+        self.segmentView.delegate = self
+        
+        self.segmentView.layer.cornerRadius = 0.0
+        self.segmentView.layer.borderColor = UIColor(white: 0.85, alpha: 1.0).CGColor
+        self.segmentView.layer.borderWidth = 1.0
+        
+        // Add segments
+        self.segmentView.addSegmentWithTitle("Lời Bài Hát", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"))
+        self.segmentView.addSegmentWithTitle("Thông Tin Ca Sĩ", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
+        self.segmentView.addSegmentWithTitle("Bài Hát Khác", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
+        
+        // Set segment with index 0 as selected by default
+        segmentView.selectSegmentAtIndex(0)
+        self.view.addSubview(self.segmentView)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.loadLyric()
+//            self.loadSingerInfo()
+//            self.loadOtherVideos()
+        })
 
 
     }
+    
+    func loadLyric(){
+        //jsondata
+        
+        var jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")
+        jsonarray.setValue(songSource.ID, forKey: "id")
+        
+        var jsondata:NSString = (jsonarray.JSONString() as NSString)
+            .base64EncodedStringWithWrapWidth(0)
+            .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            .URLEncodedString_ch()
+        
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        
+        
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        
+        //**************************************
+        // CALL API
+        
+        var url = DETAIL_MINI_API+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
+        println(url)
+        
+        manager.GET( url,
+            parameters: nil,
+            success: {
+                (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+                //Success
+                println("Lyrics Successful")
+                
+                //                ********************************
+                //                ** parse data to Object ********
+                //                ********************************
+                var results:NSDictionary = responseObject as NSDictionary
+                var lyrics : NSString? = results["Lyrics"] as? NSString
+                
+                
+                if(lyrics != nil){
+                    self.songLyrics.text = results["Lyrics"] as String
+                } else {
+                    self.songLyrics.text = "Lời bài hát đang được cập nhật... \nCảm ơn"
+                }
+                
+                //                ********************************
+                //                ** END *************************
+                //                ********************************
+            },
+            failure: {
+                (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
+                self.songLyrics.text = "Lời bài hát đang được cập nhật... \nCảm ơn"
+            }
+        )
+        //**************************************
+        self.songLyrics.setNeedsDisplay()
+        
+    }
+
+    // SMSegment Delegate
+    func didSelectSegmentAtIndex(segmentIndex: Int) {
+        /*
+        Replace the following line to implement what you want the app to do after the segment gets tapped.
+        */
+        println("Select segment at index: \(segmentIndex)")
+        
+        switch segmentIndex {
+        case  0:
+
+            break
+        case  1:
+
+            break
+        case  2:
+
+            break
+        default:
+            break
+        }
+        
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -187,17 +304,52 @@ class MusicPlayerViewController: UIViewController {
             let playerItem = AVPlayerItem( URL:NSURL( string:url ) )
             player = AVPlayer(playerItem:playerItem)
             player.rate = 1.0;
+        
+        
+        var duration :CMTime = self.player.currentItem.asset.duration
+        var second : Float64 = CMTimeGetSeconds(duration) as Float64
+        println(secondsToHoursMinutesSeconds(Int(second)))
+        
+        self.timer.minimumValue = 0
+        self.timer.maximumValue = Float(second)
+        
+        let (h,m,s) = secondsToHoursMinutesSeconds(Int(second))
+        if ( (h) == 0 ){
+            ((s) > 9) ? (self.endTime.text = ("\(m):\(s)") ) : ( self.endTime.text = ("\(m):0\(s)") )
+        } else {
+            (self.endTime.text = ("\(h):\(m):\(s)") )
+        }
+        
     }
     
     func playSong(){
         isPlay = true
         diskView.layer.speed = 1
-            player.play()
+        player.play()
+        if(self.player.rate == 1){
+            updateTimer(self.timer.maximumValue)
+        }
     }
+    func updateTimer(endSecond:Float){
+        self.timer.value++
+        
+        let (h,m,s) = secondsToHoursMinutesSeconds(Int(self.timer.value))
+        if ( (h) == 0 ){
+            ((s) > 9) ? (self.startTime.text = ("\(m):\(s)") ) : ( self.startTime.text = ("\(m):0\(s)") )
+        } else {
+            (self.startTime.text = ("\(h):\(m):\(s)") )
+        }
+
+        if ((self.timer.value != endSecond) & (self.isPlay)){
+            var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimer:"), userInfo: nil, repeats: false)
+        }
+        
+    }
+
     func pauseSong(){
         isPlay = false
         diskView.layer.speed = 0
-            player.pause()
+        player.pause()
     }
     func tapOnDisk(){
         if (self.isPlay == true){
@@ -252,6 +404,10 @@ class MusicPlayerViewController: UIViewController {
                 break
             }
         }
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
 
     
