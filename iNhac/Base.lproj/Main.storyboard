@@ -757,7 +757,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="280"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="ueu-kK-dbU">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongCell" rowHeight="50" id="ueu-kK-dbU" customClass="SongTableViewCell" customModule="iNhac" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ueu-kK-dbU" id="qil-hC-SdZ">
@@ -787,7 +787,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Xbu-Sj-RqU"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="10"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -806,8 +806,17 @@
                                                         <constraint firstItem="7LN-j5-T12" firstAttribute="leading" secondItem="qil-hC-SdZ" secondAttribute="leadingMargin" constant="-8" id="r4r-BR-It2"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="singerLabel" destination="rVz-As-pVk" id="7nR-KD-eSy"/>
+                                                    <outlet property="songTitle" destination="4RQ-3t-AIV" id="Hmi-pq-b9r"/>
+                                                    <outlet property="sttLabel" destination="7LN-j5-T12" id="Oek-3z-gdc"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="A3R-6a-dIV" id="k3S-xX-cfh"/>
+                                            <outlet property="delegate" destination="A3R-6a-dIV" id="c75-fP-wyC"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -845,14 +854,17 @@
                         <outlet property="diskView" destination="4az-X4-rTL" id="hlb-0i-2JQ"/>
                         <outlet property="endTime" destination="ekx-BA-ZDg" id="E5z-Si-8sY"/>
                         <outlet property="kimVinyl" destination="Fcr-ef-AEz" id="eCh-w4-VoK"/>
+                        <outlet property="lyricsView" destination="OPY-IQ-ADX" id="Ppk-lP-cRV"/>
                         <outlet property="miniView" destination="8KO-zU-DDt" id="7V7-dm-3zM"/>
                         <outlet property="minimizeButton" destination="9sS-nj-g09" id="HQJ-0O-hds"/>
                         <outlet property="playView" destination="1H8-tX-KYv" id="buh-nI-UAf"/>
                         <outlet property="pochette" destination="OsW-2R-6iz" id="9qr-Pz-IFE"/>
                         <outlet property="songLyrics" destination="QbH-hf-Hy1" id="Mu0-5j-Con"/>
+                        <outlet property="songRelaveView" destination="NUC-gd-sJ1" id="0Qg-3F-4ha"/>
                         <outlet property="songTitle" destination="daW-bT-hm5" id="Zy7-Zg-gjr"/>
                         <outlet property="songTitleMini" destination="P48-UV-mA3" id="zoC-Jg-u03"/>
                         <outlet property="startTime" destination="5ce-jz-DZa" id="9tq-kN-OOS"/>
+                        <outlet property="tableView" destination="8az-Yq-kLs" id="F1s-3F-W40"/>
                         <outlet property="timer" destination="5eR-5J-ITG" id="S3J-8T-QnP"/>
                         <outlet property="vinylImage" destination="VRn-Vb-z23" id="gug-G3-N6V"/>
                     </connections>

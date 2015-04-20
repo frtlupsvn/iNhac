@@ -10,14 +10,21 @@ import UIKit
 import AVFoundation
 import CoreMedia
 
-class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate {
+class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var timer: UISlider!
     
     @IBOutlet weak var songTitle: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var startTime: UILabel!
+    
     @IBOutlet weak var songLyrics: UITextView!
+    
+    @IBOutlet weak var songRelaveView: UIView!
+    @IBOutlet weak var lyricsView: UIView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    var dataSource:NSMutableArray = NSMutableArray()
     
     @IBOutlet weak var avaArtist: UIImageView!
     @IBOutlet weak var vinylImage: UIImageView!
@@ -131,8 +138,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate {
         
         // Add segments
         self.segmentView.addSegmentWithTitle("Lời Bài Hát", onSelectionImage: UIImage(named: "clip_light"), offSelectionImage: UIImage(named: "clip"))
-        self.segmentView.addSegmentWithTitle("Thông Tin Ca Sĩ", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
-        self.segmentView.addSegmentWithTitle("Bài Hát Khác", onSelectionImage: UIImage(named: "cloud_light"), offSelectionImage: UIImage(named: "cloud"))
+        self.segmentView.addSegmentWithTitle("Bài Hát Khác", onSelectionImage: UIImage(named: "bulb_light"), offSelectionImage: UIImage(named: "bulb"))
         
         // Set segment with index 0 as selected by default
         segmentView.selectSegmentAtIndex(0)
@@ -140,8 +146,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             self.loadLyric()
-//            self.loadSingerInfo()
-//            self.loadOtherVideos()
+            self.loadSongRelate()
         })
 
 
@@ -203,6 +208,68 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate {
         self.songLyrics.setNeedsDisplay()
         
     }
+    
+    func loadSongRelate(){
+        //jsondata
+        
+        var jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")
+        jsonarray.setValue(songSource.ArtistID, forKey: "id")
+        
+        var jsondata:NSString = (jsonarray.JSONString() as NSString)
+            .base64EncodedStringWithWrapWidth(0)
+            .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            .URLEncodedString_ch()
+        
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        
+        
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        
+        //**************************************
+        // CALL API
+        
+        var url = ARTIST_RELATE_API+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
+        println(url)
+        
+        manager.GET( url,
+            parameters: nil,
+            success: {
+                (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+                //Success
+                println("Singer relate Successful")
+                //                ********************************
+                //                ** parse data to Object ********
+                //                ********************************
+                var responseArray:NSArray = (responseObject as NSDictionary).objectForKey("Data") as NSArray
+                for index in 0...responseArray.count-1{
+                    
+ 
+                        var tempsObject:NSDictionary = responseArray[index] as NSDictionary
+
+                        
+                        var songObject:SongModel = SongModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"] as NSString, myArtist: self.songSource.Artist, myArtistID: "", myComposer: "", myTotalListen: 0, myGenre: "", myArtistAvatar: "", myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as NSString, myLink128: tempsObject["LinkPlay128"] as NSString, myLink320: tempsObject["LinkPlay320"] as NSString, myLink: tempsObject["Link"] as NSString)
+                    
+                        self.dataSource.addObject(songObject)
+
+                        
+
+                }
+                //
+                self.tableView.reloadData()
+                //                //                ********************************
+                //                //                ** END *************************
+                //                //                ********************************
+                
+                
+            },
+            failure: {
+                (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
+            }
+        )
+        //**************************************
+        
+    }
 
     // SMSegment Delegate
     func didSelectSegmentAtIndex(segmentIndex: Int) {
@@ -213,13 +280,12 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate {
         
         switch segmentIndex {
         case  0:
-
+            self.lyricsView.hidden = false
+            self.songRelaveView.hidden = true
             break
         case  1:
-
-            break
-        case  2:
-
+            self.lyricsView.hidden = true
+            self.songRelaveView.hidden = false
             break
         default:
             break
@@ -409,6 +475,31 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate {
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
-
+    
+    
+    // MARK: - TableView
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell : SongTableViewCell = tableView.dequeueReusableCellWithIdentifier("SongCell", forIndexPath: indexPath) as SongTableViewCell
+        var videoObject:SongModel = dataSource[indexPath.row] as SongModel
+        cell.sttLabel.text = String(indexPath.row)
+        cell.songTitle.text = videoObject.Title
+        cell.singerLabel.text = videoObject.Artist
+        
+        return cell
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    }
+    
     
 }
