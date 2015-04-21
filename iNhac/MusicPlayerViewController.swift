@@ -73,7 +73,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     var player = AVPlayer()
     var isPlay : Bool!
     var MyOwnerView : SongHotViewController!
-    
+    var Mytimer : NSTimer!
     var segmentView: SMSegmentView!
     
     override func viewDidLoad() {
@@ -101,11 +101,8 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         var miniViewTap = UITapGestureRecognizer(target: self, action: Selector("minimizeAction:"))
         self.miniView.addGestureRecognizer(miniViewTap)
         
-        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
-        }
-        let url = NSURL(string:songSource.ArtistAvatar)!
-        self.avaArtist.sd_setImageWithURL(url, completed: block)
-        self.albumMiniImage.sd_setImageWithURL(url, completed: block)
+
+        
         self.bufferSong(self.songSource.Link320)
         moveDisktoVinyl()
         
@@ -248,7 +245,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                         var tempsObject:NSDictionary = responseArray[index] as NSDictionary
 
                         
-                        var songObject:SongModel = SongModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"] as NSString, myArtist: self.songSource.Artist, myArtistID: "", myComposer: "", myTotalListen: 0, myGenre: "", myArtistAvatar: "", myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as NSString, myLink128: tempsObject["LinkPlay128"] as NSString, myLink320: tempsObject["LinkPlay320"] as NSString, myLink: tempsObject["Link"] as NSString)
+                        var songObject:SongModel = SongModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"] as NSString, myArtist: self.songSource.Artist, myArtistID: self.songSource.ID, myComposer: "", myTotalListen: 0, myGenre: "", myArtistAvatar: self.songSource.ArtistAvatar, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as NSString, myLink128: tempsObject["LinkPlay128"] as NSString, myLink320: tempsObject["LinkPlay320"] as NSString, myLink: tempsObject["Link"] as NSString)
                     
                         self.dataSource.addObject(songObject)
 
@@ -351,7 +348,6 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         })
 
     }
-    
     func rotateDisk(){
         let duration = 2.0
         let delay = 0.0
@@ -366,11 +362,16 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     
     // MARK: - Song Player
     func bufferSong(url:NSString) {
-            let url = url
-            let playerItem = AVPlayerItem( URL:NSURL( string:url ) )
-            player = AVPlayer(playerItem:playerItem)
-            player.rate = 1.0;
         
+        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
+        }
+        let urlImage = NSURL(string:songSource.ArtistAvatar)!
+        self.avaArtist.sd_setImageWithURL(urlImage, completed: block)
+        self.albumMiniImage.sd_setImageWithURL(urlImage, completed: block)
+        
+        let urlSong = url
+        let playerItem = AVPlayerItem( URL:NSURL( string:urlSong ) )
+        player = AVPlayer(playerItem:playerItem)
         
         var duration :CMTime = self.player.currentItem.asset.duration
         var second : Float64 = CMTimeGetSeconds(duration) as Float64
@@ -398,7 +399,6 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     }
     func updateTimer(endSecond:Float){
         self.timer.value++
-        
         let (h,m,s) = secondsToHoursMinutesSeconds(Int(self.timer.value))
         if ( (h) == 0 ){
             ((s) > 9) ? (self.startTime.text = ("\(m):\(s)") ) : ( self.startTime.text = ("\(m):0\(s)") )
@@ -407,9 +407,8 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         }
 
         if ((self.timer.value != endSecond) & (self.isPlay)){
-            var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimer:"), userInfo: nil, repeats: false)
+            Mytimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimer:"), userInfo: nil, repeats: false)
         }
-        
     }
 
     func pauseSong(){
@@ -443,6 +442,10 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             }
         }
         
+    }
+    
+    func resetTimer(){
+        self.timer.value = 0
     }
     func removeMyObserver(){
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveSongPlayer", object: nil)
@@ -498,7 +501,18 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
+        self.songSource = self.dataSource[indexPath.row] as SongModel
+        self.bufferSong(self.songSource.Link320)
+        self.songTitle.text = songSource.Title+" - "+songSource.Artist
+        self.songTitleMini.text = self.songTitle.text
+        segmentView.selectSegmentAtIndex(0)
+        resetTimer()
+        player.play()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            self.loadLyric()
+        })
+
+        
     }
     
     

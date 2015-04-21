@@ -65,6 +65,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     
     func showVideoPlayer(videoSource:VideoModel){
         
+        NSNotificationCenter.defaultCenter().postNotificationName("NotificationRemoveVideoPlayer", object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName("NotificationRemoveSongPlayer", object: nil)
         
 // Create video player view with animation from right-bot with alpha 0 and expand to full screen
