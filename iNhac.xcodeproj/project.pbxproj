@@ -47,6 +47,9 @@
 		D074B4CB1ADBC5B700463D3B /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4BA1ADBC5B700463D3B /* UIImageView+WebCache.m */; };
 		D074B4CC1ADBC5B700463D3B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4BC1ADBC5B700463D3B /* UIView+WebCacheOperation.m */; };
 		D074B4CE1ADD05B900463D3B /* minsize.png in Resources */ = {isa = PBXBuildFile; fileRef = D074B4CD1ADD05B900463D3B /* minsize.png */; };
+		D08084221AE64265002212A2 /* MusicPlayerView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08084211AE64265002212A2 /* MusicPlayerView+Animation.swift */; };
+		D08084241AE642DC002212A2 /* MusicPlayerView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08084231AE642DC002212A2 /* MusicPlayerView+TableView.swift */; };
+		D08084261AE6431E002212A2 /* MusicPlayerViewAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08084251AE6431E002212A2 /* MusicPlayerViewAPI.swift */; };
 		D08D59761AE0F813002BA907 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D08D59751AE0F813002BA907 /* icon.png */; };
 		D094FEF81ACA8EC0006C7163 /* homepageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094FEF71ACA8EC0006C7163 /* homepageCell.swift */; };
 		D0A5EF7B1ACA59DE00354B7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7A1ACA59DE00354B7F /* AppDelegate.swift */; };
@@ -165,6 +168,9 @@
 		D074B4BB1ADBC5B700463D3B /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		D074B4BC1ADBC5B700463D3B /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		D074B4CD1ADD05B900463D3B /* minsize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minsize.png; sourceTree = "<group>"; };
+		D08084211AE64265002212A2 /* MusicPlayerView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicPlayerView+Animation.swift"; sourceTree = "<group>"; };
+		D08084231AE642DC002212A2 /* MusicPlayerView+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicPlayerView+TableView.swift"; sourceTree = "<group>"; };
+		D08084251AE6431E002212A2 /* MusicPlayerViewAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewAPI.swift; sourceTree = "<group>"; };
 		D08D59751AE0F813002BA907 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D094FEF51ACA7B7C006C7163 /* iNhac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iNhac-Bridging-Header.h"; sourceTree = "<group>"; };
 		D094FEF71ACA8EC0006C7163 /* homepageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homepageCell.swift; sourceTree = "<group>"; };
@@ -266,6 +272,9 @@
 			children = (
 				D074B48A1AD7C41400463D3B /* VideoPlayerViewController.swift */,
 				D0015BBE1ADE530600B52741 /* MusicPlayerViewController.swift */,
+				D08084251AE6431E002212A2 /* MusicPlayerViewAPI.swift */,
+				D08084231AE642DC002212A2 /* MusicPlayerView+TableView.swift */,
+				D08084211AE64265002212A2 /* MusicPlayerView+Animation.swift */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -758,6 +767,7 @@
 				D074B4C61ADBC5B700463D3B /* UIButton+WebCache.m in Sources */,
 				D03130EB1AE0BB2F00B8382D /* SwiftTryCatch.m in Sources */,
 				D0A5EFB61ACA5F3F00354B7F /* AFHTTPRequestOperation.m in Sources */,
+				D08084241AE642DC002212A2 /* MusicPlayerView+TableView.swift in Sources */,
 				D0C39CCC1AD6722F00B4D097 /* SongHotViewController.swift in Sources */,
 				D0A5EFD51ACA5F6C00354B7F /* UIImageView+AFNetworking.m in Sources */,
 				D0A5EF801ACA59DE00354B7F /* HomeController.swift in Sources */,
@@ -785,6 +795,7 @@
 				D074B48F1ADB7AD500463D3B /* SMSegment.swift in Sources */,
 				D0C084981AD37C7500B68903 /* FeTenDot.m in Sources */,
 				D074B4C81ADBC5B700463D3B /* UIImage+MultiFormat.m in Sources */,
+				D08084221AE64265002212A2 /* MusicPlayerView+Animation.swift in Sources */,
 				D0DF808A1AD690380059E7E0 /* VideoTableViewCell.swift in Sources */,
 				D074B4C91ADBC5B700463D3B /* UIImage+WebP.m in Sources */,
 				D0A5EFBB1ACA5F3F00354B7F /* AFURLConnectionOperation.m in Sources */,
@@ -797,6 +808,7 @@
 				D00810C71ACD2E1F0071083E /* JSONKit.m in Sources */,
 				D0A5EFD21ACA5F6C00354B7F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D074B4CC1ADBC5B700463D3B /* UIView+WebCacheOperation.m in Sources */,
+				D08084261AE6431E002212A2 /* MusicPlayerViewAPI.swift in Sources */,
 				D074B4C51ADBC5B700463D3B /* SDWebImagePrefetcher.m in Sources */,
 				D0A5EFBA1ACA5F3F00354B7F /* AFSecurityPolicy.m in Sources */,
 				D0A5EFD71ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m in Sources */,
