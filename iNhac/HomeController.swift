@@ -54,7 +54,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         self.spinner = FeSpinnerTenDot(view: self.view, withBlur: true)
         self.spinner.backgroundColor = UIColor(hexCode: "#019875")
-        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as NSString
+        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as! NSString
         self.spinner.fontTitleLabel = UIFont(name: "Neou-Thin", size: 36)
         self.view.addSubview(spinner)
         
@@ -72,7 +72,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         //"LOADING VIDEO LIST"
         self.index++
-        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as NSString
+        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as NSString as String
         
         //jsondata
         
@@ -84,11 +84,11 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
         
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         
         let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
         
         //**************************************
         // CALL API
