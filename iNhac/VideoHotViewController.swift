@@ -18,8 +18,6 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeVideoPlayer", name:"RemoveVideoPlayer", object: nil)
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,21 +54,26 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
         if (self.videoPlayer == nil){
             showVideoPlayer(dataSource[indexPath.row] as VideoModel)
         } else {
-            self.videoPlayer.view.removeFromSuperview()
-            self.videoPlayer = nil
-            
+            removeVideoPlayer()
             showVideoPlayer(dataSource[indexPath.row] as VideoModel)
         }
         
 
     }
+    
+    
+    
     func showVideoPlayer(videoSource:VideoModel){
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("NotificationRemoveVideoPlayer", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("NotificationRemoveSongPlayer", object: nil)
         
 // Create video player view with animation from right-bot with alpha 0 and expand to full screen
 // Amazing code -))
         
         self.videoPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer")
             as VideoPlayerViewController
+        self.videoPlayer.MyOwnerView = self
         self.videoPlayer.videoSource = videoSource
         self.videoPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)
         self.videoPlayer.view.alpha = 0
@@ -88,7 +91,8 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
 //      ************************************************************************************************
     }
     func removeVideoPlayer(){
-        println("Vide destroyed")
+        println("Video destroyed")
+        self.videoPlayer.removeMyObserver()
         self.videoPlayer.view.removeFromSuperview()
         self.videoPlayer = nil
     }

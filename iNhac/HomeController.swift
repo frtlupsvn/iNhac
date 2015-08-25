@@ -174,6 +174,27 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
             success: {
                 (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 println("Song Successful")
+                //                ********************************
+                //                ** parse data to Object ********
+                //                ********************************
+                var responseArray:NSArray = responseObject as NSArray
+                
+                for index in 0...responseArray.count-1{
+                    
+                    var tempsObject:NSDictionary = responseArray[index] as NSDictionary
+                    var artistDetail : NSArray = tempsObject["ArtistDetail"] as NSArray
+                    
+                    var artistID : Int = (artistDetail[0] as NSDictionary).objectForKey("ArtistID") as Int
+                    var artistAvatar:NSString = (artistDetail[0] as NSDictionary).objectForKey("ArtistAvatar") as NSString
+                    
+                    var songObject:SongModel = SongModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"] as NSString, myArtist: tempsObject["Artist"] as NSString, myArtistID: String(artistID), myComposer: tempsObject["Composer"] as NSString, myTotalListen: tempsObject["TotalListen"] as Int, myGenre: tempsObject["Genre"] as NSString, myArtistAvatar: artistAvatar, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as NSString, myLink128: tempsObject["LinkPlay128"] as NSString, myLink320: tempsObject["LinkPlay320"] as NSString, myLink: tempsObject["Link"] as NSString)
+                    self.songData.addObject(songObject)
+                    
+                }
+                //                ********************************
+                //                ** END *************************
+                //                ********************************
+
                 var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("getAlbumHotContent"), userInfo: nil, repeats: false)
             },
             failure: {

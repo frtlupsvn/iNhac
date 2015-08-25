@@ -16,4 +16,5 @@
 #import "FeSpinnerTenDot.h"
 #import "UIColor+flat.h"
 #import "UIImageView+WebCache.h"
+#import "SwiftTryCatch.h"
 #endif

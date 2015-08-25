@@ -32,9 +32,6 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     
     @IBAction func minimize(sender: AnyObject) {
         // True is Min size , false is Max Size
-        
-        
-        
         if(self.isMinimize == true) {
             // Min -> MAX
             self.minimizeButton.transform = CGAffineTransformMakeScale(1.0, 1.0)
@@ -72,12 +69,13 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     
     var swipeRight : UISwipeGestureRecognizer!
     
+    var MyOwnerView : VideoHotViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeView:", name:"NotificationRemoveVideoPlayer", object: nil)
         //        ************************************
         //        ** Video Player ********************
         //        ************************************
@@ -100,7 +98,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         Each property has its own default value, so you only need to specify for those you are interested.
         */
         
-        self.segmentView = SMSegmentView(frame: CGRect(x:1, y:(20+197+1), width: self.view.frame.size.width-2, height: 40.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: 10.0])
+        self.segmentView = SMSegmentView(frame: CGRect(x:0, y:(20+197+1), width: self.view.frame.size.width, height: 40.0), separatorColour: UIColor(white: 0.95, alpha: 0.3), separatorWidth: 0.5, segmentProperties: [keySegmentTitleFont: UIFont.systemFontOfSize(12.0), keySegmentOnSelectionColour: UIColor(red: 245.0/255.0, green: 174.0/255.0, blue: 63.0/255.0, alpha: 1.0), keySegmentOffSelectionColour: UIColor.whiteColor(), keyContentVerticalMargin: 10.0])
         
         self.segmentView.delegate = self
         
@@ -156,6 +154,30 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         self.view.hidden = false
     }
     
+    func removeView(notification: NSNotification){
+        //do stuff
+        if (notification.name == "NotificationRemoveVideoPlayer" ){
+            println("Notification Remove Video")
+            if(self.isMinimize == true){
+                UIView.animateWithDuration(0.9, animations: {
+                    self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.size.height-102, self.view.frame.size.width, self.view.frame.size.height)
+                    self.view.alpha = 0
+                    }, completion: {
+                        (value: Bool) in
+                        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveVideoPlayer", object: nil)
+                        self.MyOwnerView.removeVideoPlayer()
+                        self.videoPlayer.stop()
+                })
+                
+            }
+
+        }
+        
+    }
+    func removeMyObserver(){
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveVideoPlayer", object: nil)
+    }
+    
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
@@ -168,7 +190,8 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                         self.view.alpha = 0
                         }, completion: {
                             (value: Bool) in
-                            NSNotificationCenter.defaultCenter().postNotificationName("RemoveVideoPlayer", object: nil)
+                            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveVideoPlayer", object: nil)
+                            self.MyOwnerView.removeVideoPlayer()
                             self.videoPlayer.stop()
                     })
                 
@@ -178,7 +201,9 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             }
         }
     }
-    
+    func stopVideo(){
+        videoPlayer.stop()
+    }
     func playVideo(withURL:NSString){
         var url:NSURL = NSURL(string:withURL)!
         videoPlayer.contentURL = url
@@ -217,20 +242,23 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 //                ** parse data to Object ********
                 //                ********************************
                 var responseArray:NSArray = (responseObject as NSDictionary).objectForKey("Data") as NSArray
-                
                 for index in 0...responseArray.count-1{
-                    var tempsObject:NSDictionary = responseArray[index] as NSDictionary
-                    
-                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"]as NSString, myArtist: tempsObject["Artist"]as NSString,myArtistID:"", myTotalView: tempsObject["TotalView"]as Int, myGenre: tempsObject["Genre"]as NSString, myPictureURL: tempsObject["PictureURL"]as NSString, myLinkDownload: tempsObject["LinkDownload"]as NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as NSString, myLink:"")
-                    
-                    self.dataSource.addObject(videoObject)
-                    
+                    var tempsObject:NSDictionary? = responseArray[index] as? NSDictionary
+                    SwiftTryCatch.try({
+                        var videoObject:VideoModel = VideoModel(myID: tempsObject?.objectForKey("ID") as NSString, myTitle: tempsObject?.objectForKey("Title") as NSString, myArtist: tempsObject?.objectForKey("Artist") as NSString,myArtistID:"", myTotalView: tempsObject?.objectForKey("TotalView") as Int, myGenre: tempsObject?.objectForKey("Genre") as NSString, myPictureURL: tempsObject?.objectForKey("PictureURL") as NSString, myLinkDownload: tempsObject?.objectForKey("LinkDownload") as NSString, myLinkPlayEmbed: tempsObject?.objectForKey("LinkPlayEmbed")as NSString, myLink:"")
+                        self.dataSource.addObject(videoObject)
+
+                        }, catch: { (error) in
+                            println("\(error.description)")
+                        }, finally: {
+                            // close resources
+                    })
                 }
-                
+//
                 self.tableView.reloadData()
-                //                ********************************
-                //                ** END *************************
-                //                ********************************
+//                //                ********************************
+//                //                ** END *************************
+//                //                ********************************
 
 
             },
@@ -242,6 +270,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
 
     }
     func loadLyric(){
+        
         //jsondata
         
         var jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")
