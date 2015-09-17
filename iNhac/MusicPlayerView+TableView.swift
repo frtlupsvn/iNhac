@@ -10,11 +10,11 @@ extension MusicPlayerViewController {
     // MARK: - TableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : SongTableViewCell = tableView.dequeueReusableCellWithIdentifier("SongCell", forIndexPath: indexPath) as SongTableViewCell
-        var videoObject:SongModel = dataSource[indexPath.row] as SongModel
+        let cell : SongTableViewCell = tableView.dequeueReusableCellWithIdentifier("SongCell", forIndexPath: indexPath) as! SongTableViewCell
+        var videoObject:SongModel = dataSource[indexPath.row] as! SongModel
         cell.sttLabel.text = String(indexPath.row)
-        cell.songTitle.text = videoObject.Title
-        cell.singerLabel.text = videoObject.Artist
+        cell.songTitle.text = videoObject.Title as String
+        cell.singerLabel.text = videoObject.Artist as String
         
         return cell
     }
@@ -28,9 +28,9 @@ extension MusicPlayerViewController {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.songSource = self.dataSource[indexPath.row] as SongModel
+        self.songSource = self.dataSource[indexPath.row] as! SongModel
         self.bufferSong(self.songSource.Link320)
-        self.songTitle.text = songSource.Title+" - "+songSource.Artist
+        self.songTitle.text = (songSource.Title as String)+" - "+(songSource.Artist as String)
         self.songTitleMini.text = self.songTitle.text
         segmentView.selectSegmentAtIndex(0)
         resetTimer()

@@ -54,7 +54,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         self.spinner = FeSpinnerTenDot(view: self.view, withBlur: true)
         self.spinner.backgroundColor = UIColor(hexCode: "#019875")
-        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as! NSString
+        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as! NSString as String
         self.spinner.fontTitleLabel = UIFont(name: "Neou-Thin", size: 36)
         self.view.addSubview(spinner)
         
@@ -72,7 +72,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         //"LOADING VIDEO LIST"
         self.index++
-        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as NSString as String
+        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as! NSString as String
         
         //jsondata
         
@@ -93,7 +93,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         //**************************************
         // CALL API
         
-        var url = HOT_CONTENT_API+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
+        var url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
         println(url)
         
         manager.GET( url,
@@ -106,14 +106,14 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var responseArray:NSArray = responseObject as NSArray
+                var responseArray:NSArray = responseObject as! NSArray
                 
                 for index in 0...responseArray.count-1{
-                    var tempsObject:NSDictionary = responseArray[index] as NSDictionary
-                    var artistDetail : NSArray = tempsObject["ArtistDetail"] as NSArray
-                    var artistID : NSString = (artistDetail[0] as NSDictionary).objectForKey("ArtistID") as NSString
+                    var tempsObject:NSDictionary = responseArray[index] as! NSDictionary
+                    var artistDetail : NSArray = tempsObject["ArtistDetail"] as! NSArray
+                    var artistID : NSString = (artistDetail[0] as! NSDictionary).objectForKey("ArtistID") as! NSString
                     
-                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"]as NSString, myArtist: tempsObject["Artist"]as NSString,myArtistID:artistID, myTotalView: tempsObject["TotalView"]as Int, myGenre: tempsObject["Genre"]as NSString, myPictureURL: tempsObject["PictureURL"]as NSString, myLinkDownload: tempsObject["LinkDownload"]as NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as NSString, myLink: tempsObject["Link"]as NSString)
+                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as! NSString, myTitle: tempsObject["Title"]as! NSString, myArtist: tempsObject["Artist"]as! NSString,myArtistID:artistID, myTotalView: tempsObject["TotalView"]as! Int, myGenre: tempsObject["Genre"]as! NSString, myPictureURL: tempsObject["PictureURL"]as! NSString, myLinkDownload: tempsObject["LinkDownload"]as! NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as! NSString, myLink: tempsObject["Link"]as! NSString)
                     
                     self.videoData.addObject(videoObject)
                     
@@ -139,7 +139,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         //"LOADING SONG LIST"
         self.index++
-        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as NSString
+        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as! NSString as String
         
         //jsondata
         
@@ -153,7 +153,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
             .base64EncodedStringWithWrapWidth(0)
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         //        println(jsondata)
         //        println(signature)
@@ -162,12 +162,12 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         //**************************************
         // CALL API
         
-        var url = HOT_CONTENT_API+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
+        var url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
         
         println(url)
         
         let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
         
         manager.GET( url,
             parameters: nil,
@@ -177,17 +177,17 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var responseArray:NSArray = responseObject as NSArray
+                var responseArray:NSArray = responseObject as! NSArray
                 
                 for index in 0...responseArray.count-1{
                     
-                    var tempsObject:NSDictionary = responseArray[index] as NSDictionary
-                    var artistDetail : NSArray = tempsObject["ArtistDetail"] as NSArray
+                    var tempsObject:NSDictionary = responseArray[index] as! NSDictionary
+                    var artistDetail : NSArray = tempsObject["ArtistDetail"] as! NSArray
                     
-                    var artistID : Int = (artistDetail[0] as NSDictionary).objectForKey("ArtistID") as Int
-                    var artistAvatar:NSString = (artistDetail[0] as NSDictionary).objectForKey("ArtistAvatar") as NSString
+                    var artistID : Int = (artistDetail[0] as! NSDictionary).objectForKey("ArtistID") as! Int
+                    var artistAvatar:NSString = (artistDetail[0] as! NSDictionary).objectForKey("ArtistAvatar") as! NSString
                     
-                    var songObject:SongModel = SongModel(myID: tempsObject["ID"] as NSString, myTitle: tempsObject["Title"] as NSString, myArtist: tempsObject["Artist"] as NSString, myArtistID: String(artistID), myComposer: tempsObject["Composer"] as NSString, myTotalListen: tempsObject["TotalListen"] as Int, myGenre: tempsObject["Genre"] as NSString, myArtistAvatar: artistAvatar, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as NSString, myLink128: tempsObject["LinkPlay128"] as NSString, myLink320: tempsObject["LinkPlay320"] as NSString, myLink: tempsObject["Link"] as NSString)
+                    var songObject:SongModel = SongModel(myID: tempsObject["ID"] as! NSString, myTitle: tempsObject["Title"] as! NSString, myArtist: tempsObject["Artist"] as! NSString, myArtistID: String(artistID), myComposer: tempsObject["Composer"] as! NSString, myTotalListen: tempsObject["TotalListen"] as! Int, myGenre: tempsObject["Genre"] as! NSString, myArtistAvatar: artistAvatar, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as! NSString, myLink128: tempsObject["LinkPlay128"] as! NSString, myLink320: tempsObject["LinkPlay320"] as! NSString, myLink: tempsObject["Link"] as! NSString)
                     self.songData.addObject(songObject)
                     
                 }
@@ -208,7 +208,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
     func getAlbumHotContent(){
         //"LOADING SONG LIST"
         self.index++
-        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as NSString
+        self.spinner.titleLabelText = self.arrTitleLoading[self.index] as! NSString as String
         
         //jsondata
         
@@ -222,7 +222,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
             .base64EncodedStringWithWrapWidth(0)
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         //        println(jsondata)
         //        println(signature)
@@ -231,12 +231,12 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         //**************************************
         // CALL API
         
-        var url = HOT_CONTENT_API+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
+        var url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
         
         println(url)
         
         let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
         
         manager.GET( url,
             parameters: nil,
@@ -280,10 +280,10 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : homepageCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as homepageCell
+        let cell : homepageCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! homepageCell
         
-        cell.labelHome.text = titleSource[indexPath.row] as NSString
-        cell.imageHome.image = UIImage(named: imageSource.objectAtIndex(indexPath.row) as NSString)
+        cell.labelHome.text = titleSource[indexPath.row] as! NSString as String
+        cell.imageHome.image = UIImage(named: (imageSource.objectAtIndex(indexPath.row) as! NSString) as NSString as String)
         cell.layer.borderColor = UIColor.whiteColor().CGColor
         cell.layer.borderWidth = 1
         return cell
@@ -314,15 +314,15 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "pushVideoView") {
-            let videoViewControl = segue.destinationViewController as VideoHotViewController
+            let videoViewControl = segue.destinationViewController as! VideoHotViewController
             videoViewControl.dataSource = videoData
         }
         if (segue.identifier == "pushSongView") {
-            let songViewControl = segue.destinationViewController as SongHotViewController
+            let songViewControl = segue.destinationViewController as! SongHotViewController
             songViewControl.dataSource = songData
         }
         if (segue.identifier == "pushAlbumView") {
-            let albumViewControl = segue.destinationViewController as AlbumHotViewController
+            let albumViewControl = segue.destinationViewController as! AlbumHotViewController
             albumViewControl.dataSource = albumData
         }
     }

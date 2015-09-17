@@ -80,7 +80,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         //        ** Video Player ********************
         //        ************************************
         
-        var url:NSURL = NSURL(string:videoSource.LinkDownload)!
+        var url:NSURL = NSURL(string:videoSource.LinkDownload as String)!
         videoPlayer = MPMoviePlayerController(contentURL: url)
         videoPlayer.view.frame = CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 197)
         self.view.addSubview(videoPlayer.view)
@@ -205,7 +205,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         videoPlayer.stop()
     }
     func playVideo(withURL:NSString){
-        var url:NSURL = NSURL(string:withURL)!
+        var url:NSURL = NSURL(string:withURL as String)!
         videoPlayer.contentURL = url
         videoPlayer.play()
             }
@@ -220,18 +220,17 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
         
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         
         let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
         
         //**************************************
         // CALL API
         
-        var url = ARTIST_RELATE_API+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
-        println(url)
-        
+        var url = "\(ARTIST_RELATE_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
+
         manager.GET( url,
             parameters: nil,
             success: {
@@ -241,11 +240,11 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var responseArray:NSArray = (responseObject as NSDictionary).objectForKey("Data") as NSArray
+                var responseArray:NSArray = (responseObject as! NSDictionary).objectForKey("Data") as! NSArray
                 for index in 0...responseArray.count-1{
                     var tempsObject:NSDictionary? = responseArray[index] as? NSDictionary
                     SwiftTryCatch.try({
-                        var videoObject:VideoModel = VideoModel(myID: tempsObject?.objectForKey("ID") as NSString, myTitle: tempsObject?.objectForKey("Title") as NSString, myArtist: tempsObject?.objectForKey("Artist") as NSString,myArtistID:"", myTotalView: tempsObject?.objectForKey("TotalView") as Int, myGenre: tempsObject?.objectForKey("Genre") as NSString, myPictureURL: tempsObject?.objectForKey("PictureURL") as NSString, myLinkDownload: tempsObject?.objectForKey("LinkDownload") as NSString, myLinkPlayEmbed: tempsObject?.objectForKey("LinkPlayEmbed")as NSString, myLink:"")
+                        var videoObject:VideoModel = VideoModel(myID: tempsObject?.objectForKey("ID") as! NSString, myTitle: tempsObject?.objectForKey("Title") as! NSString, myArtist: tempsObject?.objectForKey("Artist") as! NSString,myArtistID:"", myTotalView: tempsObject?.objectForKey("TotalView") as! Int, myGenre: tempsObject?.objectForKey("Genre") as! NSString, myPictureURL: tempsObject?.objectForKey("PictureURL") as! NSString, myLinkDownload: tempsObject?.objectForKey("LinkDownload") as! NSString, myLinkPlayEmbed: tempsObject?.objectForKey("LinkPlayEmbed")as! NSString, myLink:"")
                         self.dataSource.addObject(videoObject)
 
                         }, catch: { (error) in
@@ -281,17 +280,17 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
         
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         
         let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
         
         //**************************************
         // CALL API
         
-        var url = DETAIL_MINI_API+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
-        println(url)
+        var url = "\(DETAIL_MINI_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
+        
         
         manager.GET( url,
             parameters: nil,
@@ -303,12 +302,12 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var results:NSDictionary = responseObject as NSDictionary
+                var results = responseObject as! NSDictionary
                 var lyrics : NSString? = results["Lyrics"] as? NSString
                 
                 
                 if(lyrics != nil){
-                    self.videoLyric.text = results["Lyrics"] as String
+                    self.videoLyric.text = results["Lyrics"] as! String
                 } else {
                     self.videoLyric.text = "Lời bài hát đang được cập nhật... \nCảm ơn"
                 }
@@ -323,13 +322,12 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             }
         )
         //**************************************
-        var block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
-        }
-        var urlImage = NSURL(string:videoSource.PictureURL)!
-        videoImage.sd_setImageWithURL(urlImage, completed: block)
+
+        var urlImage = NSURL(string:videoSource.PictureURL as String)!
+        videoImage.sd_setImageWithURL(urlImage)
         
-        self.videoTitle.text = videoSource.Title
-        self.videoArtist.text = videoSource.Artist
+        self.videoTitle.text = videoSource.Title as String
+        self.videoArtist.text = videoSource.Artist as String
         self.videoView.text = String(videoSource.TotalView)
         
         self.lyricsView.setNeedsDisplay()
@@ -346,17 +344,16 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
         
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey)
+        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         
         let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html")
+        manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
         
         //**************************************
         // CALL API
         
-        var url = SINGER_INFO_API+"?publicKey="+publicKey+"&signature="+signature+"&jsondata="+jsondata
-        println(url)
+        var url = "\(SINGER_INFO_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
         
         manager.GET( url,
             parameters: nil,
@@ -368,16 +365,15 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var results:NSDictionary = responseObject as NSDictionary
+                var results = responseObject as! NSDictionary
                 
-                self.nameArtist.text = results["ArtistName"] as NSString
-                var tempString:String = results["Biography"] as String
+                self.nameArtist.text = results["ArtistName"] as? String
+                var tempString:String = results["Biography"] as! String
                 self.bioArtist.text = tempString.html2String
             
-                var block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
-                }
-                var urlImage = NSURL(string:results["ArtistAvatar"] as NSString)!
-                self.imageArtist.sd_setImageWithURL(urlImage, completed: block)
+
+                var urlImage = NSURL(string:results["ArtistAvatar"] as! NSString as String)!
+                self.imageArtist.sd_setImageWithURL(urlImage)
                 
                 //                ********************************
                 //                ** END *************************
@@ -420,18 +416,15 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : VideoTableViewCell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as VideoTableViewCell
-        var videoObject:VideoModel = dataSource[indexPath.row] as VideoModel
-        cell.videoTitle.text = videoObject.Title
-        cell.artiseTitle.text = videoObject.Artist
+        let cell : VideoTableViewCell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoTableViewCell
+        var videoObject:VideoModel = dataSource[indexPath.row] as! VideoModel
+        cell.videoTitle.text = videoObject.Title as String
+        cell.artiseTitle.text = videoObject.Artist as String
         
-        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
-        }
-        let url = NSURL(string:videoObject.PictureURL)!
+
+        let url = NSURL(string:videoObject.PictureURL as String)!
+        cell.videoImage.sd_setImageWithURL(url)
         
-        
-        
-        cell.videoImage.sd_setImageWithURL(url, completed: block)
         return cell
     }
     
@@ -444,7 +437,7 @@ class VideoPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.videoSource = dataSource[indexPath.row] as VideoModel
+        self.videoSource = dataSource[indexPath.row] as! VideoModel
         playVideo(videoSource.LinkDownload)
         loadLyric()
         segmentView.selectSegmentAtIndex(0)

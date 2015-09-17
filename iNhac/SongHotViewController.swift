@@ -36,11 +36,11 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
     // MARK: - TableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : SongTableViewCell = tableView.dequeueReusableCellWithIdentifier("songCell", forIndexPath: indexPath) as SongTableViewCell
-        var videoObject:SongModel = dataSource[indexPath.row] as SongModel
+        let cell : SongTableViewCell = tableView.dequeueReusableCellWithIdentifier("songCell", forIndexPath: indexPath) as! SongTableViewCell
+        var videoObject:SongModel = dataSource[indexPath.row] as! SongModel
         cell.sttLabel.text = String(indexPath.row)
-        cell.songTitle.text = videoObject.Title
-        cell.singerLabel.text = videoObject.Artist
+        cell.songTitle.text = videoObject.Title as String
+        cell.singerLabel.text = videoObject.Artist as String
         
         return cell
     }
@@ -56,10 +56,10 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if (self.songPlayer == nil){
-            showSongPlayer(dataSource[indexPath.row] as SongModel)
+            showSongPlayer(dataSource[indexPath.row] as! SongModel)
         } else {
           removeSongPlayer()
-          showSongPlayer(dataSource[indexPath.row] as SongModel)
+          showSongPlayer(dataSource[indexPath.row] as! SongModel)
         }
         
     }
@@ -73,7 +73,7 @@ class SongHotViewController: UIViewController,UITableViewDataSource, UITableView
         // Amazing code -))
         
         self.songPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("SongPlayer")
-            as MusicPlayerViewController
+            as! MusicPlayerViewController
         self.songPlayer.songSource = songSource
         self.songPlayer.MyOwnerView = self
         self.songPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)

@@ -43,7 +43,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 self.playView.alpha = 1
                 self.playView.hidden = false
                 self.miniView.hidden = true
-                            })
+            })
         } else {
             // MAX -> Min
             UIView.animateWithDuration(0.9, animations: {
@@ -51,14 +51,14 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                 self.miniView.hidden = false
                 self.playView.alpha = 0
                 }, completion: {
-                (value:Bool) in
+                    (value:Bool) in
                     self.minimizeButton.hidden = true
                     self.playView.hidden = true
                     
             })
         }
         isMinimize = !isMinimize
-
+        
     }
     @IBOutlet weak var playView: UIView!
     @IBOutlet weak var miniView: UIView!
@@ -83,7 +83,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         
         // Do any additional setup after loading the view.
         self.view.tag = 200
-        self.songTitle.text = songSource.Title+" - "+songSource.Artist
+        self.songTitle.text = (songSource.Title as String)+" - "+(songSource.Artist as String)
         self.songTitleMini.text = self.songTitle.text
         self.avaArtist.layer.cornerRadius = self.avaArtist.frame.size.width/2
         self.avaArtist.clipsToBounds = true
@@ -101,7 +101,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         var miniViewTap = UITapGestureRecognizer(target: self, action: Selector("minimizeAction:"))
         self.miniView.addGestureRecognizer(miniViewTap)
         
-
+        
         
         self.bufferSong(self.songSource.Link320)
         moveDisktoVinyl()
@@ -145,11 +145,11 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
             self.loadLyric()
             self.loadSongRelate()
         })
-
-
+        
+        
     }
     
-
+    
     // SMSegment Delegate
     func didSelectSegmentAtIndex(segmentIndex: Int) {
         /*
@@ -171,7 +171,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         }
         
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -181,17 +181,14 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     }
     
     
-        // MARK: - Song Player
+    // MARK: - Song Player
     func bufferSong(url:NSString) {
         
-        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
-        }
-        let urlImage = NSURL(string:songSource.ArtistAvatar)!
-        self.avaArtist.sd_setImageWithURL(urlImage, completed: block)
-        self.albumMiniImage.sd_setImageWithURL(urlImage, completed: block)
-        
+        let urlImage = NSURL(string:songSource.ArtistAvatar as String)!
+        self.avaArtist.sd_setImageWithURL(urlImage)
+        self.albumMiniImage.sd_setImageWithURL(urlImage)
         let urlSong = url
-        let playerItem = AVPlayerItem( URL:NSURL( string:urlSong ) )
+        let playerItem = AVPlayerItem( URL:NSURL( string:urlSong as String ) )
         player = AVPlayer(playerItem:playerItem)
         
         var duration :CMTime = self.player.currentItem.asset.duration
@@ -226,12 +223,12 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         } else {
             (self.startTime.text = ("\(h):\(m):\(s)") )
         }
-
-        if ((self.timer.value != endSecond) & (self.isPlay)){
+        
+        if ( (self.timer.value != endSecond) ){
             Mytimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimer:"), userInfo: nil, repeats: false)
         }
     }
-
+    
     func pauseSong(){
         isPlay = false
         diskView.layer.speed = 0
@@ -284,9 +281,9 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
                         self.view.alpha = 0
                         }, completion: {
                             (value: Bool) in
-                                NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveSongPlayer", object: nil)
-                                self.MyOwnerView.removeSongPlayer()
-                                self.player.pause()
+                            NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationRemoveSongPlayer", object: nil)
+                            self.MyOwnerView.removeSongPlayer()
+                            self.player.pause()
                     })
                     
                 }
@@ -301,6 +298,6 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     }
     
     
-        
+    
     
 }

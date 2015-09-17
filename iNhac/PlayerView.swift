@@ -13,7 +13,7 @@ class PlayerView: UIView {
      override init(frame: CGRect) {
         super.init(frame: frame)
         let bundle = NSBundle(forClass: self.dynamicType)
-        var view = bundle.loadNibNamed("PlayerView", owner: nil, options: nil)[0] as PlayerView
+        var view = bundle.loadNibNamed("PlayerView", owner: nil, options: nil)[0] as! PlayerView
         view.frame = self.bounds
         view.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         self.addSubview(view)

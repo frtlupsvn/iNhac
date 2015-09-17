@@ -202,20 +202,22 @@ class SMSegment: UIView {
     }
     
     // MARK: Handle touch
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        super.touchesBegan(touches, withEvent: event)
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        super.touchesBegan(touches as Set<NSObject>, withEvent: event)
         
         if self.isSelected == false {
             self.shouldResponse = true
             self.backgroundColor = self.willOnSelectionColour
         }
+
     }
-    
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        super.touchesEnded(touches, withEvent: event)
+
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        super.touchesEnded(touches as Set<NSObject>, withEvent: event)
         
         self.delegate?.selectSegment(self)
     }
+    
 }
 // Copyright belongs to original author
 // http://code4app.net (en) http://code4app.com (cn)

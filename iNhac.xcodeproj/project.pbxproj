@@ -692,6 +692,9 @@
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = E888DAGUR4;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.DataProtection = {
 								enabled = 0;
 							};

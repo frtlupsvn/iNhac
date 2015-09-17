@@ -26,16 +26,13 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : VideoTableViewCell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as VideoTableViewCell
-        var videoObject:VideoModel = dataSource[indexPath.row] as VideoModel
-        cell.videoTitle.text = videoObject.Title
-        cell.artiseTitle.text = videoObject.Artist
+        let cell : VideoTableViewCell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoTableViewCell
+        var videoObject:VideoModel = dataSource[indexPath.row] as! VideoModel
+        cell.videoTitle.text = videoObject.Title as String
+        cell.artiseTitle.text = videoObject.Artist as String
         
-        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in
-        }
-        let url = NSURL(string:videoObject.PictureURL)!
-        
-        cell.videoImage.sd_setImageWithURL(url, completed: block)
+        let url = NSURL(string:videoObject.PictureURL as String)!
+        cell.videoImage.sd_setImageWithURL(url)
         
         
         return cell
@@ -52,10 +49,10 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if (self.videoPlayer == nil){
-            showVideoPlayer(dataSource[indexPath.row] as VideoModel)
+            showVideoPlayer(dataSource[indexPath.row] as! VideoModel)
         } else {
             removeVideoPlayer()
-            showVideoPlayer(dataSource[indexPath.row] as VideoModel)
+            showVideoPlayer(dataSource[indexPath.row] as! VideoModel)
         }
         
 
@@ -72,7 +69,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
 // Amazing code -))
         
         self.videoPlayer = self.storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer")
-            as VideoPlayerViewController
+            as! VideoPlayerViewController
         self.videoPlayer.MyOwnerView = self
         self.videoPlayer.videoSource = videoSource
         self.videoPlayer.view.frame = CGRectMake(self.view.frame.size.width-50, self.view.frame.size.height-50, self.view.frame.size.width, self.view.frame.size.height)
