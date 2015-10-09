@@ -128,7 +128,7 @@ class SMSegment: UIView {
     private var label: UILabel = UILabel()
     private var labelWidth: CGFloat = 0.0
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -202,8 +202,8 @@ class SMSegment: UIView {
     }
     
     // MARK: Handle touch
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        super.touchesBegan(touches as Set<NSObject>, withEvent: event)
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches as Set<UITouch>, withEvent: event)
         
         if self.isSelected == false {
             self.shouldResponse = true
@@ -212,8 +212,8 @@ class SMSegment: UIView {
 
     }
 
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        super.touchesEnded(touches as Set<NSObject>, withEvent: event)
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesEnded(touches as Set<UITouch>, withEvent: event)
         
         self.delegate?.selectSegment(self)
     }

@@ -10,15 +10,15 @@ extension MusicPlayerViewController{
     func loadLyric(){
         //jsondata
         
-        var jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")
+        let jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")
         jsonarray.setValue(songSource.ID, forKey: "id")
         
-        var jsondata:NSString = (jsonarray.JSONString() as NSString)
+        let jsondata:NSString = (jsonarray.JSONString() as NSString)
             .base64EncodedStringWithWrapWidth(0)
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
         
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
+        let signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         
         let manager = AFHTTPRequestOperationManager()
@@ -27,22 +27,22 @@ extension MusicPlayerViewController{
         //**************************************
         // CALL API
         
-        var url = "\(DETAIL_MINI_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
+        let url = "\(DETAIL_MINI_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
         
-        println(url)
+        print(url)
         
         manager.GET( url,
             parameters: nil,
             success: {
                 (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 //Success
-                println("Lyrics Successful")
+                print("Lyrics Successful")
                 
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var results:NSDictionary = responseObject as! NSDictionary
-                var lyrics : NSString? = results["Lyrics"] as? NSString
+                let results:NSDictionary = responseObject as! NSDictionary
+                let lyrics : NSString? = results["Lyrics"] as? NSString
                 
                 
                 if(lyrics != nil){
@@ -56,7 +56,7 @@ extension MusicPlayerViewController{
                 //                ********************************
             },
             failure: {
-                (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
+                (operation: AFHTTPRequestOperation!,error: NSError!) in print("Error:" + error.localizedDescription)
                 self.songLyrics.text = "Lời bài hát đang được cập nhật... \nCảm ơn"
             }
         )
@@ -68,15 +68,15 @@ extension MusicPlayerViewController{
     func loadSongRelate(){
         //jsondata
         
-        var jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")
+        let jsonarray:NSMutableDictionary = NSMutableDictionary(object: "song", forKey: "t")
         jsonarray.setValue(songSource.ArtistID, forKey: "id")
         
-        var jsondata:NSString = (jsonarray.JSONString() as NSString)
+        let jsondata:NSString = (jsonarray.JSONString() as NSString)
             .base64EncodedStringWithWrapWidth(0)
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
         
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
+        let signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         
         let manager = AFHTTPRequestOperationManager()
@@ -85,27 +85,27 @@ extension MusicPlayerViewController{
         //**************************************
         // CALL API
         
-        var url =  "\(ARTIST_RELATE_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
+        let url =  "\(ARTIST_RELATE_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
        
-        println(url)
+        print(url)
         
         manager.GET( url,
             parameters: nil,
             success: {
                 (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 //Success
-                println("Singer relate Successful")
+                print("Singer relate Successful")
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var responseArray:NSArray = (responseObject as! NSDictionary).objectForKey("Data") as! NSArray
+                let responseArray:NSArray = (responseObject as! NSDictionary).objectForKey("Data") as! NSArray
                 for index in 0...responseArray.count-1{
                     
                     
-                    var tempsObject:NSDictionary = responseArray[index] as! NSDictionary
+                    let tempsObject:NSDictionary = responseArray[index] as! NSDictionary
                     
                     
-                    var songObject:SongModel = SongModel(myID: tempsObject["ID"] as! NSString, myTitle: tempsObject["Title"] as! NSString, myArtist: self.songSource.Artist, myArtistID: self.songSource.ID, myComposer: "", myTotalListen: 0, myGenre: "", myArtistAvatar: self.songSource.ArtistAvatar, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as! NSString, myLink128: tempsObject["LinkPlay128"] as! NSString, myLink320: tempsObject["LinkPlay320"] as! NSString, myLink: tempsObject["Link"] as! NSString)
+                    let songObject:SongModel = SongModel(myID: tempsObject["ID"] as! NSString, myTitle: tempsObject["Title"] as! NSString, myArtist: self.songSource.Artist, myArtistID: self.songSource.ID, myComposer: "", myTotalListen: 0, myGenre: "", myArtistAvatar: self.songSource.ArtistAvatar, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as! NSString, myLink128: tempsObject["LinkPlay128"] as! NSString, myLink320: tempsObject["LinkPlay320"] as! NSString, myLink: tempsObject["Link"] as! NSString)
                     
                     self.dataSource.addObject(songObject)
                     
@@ -121,7 +121,7 @@ extension MusicPlayerViewController{
                 
             },
             failure: {
-                (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
+                (operation: AFHTTPRequestOperation!,error: NSError!) in print("Error:" + error.localizedDescription)
             }
         )
         //**************************************

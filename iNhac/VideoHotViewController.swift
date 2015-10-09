@@ -27,7 +27,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : VideoTableViewCell = tableView.dequeueReusableCellWithIdentifier("VideoCell", forIndexPath: indexPath) as! VideoTableViewCell
-        var videoObject:VideoModel = dataSource[indexPath.row] as! VideoModel
+        let videoObject:VideoModel = dataSource[indexPath.row] as! VideoModel
         cell.videoTitle.text = videoObject.Title as String
         cell.artiseTitle.text = videoObject.Artist as String
         
@@ -88,7 +88,7 @@ class VideoHotViewController: UIViewController,UITableViewDataSource, UITableVie
 //      ************************************************************************************************
     }
     func removeVideoPlayer(){
-        println("Video destroyed")
+        print("Video destroyed")
         self.videoPlayer.removeMyObserver()
         self.videoPlayer.view.removeFromSuperview()
         self.videoPlayer = nil
