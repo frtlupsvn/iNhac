@@ -7,6 +7,92 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A5AA5D51BAC0A8100438BA9 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4B01ADBC5B700463D3B /* UIButton+WebCache.m */; };
+		5A5AA5D61BAC0A8100438BA9 /* SwiftTryCatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D03130EA1AE0BB2F00B8382D /* SwiftTryCatch.m */; };
+		5A5AA5D71BAC0A8100438BA9 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFA41ACA5F3F00354B7F /* AFHTTPRequestOperation.m */; };
+		5A5AA5D81BAC0A8100438BA9 /* MusicPlayerView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08084231AE642DC002212A2 /* MusicPlayerView+TableView.swift */; };
+		5A5AA5D91BAC0A8100438BA9 /* SongHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C39CCB1AD6722F00B4D097 /* SongHotViewController.swift */; };
+		5A5AA5DA1BAC0A8100438BA9 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFC91ACA5F6C00354B7F /* UIImageView+AFNetworking.m */; };
+		5A5AA5DB1BAC0A8100438BA9 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7F1ACA59DE00354B7F /* HomeController.swift */; };
+		5A5AA5DC1BAC0A8100438BA9 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4B81ADBC5B700463D3B /* UIImageView+HighlightedWebCache.m */; };
+		5A5AA5DD1BAC0A8100438BA9 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFA61ACA5F3F00354B7F /* AFHTTPRequestOperationManager.m */; };
+		5A5AA5DE1BAC0A8100438BA9 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B49F1ADBC5B700463D3B /* NSData+ImageContentType.m */; };
+		5A5AA5DF1BAC0A8100438BA9 /* VideoHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05ABF1F1AD66CA400DCC1C3 /* VideoHotViewController.swift */; };
+		5A5AA5E01BAC0A8100438BA9 /* SMSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B48E1ADB7AD500463D3B /* SMSegmentView.swift */; };
+		5A5AA5E11BAC0A8100438BA9 /* HTMLtoSTRING.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B4981ADBC16A00463D3B /* HTMLtoSTRING.swift */; };
+		5A5AA5E21BAC0A8100438BA9 /* UIColor+flat.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084911AD37C3B00B68903 /* UIColor+flat.m */; };
+		5A5AA5E31BAC0A8100438BA9 /* SingerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B4931ADB801500463D3B /* SingerInfoView.swift */; };
+		5A5AA5E41BAC0A8100438BA9 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFCC1ACA5F6C00354B7F /* UIProgressView+AFNetworking.m */; };
+		5A5AA5E51BAC0A8100438BA9 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066870C1ADE6DEB006F6E67 /* SongTableViewCell.swift */; };
+		5A5AA5E61BAC0A8100438BA9 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4A31ADBC5B700463D3B /* SDWebImageCompat.m */; };
+		5A5AA5E71BAC0A8100438BA9 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4AB1ADBC5B700463D3B /* SDWebImageManager.m */; };
+		5A5AA5E81BAC0A8100438BA9 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFAB1ACA5F3F00354B7F /* AFNetworkReachabilityManager.m */; };
+		5A5AA5E91BAC0A8100438BA9 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4A11ADBC5B700463D3B /* SDImageCache.m */; };
+		5A5AA5EA1BAC0A8100438BA9 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0015BC01ADE54A500B52741 /* SongModel.swift */; };
+		5A5AA5EB1BAC0A8100438BA9 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFB31ACA5F3F00354B7F /* AFURLResponseSerialization.m */; };
+		5A5AA5EC1BAC0A8100438BA9 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4A51ADBC5B700463D3B /* SDWebImageDecoder.m */; };
+		5A5AA5ED1BAC0A8100438BA9 /* FeSpinnerTenDot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084941AD37C7500B68903 /* FeSpinnerTenDot.m */; };
+		5A5AA5EE1BAC0A8100438BA9 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C084A61AD3EB5000B68903 /* PlayerView.swift */; };
+		5A5AA5EF1BAC0A8100438BA9 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4A71ADBC5B700463D3B /* SDWebImageDownloader.m */; };
+		5A5AA5F01BAC0A8100438BA9 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C0849A1AD37EEE00B68903 /* FXBlurView.m */; };
+		5A5AA5F11BAC0A8100438BA9 /* SMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B48D1ADB7AD500463D3B /* SMSegment.swift */; };
+		5A5AA5F21BAC0A8100438BA9 /* FeTenDot.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C084961AD37C7500B68903 /* FeTenDot.m */; };
+		5A5AA5F31BAC0A8100438BA9 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4B41ADBC5B700463D3B /* UIImage+MultiFormat.m */; };
+		5A5AA5F41BAC0A8100438BA9 /* MusicPlayerView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08084211AE64265002212A2 /* MusicPlayerView+Animation.swift */; };
+		5A5AA5F51BAC0A8100438BA9 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF80891AD690380059E7E0 /* VideoTableViewCell.swift */; };
+		5A5AA5F61BAC0A8100438BA9 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4B61ADBC5B700463D3B /* UIImage+WebP.m */; };
+		5A5AA5F71BAC0A8100438BA9 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFAF1ACA5F3F00354B7F /* AFURLConnectionOperation.m */; };
+		5A5AA5F81BAC0A8100438BA9 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810CA1ACD31F40071083E /* Base64.m */; };
+		5A5AA5F91BAC0A8100438BA9 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0015BBE1ADE530600B52741 /* MusicPlayerViewController.swift */; };
+		5A5AA5FA1BAC0A8100438BA9 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B48A1AD7C41400463D3B /* VideoPlayerViewController.swift */; };
+		5A5AA5FB1BAC0A8100438BA9 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFC71ACA5F6C00354B7F /* UIButton+AFNetworking.m */; };
+		5A5AA5FC1BAC0A8100438BA9 /* homepageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D094FEF71ACA8EC0006C7163 /* homepageCell.swift */; };
+		5A5AA5FD1BAC0A8100438BA9 /* AlbumHotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C39CCD1AD6723C00B4D097 /* AlbumHotViewController.swift */; };
+		5A5AA5FE1BAC0A8100438BA9 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810C61ACD2E1F0071083E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5A5AA5FF1BAC0A8100438BA9 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFC31ACA5F6C00354B7F /* UIActivityIndicatorView+AFNetworking.m */; };
+		5A5AA6001BAC0A8100438BA9 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4BC1ADBC5B700463D3B /* UIView+WebCacheOperation.m */; };
+		5A5AA6011BAC0A8100438BA9 /* MusicPlayerViewAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08084251AE6431E002212A2 /* MusicPlayerViewAPI.swift */; };
+		5A5AA6021BAC0A8100438BA9 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4AE1ADBC5B700463D3B /* SDWebImagePrefetcher.m */; };
+		5A5AA6031BAC0A8100438BA9 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFAD1ACA5F3F00354B7F /* AFSecurityPolicy.m */; };
+		5A5AA6041BAC0A8100438BA9 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFCE1ACA5F6C00354B7F /* UIRefreshControl+AFNetworking.m */; };
+		5A5AA6051BAC0A8100438BA9 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFD01ACA5F6C00354B7F /* UIWebView+AFNetworking.m */; };
+		5A5AA6061BAC0A8100438BA9 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4B21ADBC5B700463D3B /* UIImage+GIF.m */; };
+		5A5AA6071BAC0A8100438BA9 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D074B4881AD7895500463D3B /* VideoModel.swift */; };
+		5A5AA6081BAC0A8100438BA9 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFA81ACA5F3F00354B7F /* AFHTTPSessionManager.m */; };
+		5A5AA6091BAC0A8100438BA9 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFC51ACA5F6C00354B7F /* UIAlertView+AFNetworking.m */; };
+		5A5AA60A1BAC0A8100438BA9 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B49D1ADBC5B700463D3B /* MKAnnotationView+WebCache.m */; };
+		5A5AA60B1BAC0A8100438BA9 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = D00810CE1ACD36A30071083E /* NSString+MD5.m */; };
+		5A5AA60C1BAC0A8100438BA9 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4A91ADBC5B700463D3B /* SDWebImageDownloaderOperation.m */; };
+		5A5AA60D1BAC0A8100438BA9 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFB11ACA5F3F00354B7F /* AFURLRequestSerialization.m */; };
+		5A5AA60E1BAC0A8100438BA9 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFC11ACA5F6C00354B7F /* AFNetworkActivityIndicatorManager.m */; };
+		5A5AA60F1BAC0A8100438BA9 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D074B4BA1ADBC5B700463D3B /* UIImageView+WebCache.m */; };
+		5A5AA6101BAC0A8100438BA9 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EFB51ACA5F3F00354B7F /* AFURLSessionManager.m */; };
+		5A5AA6111BAC0A8100438BA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7A1ACA59DE00354B7F /* AppDelegate.swift */; };
+		5A5AA6121BAC0A8100438BA9 /* iNhac.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0A5EF7C1ACA59DE00354B7F /* iNhac.xcdatamodeld */; };
+		5A5AA6141BAC0A8100438BA9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C084A01AD3B20500B68903 /* UIKit.framework */; };
+		5A5AA6151BAC0A8100438BA9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C0849E1AD3B1FE00B68903 /* CoreGraphics.framework */; };
+		5A5AA6161BAC0A8100438BA9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C0849C1AD3B1B200B68903 /* QuartzCore.framework */; };
+		5A5AA6171BAC0A8100438BA9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0003ED21ACE4215009ADBF2 /* Foundation.framework */; };
+		5A5AA6191BAC0A8100438BA9 /* vinyl.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E8896B1ADF4A9100CA0B90 /* vinyl.png */; };
+		5A5AA61A1BAC0A8100438BA9 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF151AD4E1BB00DCC1C3 /* PlayerView.xib */; };
+		5A5AA61B1BAC0A8100438BA9 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA54A91ADF5930000FCB28 /* point.png */; };
+		5A5AA61C1BAC0A8100438BA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A5EF811ACA59DE00354B7F /* Main.storyboard */; };
+		5A5AA61D1BAC0A8100438BA9 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF181AD4E9BD00DCC1C3 /* play.png */; };
+		5A5AA61E1BAC0A8100438BA9 /* pochette.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA54AB1ADF5D8D000FCB28 /* pochette.png */; };
+		5A5AA61F1BAC0A8100438BA9 /* minsize.png in Resources */ = {isa = PBXBuildFile; fileRef = D074B4CD1ADD05B900463D3B /* minsize.png */; };
+		5A5AA6201BAC0A8100438BA9 /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF171AD4E9BD00DCC1C3 /* skip.png */; };
+		5A5AA6211BAC0A8100438BA9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A5EF861ACA59DE00354B7F /* LaunchScreen.xib */; };
+		5A5AA6221BAC0A8100438BA9 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF1D1AD4EBBC00DCC1C3 /* music.png */; };
+		5A5AA6231BAC0A8100438BA9 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E71AD2886300E85A4D /* 2.jpg */; };
+		5A5AA6241BAC0A8100438BA9 /* defaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DF808B1AD692440059E7E0 /* defaultImage.png */; };
+		5A5AA6251BAC0A8100438BA9 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = D05ABF191AD4E9BD00DCC1C3 /* back.png */; };
+		5A5AA6261BAC0A8100438BA9 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA54AF1ADF7406000FCB28 /* pause.png */; };
+		5A5AA6271BAC0A8100438BA9 /* kim.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E889711ADF558100CA0B90 /* kim.png */; };
+		5A5AA6281BAC0A8100438BA9 /* hold.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E8896D1ADF4C5D00CA0B90 /* hold.png */; };
+		5A5AA6291BAC0A8100438BA9 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D08D59751AE0F813002BA907 /* icon.png */; };
+		5A5AA62A1BAC0A8100438BA9 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E81AD2886300E85A4D /* 1.jpg */; };
+		5A5AA62B1BAC0A8100438BA9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A5EF841ACA59DE00354B7F /* Images.xcassets */; };
+		5A5AA62C1BAC0A8100438BA9 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D03D69E61AD2886300E85A4D /* 3.jpg */; };
 		D0003ED31ACE4215009ADBF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0003ED21ACE4215009ADBF2 /* Foundation.framework */; };
 		D0015BBF1ADE530600B52741 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0015BBE1ADE530600B52741 /* MusicPlayerViewController.swift */; };
 		D0015BC11ADE54A500B52741 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0015BC01ADE54A500B52741 /* SongModel.swift */; };
@@ -107,6 +193,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A5AA6301BAC0A8100438BA9 /* iNhac copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iNhac copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5AA6311BAC0A8200438BA9 /* iNhac copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iNhac copy-Info.plist"; path = "/Users/ZoomNGUYEN/iNhac/iNhac copy-Info.plist"; sourceTree = "<absolute>"; };
 		D0003ED21ACE4215009ADBF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0015BBE1ADE530600B52741 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 		D0015BC01ADE54A500B52741 /* SongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
@@ -246,6 +334,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5A5AA6131BAC0A8100438BA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A5AA6141BAC0A8100438BA9 /* UIKit.framework in Frameworks */,
+				5A5AA6151BAC0A8100438BA9 /* CoreGraphics.framework in Frameworks */,
+				5A5AA6161BAC0A8100438BA9 /* QuartzCore.framework in Frameworks */,
+				5A5AA6171BAC0A8100438BA9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0A5EF721ACA59DE00354B7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -454,6 +553,7 @@
 				D0A5EF771ACA59DE00354B7F /* iNhac */,
 				D0A5EF901ACA59DE00354B7F /* iNhacTests */,
 				D0A5EF761ACA59DE00354B7F /* Products */,
+				5A5AA6311BAC0A8200438BA9 /* iNhac copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -462,6 +562,7 @@
 			children = (
 				D0A5EF751ACA59DE00354B7F /* iNhac.app */,
 				D0A5EF8D1ACA59DE00354B7F /* iNhacTests.xctest */,
+				5A5AA6301BAC0A8100438BA9 /* iNhac copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -644,6 +745,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5A5AA5D31BAC0A8100438BA9 /* iNhac copy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A5AA62D1BAC0A8100438BA9 /* Build configuration list for PBXNativeTarget "iNhac copy" */;
+			buildPhases = (
+				5A5AA5D41BAC0A8100438BA9 /* Sources */,
+				5A5AA6131BAC0A8100438BA9 /* Frameworks */,
+				5A5AA6181BAC0A8100438BA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iNhac copy";
+			productName = iNhac;
+			productReference = 5A5AA6301BAC0A8100438BA9 /* iNhac copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D0A5EF741ACA59DE00354B7F /* iNhac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0A5EF971ACA59DE00354B7F /* Build configuration list for PBXNativeTarget "iNhac" */;
@@ -688,6 +806,9 @@
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = ZoomStudio;
 				TargetAttributes = {
+					5A5AA5D31BAC0A8100438BA9 = {
+						DevelopmentTeam = E888DAGUR4;
+					};
 					D0A5EF741ACA59DE00354B7F = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = E888DAGUR4;
@@ -721,11 +842,39 @@
 			targets = (
 				D0A5EF741ACA59DE00354B7F /* iNhac */,
 				D0A5EF8C1ACA59DE00354B7F /* iNhacTests */,
+				5A5AA5D31BAC0A8100438BA9 /* iNhac copy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5A5AA6181BAC0A8100438BA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A5AA6191BAC0A8100438BA9 /* vinyl.png in Resources */,
+				5A5AA61A1BAC0A8100438BA9 /* PlayerView.xib in Resources */,
+				5A5AA61B1BAC0A8100438BA9 /* point.png in Resources */,
+				5A5AA61C1BAC0A8100438BA9 /* Main.storyboard in Resources */,
+				5A5AA61D1BAC0A8100438BA9 /* play.png in Resources */,
+				5A5AA61E1BAC0A8100438BA9 /* pochette.png in Resources */,
+				5A5AA61F1BAC0A8100438BA9 /* minsize.png in Resources */,
+				5A5AA6201BAC0A8100438BA9 /* skip.png in Resources */,
+				5A5AA6211BAC0A8100438BA9 /* LaunchScreen.xib in Resources */,
+				5A5AA6221BAC0A8100438BA9 /* music.png in Resources */,
+				5A5AA6231BAC0A8100438BA9 /* 2.jpg in Resources */,
+				5A5AA6241BAC0A8100438BA9 /* defaultImage.png in Resources */,
+				5A5AA6251BAC0A8100438BA9 /* back.png in Resources */,
+				5A5AA6261BAC0A8100438BA9 /* pause.png in Resources */,
+				5A5AA6271BAC0A8100438BA9 /* kim.png in Resources */,
+				5A5AA6281BAC0A8100438BA9 /* hold.png in Resources */,
+				5A5AA6291BAC0A8100438BA9 /* icon.png in Resources */,
+				5A5AA62A1BAC0A8100438BA9 /* 1.jpg in Resources */,
+				5A5AA62B1BAC0A8100438BA9 /* Images.xcassets in Resources */,
+				5A5AA62C1BAC0A8100438BA9 /* 3.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0A5EF731ACA59DE00354B7F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -763,6 +912,75 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5A5AA5D41BAC0A8100438BA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A5AA5D51BAC0A8100438BA9 /* UIButton+WebCache.m in Sources */,
+				5A5AA5D61BAC0A8100438BA9 /* SwiftTryCatch.m in Sources */,
+				5A5AA5D71BAC0A8100438BA9 /* AFHTTPRequestOperation.m in Sources */,
+				5A5AA5D81BAC0A8100438BA9 /* MusicPlayerView+TableView.swift in Sources */,
+				5A5AA5D91BAC0A8100438BA9 /* SongHotViewController.swift in Sources */,
+				5A5AA5DA1BAC0A8100438BA9 /* UIImageView+AFNetworking.m in Sources */,
+				5A5AA5DB1BAC0A8100438BA9 /* HomeController.swift in Sources */,
+				5A5AA5DC1BAC0A8100438BA9 /* UIImageView+HighlightedWebCache.m in Sources */,
+				5A5AA5DD1BAC0A8100438BA9 /* AFHTTPRequestOperationManager.m in Sources */,
+				5A5AA5DE1BAC0A8100438BA9 /* NSData+ImageContentType.m in Sources */,
+				5A5AA5DF1BAC0A8100438BA9 /* VideoHotViewController.swift in Sources */,
+				5A5AA5E01BAC0A8100438BA9 /* SMSegmentView.swift in Sources */,
+				5A5AA5E11BAC0A8100438BA9 /* HTMLtoSTRING.swift in Sources */,
+				5A5AA5E21BAC0A8100438BA9 /* UIColor+flat.m in Sources */,
+				5A5AA5E31BAC0A8100438BA9 /* SingerInfoView.swift in Sources */,
+				5A5AA5E41BAC0A8100438BA9 /* UIProgressView+AFNetworking.m in Sources */,
+				5A5AA5E51BAC0A8100438BA9 /* SongTableViewCell.swift in Sources */,
+				5A5AA5E61BAC0A8100438BA9 /* SDWebImageCompat.m in Sources */,
+				5A5AA5E71BAC0A8100438BA9 /* SDWebImageManager.m in Sources */,
+				5A5AA5E81BAC0A8100438BA9 /* AFNetworkReachabilityManager.m in Sources */,
+				5A5AA5E91BAC0A8100438BA9 /* SDImageCache.m in Sources */,
+				5A5AA5EA1BAC0A8100438BA9 /* SongModel.swift in Sources */,
+				5A5AA5EB1BAC0A8100438BA9 /* AFURLResponseSerialization.m in Sources */,
+				5A5AA5EC1BAC0A8100438BA9 /* SDWebImageDecoder.m in Sources */,
+				5A5AA5ED1BAC0A8100438BA9 /* FeSpinnerTenDot.m in Sources */,
+				5A5AA5EE1BAC0A8100438BA9 /* PlayerView.swift in Sources */,
+				5A5AA5EF1BAC0A8100438BA9 /* SDWebImageDownloader.m in Sources */,
+				5A5AA5F01BAC0A8100438BA9 /* FXBlurView.m in Sources */,
+				5A5AA5F11BAC0A8100438BA9 /* SMSegment.swift in Sources */,
+				5A5AA5F21BAC0A8100438BA9 /* FeTenDot.m in Sources */,
+				5A5AA5F31BAC0A8100438BA9 /* UIImage+MultiFormat.m in Sources */,
+				5A5AA5F41BAC0A8100438BA9 /* MusicPlayerView+Animation.swift in Sources */,
+				5A5AA5F51BAC0A8100438BA9 /* VideoTableViewCell.swift in Sources */,
+				5A5AA5F61BAC0A8100438BA9 /* UIImage+WebP.m in Sources */,
+				5A5AA5F71BAC0A8100438BA9 /* AFURLConnectionOperation.m in Sources */,
+				5A5AA5F81BAC0A8100438BA9 /* Base64.m in Sources */,
+				5A5AA5F91BAC0A8100438BA9 /* MusicPlayerViewController.swift in Sources */,
+				5A5AA5FA1BAC0A8100438BA9 /* VideoPlayerViewController.swift in Sources */,
+				5A5AA5FB1BAC0A8100438BA9 /* UIButton+AFNetworking.m in Sources */,
+				5A5AA5FC1BAC0A8100438BA9 /* homepageCell.swift in Sources */,
+				5A5AA5FD1BAC0A8100438BA9 /* AlbumHotViewController.swift in Sources */,
+				5A5AA5FE1BAC0A8100438BA9 /* JSONKit.m in Sources */,
+				5A5AA5FF1BAC0A8100438BA9 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				5A5AA6001BAC0A8100438BA9 /* UIView+WebCacheOperation.m in Sources */,
+				5A5AA6011BAC0A8100438BA9 /* MusicPlayerViewAPI.swift in Sources */,
+				5A5AA6021BAC0A8100438BA9 /* SDWebImagePrefetcher.m in Sources */,
+				5A5AA6031BAC0A8100438BA9 /* AFSecurityPolicy.m in Sources */,
+				5A5AA6041BAC0A8100438BA9 /* UIRefreshControl+AFNetworking.m in Sources */,
+				5A5AA6051BAC0A8100438BA9 /* UIWebView+AFNetworking.m in Sources */,
+				5A5AA6061BAC0A8100438BA9 /* UIImage+GIF.m in Sources */,
+				5A5AA6071BAC0A8100438BA9 /* VideoModel.swift in Sources */,
+				5A5AA6081BAC0A8100438BA9 /* AFHTTPSessionManager.m in Sources */,
+				5A5AA6091BAC0A8100438BA9 /* UIAlertView+AFNetworking.m in Sources */,
+				5A5AA60A1BAC0A8100438BA9 /* MKAnnotationView+WebCache.m in Sources */,
+				5A5AA60B1BAC0A8100438BA9 /* NSString+MD5.m in Sources */,
+				5A5AA60C1BAC0A8100438BA9 /* SDWebImageDownloaderOperation.m in Sources */,
+				5A5AA60D1BAC0A8100438BA9 /* AFURLRequestSerialization.m in Sources */,
+				5A5AA60E1BAC0A8100438BA9 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				5A5AA60F1BAC0A8100438BA9 /* UIImageView+WebCache.m in Sources */,
+				5A5AA6101BAC0A8100438BA9 /* AFURLSessionManager.m in Sources */,
+				5A5AA6111BAC0A8100438BA9 /* AppDelegate.swift in Sources */,
+				5A5AA6121BAC0A8100438BA9 /* iNhac.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0A5EF711ACA59DE00354B7F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -870,6 +1088,37 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5A5AA62E1BAC0A8100438BA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: NGUYEN DUNG (29D9T87U8J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: NGUYEN DUNG (29D9T87U8J)";
+				INFOPLIST_FILE = "iNhac copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "iNhac copy";
+				PROVISIONING_PROFILE = "0f9621c6-84a2-40f9-9081-2e1daaa6ffb8";
+				SWIFT_OBJC_BRIDGING_HEADER = "iNhac/iNhac-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "iNhac/iNhac-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		5A5AA62F1BAC0A8100438BA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "iNhac copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "iNhac copy";
+				PROVISIONING_PROFILE = "0f9621c6-84a2-40f9-9081-2e1daaa6ffb8";
+				SWIFT_OBJC_BRIDGING_HEADER = "iNhac/iNhac-Bridging-Header.h";
+			};
+			name = Release;
+		};
 		D0A5EF951ACA59DE00354B7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1015,6 +1264,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5A5AA62D1BAC0A8100438BA9 /* Build configuration list for PBXNativeTarget "iNhac copy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A5AA62E1BAC0A8100438BA9 /* Debug */,
+				5A5AA62F1BAC0A8100438BA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D0A5EF701ACA59DE00354B7F /* Build configuration list for PBXProject "iNhac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
