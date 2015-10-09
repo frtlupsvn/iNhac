@@ -9,6 +9,6 @@
 
 extension String {
     var html2String:String {
-        return NSAttributedString(data: dataUsingEncoding(NSUnicodeStringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil, error: nil)!.string
+        return (try! NSAttributedString(data: dataUsingEncoding(NSUnicodeStringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)).string
     }
 }

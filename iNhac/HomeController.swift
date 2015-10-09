@@ -76,15 +76,15 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         //jsondata
         
-        var jsonarray:NSMutableDictionary = NSMutableDictionary(object: "video", forKey: "t")
+        let jsonarray:NSMutableDictionary = NSMutableDictionary(object: "video", forKey: "t")
         
         
-        var jsondata:NSString = (jsonarray.JSONString() as NSString)
+        let jsondata:NSString = (jsonarray.JSONString() as NSString)
             .base64EncodedStringWithWrapWidth(0)
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
         
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
+        let signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         
         let manager = AFHTTPRequestOperationManager()
@@ -93,27 +93,27 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         //**************************************
         // CALL API
         
-        var url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
-        println(url)
+        let url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
+        print(url)
         
         manager.GET( url,
             parameters: nil,
             success: {
                 (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 //Success
-                println("Video Successful")
+                print("Video Successful")
                 
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var responseArray:NSArray = responseObject as! NSArray
+                let responseArray:NSArray = responseObject as! NSArray
                 
                 for index in 0...responseArray.count-1{
-                    var tempsObject:NSDictionary = responseArray[index] as! NSDictionary
-                    var artistDetail : NSArray = tempsObject["ArtistDetail"] as! NSArray
-                    var artistID : NSString = (artistDetail[0] as! NSDictionary).objectForKey("ArtistID") as! NSString
+                    let tempsObject:NSDictionary = responseArray[index] as! NSDictionary
+                    let artistDetail : NSArray = tempsObject["ArtistDetail"] as! NSArray
+                    let artistID : NSString = (artistDetail[0] as! NSDictionary).objectForKey("ArtistID") as! NSString
                     
-                    var videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as! NSString, myTitle: tempsObject["Title"]as! NSString, myArtist: tempsObject["Artist"]as! NSString,myArtistID:artistID, myTotalView: tempsObject["TotalView"]as! Int, myGenre: tempsObject["Genre"]as! NSString, myPictureURL: tempsObject["PictureURL"]as! NSString, myLinkDownload: tempsObject["LinkDownload"]as! NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as! NSString, myLink: tempsObject["Link"]as! NSString)
+                    let videoObject:VideoModel = VideoModel(myID: tempsObject["ID"] as! NSString, myTitle: tempsObject["Title"]as! NSString, myArtist: tempsObject["Artist"]as! NSString,myArtistID:artistID, myTotalView: tempsObject["TotalView"]as! Int, myGenre: tempsObject["Genre"]as! NSString, myPictureURL: tempsObject["PictureURL"]as! NSString, myLinkDownload: tempsObject["LinkDownload"]as! NSString, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"]as! NSString, myLink: tempsObject["Link"]as! NSString)
                     
                     self.videoData.addObject(videoObject)
                     
@@ -129,7 +129,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
                 
             },
             failure: {
-                (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
+                (operation: AFHTTPRequestOperation!,error: NSError!) in print("Error:" + error.localizedDescription)
             }
         )
         //**************************************
@@ -144,16 +144,16 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         //jsondata
         
         
-        var jsonarray:NSMutableDictionary = NSMutableDictionary()
+        let jsonarray:NSMutableDictionary = NSMutableDictionary()
         jsonarray.setValue("song", forKey: "t")
         
         
         
-        var jsondata:NSString = (jsonarray.JSONString() as NSString)
+        let jsondata:NSString = (jsonarray.JSONString() as NSString)
             .base64EncodedStringWithWrapWidth(0)
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
+        let signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         //        println(jsondata)
         //        println(signature)
@@ -162,9 +162,9 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         //**************************************
         // CALL API
         
-        var url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
+        let url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
         
-        println(url)
+        print(url)
         
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
@@ -173,21 +173,21 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
             parameters: nil,
             success: {
                 (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                println("Song Successful")
+                print("Song Successful")
                 //                ********************************
                 //                ** parse data to Object ********
                 //                ********************************
-                var responseArray:NSArray = responseObject as! NSArray
+                let responseArray:NSArray = responseObject as! NSArray
                 
                 for index in 0...responseArray.count-1{
                     
-                    var tempsObject:NSDictionary = responseArray[index] as! NSDictionary
-                    var artistDetail : NSArray = tempsObject["ArtistDetail"] as! NSArray
+                    let tempsObject:NSDictionary = responseArray[index] as! NSDictionary
+                    let artistDetail : NSArray = tempsObject["ArtistDetail"] as! NSArray
                     
-                    var artistID : Int = (artistDetail[0] as! NSDictionary).objectForKey("ArtistID") as! Int
-                    var artistAvatar:NSString = (artistDetail[0] as! NSDictionary).objectForKey("ArtistAvatar") as! NSString
+                    let artistID : Int = (artistDetail[0] as! NSDictionary).objectForKey("ArtistID") as! Int
+                    let artistAvatar:NSString = (artistDetail[0] as! NSDictionary).objectForKey("ArtistAvatar") as! NSString
                     
-                    var songObject:SongModel = SongModel(myID: tempsObject["ID"] as! NSString, myTitle: tempsObject["Title"] as! NSString, myArtist: tempsObject["Artist"] as! NSString, myArtistID: String(artistID), myComposer: tempsObject["Composer"] as! NSString, myTotalListen: tempsObject["TotalListen"] as! Int, myGenre: tempsObject["Genre"] as! NSString, myArtistAvatar: artistAvatar, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as! NSString, myLink128: tempsObject["LinkPlay128"] as! NSString, myLink320: tempsObject["LinkPlay320"] as! NSString, myLink: tempsObject["Link"] as! NSString)
+                    let songObject:SongModel = SongModel(myID: tempsObject["ID"] as! NSString, myTitle: tempsObject["Title"] as! NSString, myArtist: tempsObject["Artist"] as! NSString, myArtistID: String(artistID), myComposer: tempsObject["Composer"] as! NSString, myTotalListen: tempsObject["TotalListen"] as! Int, myGenre: tempsObject["Genre"] as! NSString, myArtistAvatar: artistAvatar, myLinkPlayEmbed: tempsObject["LinkPlayEmbed"] as! NSString, myLink128: tempsObject["LinkPlay128"] as! NSString, myLink320: tempsObject["LinkPlay320"] as! NSString, myLink: tempsObject["Link"] as! NSString)
                     self.songData.addObject(songObject)
                     
                 }
@@ -198,7 +198,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
                 var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("getAlbumHotContent"), userInfo: nil, repeats: false)
             },
             failure: {
-                (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
+                (operation: AFHTTPRequestOperation!,error: NSError!) in print("Error:" + error.localizedDescription)
             }
         )
         
@@ -213,16 +213,16 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         //jsondata
         
         
-        var jsonarray:NSMutableDictionary = NSMutableDictionary()
+        let jsonarray:NSMutableDictionary = NSMutableDictionary()
         jsonarray.setValue("album", forKey: "t")
         
         
         
-        var jsondata:NSString = (jsonarray.JSONString() as NSString)
+        let jsondata:NSString = (jsonarray.JSONString() as NSString)
             .base64EncodedStringWithWrapWidth(0)
             .stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             .URLEncodedString_ch()
-        var signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
+        let signature:NSString = (jsondata as NSString).HMAC_MD5_WithSecretString(privateKey as String)
         
         //        println(jsondata)
         //        println(signature)
@@ -231,9 +231,9 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
         //**************************************
         // CALL API
         
-        var url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
+        let url = "\(HOT_CONTENT_API)?publicKey=\(publicKey)&signature=\(signature)&jsondata=\(jsondata)"
         
-        println(url)
+        print(url)
         
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer.acceptableContentTypes = NSSet(object: "text/html") as Set<NSObject>
@@ -242,11 +242,11 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
             parameters: nil,
             success: {
                 (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                println("Album Successful")
+                print("Album Successful")
                 var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("backToView"), userInfo: nil, repeats: false)
             },
             failure: {
-                (operation: AFHTTPRequestOperation!,error: NSError!) in println("Error:" + error.localizedDescription)
+                (operation: AFHTTPRequestOperation!,error: NSError!) in print("Error:" + error.localizedDescription)
             }
         )
         
@@ -268,7 +268,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
     func addMediaPlayer(){
         //**************************************
         // Media Player
-        var playerTabbar = PlayerView(frame: CGRectMake(0, self.view.frame.height-120, self.view.frame.width, 120))
+        let playerTabbar = PlayerView(frame: CGRectMake(0, self.view.frame.height-120, self.view.frame.width, 120))
         playerTabbar.layer.zPosition = 1
         UIApplication.sharedApplication().keyWindow?.addSubview(playerTabbar)
         //**************************************

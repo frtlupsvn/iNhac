@@ -14,7 +14,7 @@ extension MusicPlayerViewController {
         let duration = 2.0
         let delay = 0.0
         let options = UIViewAnimationOptions.CurveLinear
-        UIView.animateWithDuration(duration, delay: delay, options: nil, animations: {
+        UIView.animateWithDuration(duration, delay: delay, options: [], animations: {
             self.diskView.frame.origin.x = self.view.frame.size.width * 0.9
             
             }, completion:{
@@ -59,7 +59,7 @@ extension MusicPlayerViewController {
     func rotateDisk(){
         let duration = 2.0
         let delay = 0.0
-        let options = UIViewAnimationOptions.CurveLinear | .AllowUserInteraction
+        let options: UIViewAnimationOptions = [UIViewAnimationOptions.CurveLinear, .AllowUserInteraction]
         UIView.animateWithDuration(duration, delay: delay, options: options, animations: {
             self.diskView.transform = CGAffineTransformRotate(self.diskView.transform,CGFloat(M_PI))
             }, completion:{

@@ -94,11 +94,11 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         pochette.alpha = 1.0
         
         self.diskView.userInteractionEnabled = true
-        var tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapOnDisk"))
+        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("tapOnDisk"))
         self.diskView.addGestureRecognizer(tapGesture)
         
         self.miniView.userInteractionEnabled = true
-        var miniViewTap = UITapGestureRecognizer(target: self, action: Selector("minimizeAction:"))
+        let miniViewTap = UITapGestureRecognizer(target: self, action: Selector("minimizeAction:"))
         self.miniView.addGestureRecognizer(miniViewTap)
         
         
@@ -109,7 +109,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         // Minimize button Animation
         isMinimize = false
         miniView.hidden = true
-        UIView.animateWithDuration(1.0, delay:0, options: .Repeat | .Autoreverse | .AllowUserInteraction , animations: {
+        UIView.animateWithDuration(1.0, delay:0, options: [.Repeat, .Autoreverse, .AllowUserInteraction] , animations: {
             self.minimizeButton.frame = CGRect(x: self.minimizeButton.frame.origin.x, y: self.minimizeButton.frame.origin.y - 10, width: self.minimizeButton.frame.size.width, height: self.minimizeButton.frame.size.height)
             }, completion: nil)
         //****************************************************************************************
@@ -155,7 +155,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         /*
         Replace the following line to implement what you want the app to do after the segment gets tapped.
         */
-        println("Select segment at index: \(segmentIndex)")
+        print("Select segment at index: \(segmentIndex)")
         
         switch segmentIndex {
         case  0:
@@ -188,12 +188,12 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
         self.avaArtist.sd_setImageWithURL(urlImage)
         self.albumMiniImage.sd_setImageWithURL(urlImage)
         let urlSong = url
-        let playerItem = AVPlayerItem( URL:NSURL( string:urlSong as String ) )
+        let playerItem = AVPlayerItem( URL:NSURL( string:urlSong as String )! )
         player = AVPlayer(playerItem:playerItem)
         
-        var duration :CMTime = self.player.currentItem.asset.duration
+        let duration :CMTime = self.player.currentItem!.asset.duration
         var second : Float64 = CMTimeGetSeconds(duration) as Float64
-        println(secondsToHoursMinutesSeconds(Int(second)))
+        print(secondsToHoursMinutesSeconds(Int(second)))
         
         self.timer.minimumValue = 0
         self.timer.maximumValue = Float(second)
@@ -245,7 +245,7 @@ class MusicPlayerViewController: UIViewController,SMSegmentViewDelegate,UITableV
     func removeView(notification: NSNotification){
         //do stuff
         if (notification.name == "NotificationRemoveSongPlayer"){
-            println("Notification Remove Song")
+            print("Notification Remove Song")
             if(self.isMinimize == true){
                 UIView.animateWithDuration(0.9, animations: {
                     self.view.frame = CGRectMake(self.view.frame.size.width, self.view.frame.size.height-30, self.view.frame.size.width, self.view.frame.size.height)

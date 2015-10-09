@@ -11,7 +11,7 @@ extension MusicPlayerViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : SongTableViewCell = tableView.dequeueReusableCellWithIdentifier("SongCell", forIndexPath: indexPath) as! SongTableViewCell
-        var videoObject:SongModel = dataSource[indexPath.row] as! SongModel
+        let videoObject:SongModel = dataSource[indexPath.row] as! SongModel
         cell.sttLabel.text = String(indexPath.row)
         cell.songTitle.text = videoObject.Title as String
         cell.singerLabel.text = videoObject.Artist as String
