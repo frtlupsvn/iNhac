@@ -125,7 +125,7 @@ class HomeController: UIViewController , UITableViewDataSource, UITableViewDeleg
                 
                 
                 
-                var timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("getSongHotContent"), userInfo: nil, repeats: false)
+                _ = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("getSongHotContent"), userInfo: nil, repeats: false)
                 
             },
             failure: {
